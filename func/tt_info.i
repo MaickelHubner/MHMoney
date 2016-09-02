@@ -1,0 +1,7 @@
+DEFINE TEMP-TABLE tt-info
+    FIELD campo AS CHARACTER FORMAT "X(20)" COLUMN-LABEL "Informa‡Æo"
+    FIELD valor AS CHARACTER FORMAT "X(12)" COLUMN-LABEL "Valor"
+    FIELD descricao AS CHARACTER FORMAT "X(40)" COLUMN-LABEL "Descri‡Æo"
+    FIELD tabela AS CHARACTER
+    FIELD campo-proc AS CHARACTER
+    FIELD campo-desc AS CHARACTER.

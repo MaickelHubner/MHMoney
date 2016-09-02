@@ -1,0 +1,11 @@
+UPDATE FIELD "nr-mov" OF "apontamento"
+  FORMAT "X(25)"
+
+UPDATE FIELD "nr-mov" OF "mov-conta"
+  FORMAT "X(25)"
+
+.
+PSC
+cpstream=ibm850
+.
+0000002459

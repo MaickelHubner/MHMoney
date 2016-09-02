@@ -1,0 +1,415 @@
+ADD FIELD "seq-visita" OF "apontamento" AS integer
+  DESCRIPTION ""
+  FORMAT ">>>>>>9"
+  FORMAT-SA ?
+  POSITION 13
+  INITIAL "0"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Seq Visita"
+  LABEL-SA ?
+  COLUMN-LABEL "Seq Visita"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 120
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 4
+
+ADD FIELD "nr-mov" OF "apontamento" AS character
+  DESCRIPTION ""
+  FORMAT "X(20)"
+  FORMAT-SA ?
+  POSITION 15
+  INITIAL ""
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Documento"
+  LABEL-SA ?
+  COLUMN-LABEL "Docto"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 130
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 24
+
+ADD FIELD "cd-favorecido" OF "apontamento" AS integer
+  DESCRIPTION ""
+  FORMAT "9999"
+  FORMAT-SA ?
+  POSITION 16
+  INITIAL "0"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Favorecido"
+  LABEL-SA ?
+  COLUMN-LABEL "Fav"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 140
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 4
+
+ADD FIELD "ds-fav-apont" OF "apontamento" AS character
+  DESCRIPTION ""
+  FORMAT "X(40)"
+  FORMAT-SA ?
+  POSITION 17
+  INITIAL ""
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Descri‡Æo Fav. Apont."
+  LABEL-SA ?
+  COLUMN-LABEL "Desc. Fav. Apont."
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 150
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 80
+
+ADD FIELD "reembolsavel" OF "apontamento" AS logical
+  DESCRIPTION ""
+  FORMAT "yes/no"
+  FORMAT-SA ?
+  POSITION 18
+  INITIAL "yes"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Reembols vel"
+  LABEL-SA ?
+  COLUMN-LABEL "Reembol."
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 160
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 1
+
+ADD FIELD "tipo-despesa" OF "apontamento" AS character
+  DESCRIPTION ""
+  FORMAT "x(30)"
+  FORMAT-SA ?
+  POSITION 19
+  INITIAL ""
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Tipo Despesa"
+  LABEL-SA ?
+  COLUMN-LABEL "Tp. Despesa"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 170
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 60
+
+ADD INDEX "visita" ON "apontamento"
+  AREA "Schema Area"
+  INDEX-FIELD "seq-visita" ASCENDING
+  INDEX-FIELD "nome" ASCENDING
+  INDEX-FIELD "data" ASCENDING
+  INDEX-FIELD "hora-ini" ASCENDING
+
+ADD INDEX "visita2" ON "apontamento"
+  AREA "Schema Area"
+  INDEX-FIELD "seq-visita" ASCENDING
+  INDEX-FIELD "data" ASCENDING
+  INDEX-FIELD "hora-ini" ASCENDING
+  INDEX-FIELD "nome" ASCENDING
+
+ADD INDEX "visita3" ON "apontamento"
+  AREA "Schema Area"
+  INDEX-FIELD "seq-visita" ASCENDING
+  INDEX-FIELD "reembolsavel" ASCENDING
+  INDEX-FIELD "data" ASCENDING
+
+ADD FIELD "dia-pagto-padrao" OF "favorecido" AS integer
+  DESCRIPTION ""
+  FORMAT ">9"
+  FORMAT-SA ?
+  POSITION 26
+  INITIAL "0"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Dia Pagto PadrÆo"
+  LABEL-SA ?
+  COLUMN-LABEL "Dia Pagto PadrÆo"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 280
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 4
+
+ADD FIELD "dias-uteis-pagto" OF "favorecido" AS integer
+  DESCRIPTION ""
+  FORMAT ">9"
+  FORMAT-SA ?
+  POSITION 27
+  INITIAL "0"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Adiciona Dias éteis"
+  LABEL-SA ?
+  COLUMN-LABEL "Adiciona Dias éteis"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 290
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 4
+
+ADD FIELD "dia-semana-pagto" OF "favorecido" AS integer
+  DESCRIPTION ""
+  FORMAT "9"
+  FORMAT-SA ?
+  POSITION 28
+  INITIAL "0"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Dia Semana Pagto"
+  LABEL-SA ?
+  COLUMN-LABEL "Dia Semana Pagto"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 300
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 4
+
+ADD FIELD "tipo-pagto" OF "favorecido" AS integer
+  DESCRIPTION ""
+  FORMAT "9"
+  FORMAT-SA ?
+  POSITION 29
+  INITIAL "1"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Tipo Pagto"
+  LABEL-SA ?
+  COLUMN-LABEL "Tipo Pagto"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 310
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 4
+
+ADD FIELD "desconto-prim-parc" OF "favorecido" AS logical
+  DESCRIPTION ""
+  FORMAT "yes/no"
+  FORMAT-SA ?
+  POSITION 30
+  INITIAL "no"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Desconta Impto Primeira Parcela"
+  LABEL-SA ?
+  COLUMN-LABEL "Desconta Impto Primeira Parcela"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 330
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 1
+
+ADD FIELD "seq-visita" OF "mov-conta" AS integer
+  DESCRIPTION ""
+  FORMAT ">>>>>>9"
+  FORMAT-SA ?
+  POSITION 28
+  INITIAL "0"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Seq Visita"
+  LABEL-SA ?
+  COLUMN-LABEL "Seq Visita"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 260
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 4
+
+ADD FIELD "conta-desp-nreemb" OF "param-mn" AS integer
+  DESCRIPTION ""
+  FORMAT "999"
+  FORMAT-SA ?
+  POSITION 29
+  INITIAL "0"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Conta Desp. N Reemb."
+  LABEL-SA ?
+  COLUMN-LABEL "Conta DNR"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 280
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 4
+
+ADD FIELD "aponta-sem-tarefa" OF "usuario" AS logical
+  DESCRIPTION ""
+  FORMAT "yes/no"
+  FORMAT-SA ?
+  POSITION 10
+  INITIAL "no"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Aponta Sem Tarefa"
+  LABEL-SA ?
+  COLUMN-LABEL "Aponta Sem Tarefa"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 90
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 1
+
+ADD FIELD "vl-adiantado" OF "visita" AS decimal
+  DESCRIPTION ""
+  FORMAT "->>,>>9.99"
+  FORMAT-SA ?
+  POSITION 18
+  INITIAL "0"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Valor Adiantado"
+  LABEL-SA ?
+  COLUMN-LABEL "Vl. Adiantado"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS 2
+  ORDER 180
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 17
+
+.
+PSC
+cpstream=ibm850
+.
+0000007345

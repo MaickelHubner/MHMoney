@@ -1,0 +1,38 @@
+ID: P3962
+Title: "Errors 4104, 3131, 4025 when using ActiveX controls with MetaFrame or Terminal Server sessions."
+ 
+Created: 06/27/2002 Last Modified: 07/27/2004 
+Status: Unverified
+ 
+ 
+
+
+Facts:  
+
+Citrix MetaFrame (for Windows 2000 Terminal Server) 
+Citrix MetaFrame (for Windows NT 4.0 Terminal Server) 
+Windows NT 4.0 Terminal Server Edition 
+Windows 2000 Advanced Server
+ 
+
+
+Symptoms:  
+
+Using ActiveX controls 
+Unknown error code for attribute <attribute> on the <widget id>. (4104) 
+Unable to set attribute <attribute name> in widget <widget name> of type <widget-type>. (3131) 
+**Unable to realize <widget name>. (4025)
+ 
+ 
+
+
+Cause:  
+Prox.dll not registered properly on Terminal Server host 
+
+
+Fixes:  
+Register the prox.dll with:
+change user/install
+regsvr32 %DLC%\bin\prox.dll
+change user/execute 
+

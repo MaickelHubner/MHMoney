@@ -1,0 +1,57 @@
+ADD FIELD "nome" OF "atendimento" AS character
+  DESCRIPTION "Nome do usu rio"
+  FORMAT "X(8)"
+  FORMAT-SA ?
+  POSITION 10
+  INITIAL ""
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Nome"
+  LABEL-SA ?
+  COLUMN-LABEL "Nome"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 90
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 16
+
+ADD FIELD "sequencia" OF "atendimento" AS integer
+  DESCRIPTION ""
+  FORMAT ">>>>9"
+  FORMAT-SA ?
+  POSITION 11
+  INITIAL "0"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Sequˆncia"
+  LABEL-SA ?
+  COLUMN-LABEL "Seq"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 100
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 4
+
+.
+PSC
+cpstream=ibm850
+.
+0000002484

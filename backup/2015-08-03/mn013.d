@@ -1,0 +1,1 @@
+"C:\Program Files\Internet Explorer\iexplore.exe" no 0 0 0 0 "" "\\10.0.0.101\Sistema\MHMoney" "8&ZB13IXV0&D5P2TVT2&R30V4PW0008D" 0 "" "" "" "" 2 "\\10.0.0.101\Sistema\Arquivos\Anexos" 4 1 2 1 2 0 "Joinville" 0 2 9 "\\10.0.0.101\Zebra" 11

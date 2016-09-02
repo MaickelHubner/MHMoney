@@ -1,0 +1,383 @@
+ADD TABLE "pedido-item-usu"
+  AREA "Schema Area"
+  LABEL "Item Pedido x Usu rio"
+  DUMP-NAME "mn049"
+
+ADD FIELD "nr-pedido" OF "pedido-item-usu" AS integer 
+  FORMAT ">>>>,>>9"
+  INITIAL "0"
+  LABEL "Pedido"
+  POSITION 2
+  MAX-WIDTH 4
+  COLUMN-LABEL "Pedido"
+  ORDER 10
+
+ADD FIELD "sequencia" OF "pedido-item-usu" AS integer 
+  FORMAT ">>>9"
+  INITIAL "0"
+  LABEL "Sequˆncia"
+  POSITION 3
+  MAX-WIDTH 4
+  COLUMN-LABEL "Seq"
+  ORDER 20
+
+ADD FIELD "nome" OF "pedido-item-usu" AS character 
+  FORMAT "X(8)"
+  INITIAL ""
+  LABEL "Usu rio"
+  POSITION 4
+  MAX-WIDTH 16
+  COLUMN-LABEL "Usu rio"
+  ORDER 30
+
+ADD INDEX "codigo" ON "pedido-item-usu" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "nr-pedido" ASCENDING 
+  INDEX-FIELD "sequencia" ASCENDING 
+  INDEX-FIELD "nome" ASCENDING 
+
+ADD FIELD "usuar-resp" OF "agenda" AS character
+  DESCRIPTION ""
+  FORMAT "X(8)"
+  FORMAT-SA ?
+  POSITION 18
+  INITIAL ""
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Usu rio Respons vel"
+  LABEL-SA ?
+  COLUMN-LABEL "Usu rio Resp"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 170
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 16
+
+ADD FIELD "foto" OF "favorecido" AS character
+  DESCRIPTION ""
+  FORMAT "x(80)"
+  FORMAT-SA ?
+  POSITION 16
+  INITIAL ""
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Foto"
+  LABEL-SA ?
+  COLUMN-LABEL "Foto"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 180
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 160
+
+ADD FIELD "banco" OF "favorecido" AS character
+  DESCRIPTION ""
+  FORMAT "x(40)"
+  FORMAT-SA ?
+  POSITION 17
+  INITIAL ""
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Banco"
+  LABEL-SA ?
+  COLUMN-LABEL "Banco"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 190
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 80
+
+ADD FIELD "agencia" OF "favorecido" AS character
+  DESCRIPTION ""
+  FORMAT "x(12)"
+  FORMAT-SA ?
+  POSITION 18
+  INITIAL ""
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Agˆncia"
+  LABEL-SA ?
+  COLUMN-LABEL "Agˆncia"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 200
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 24
+
+ADD FIELD "conta-bancaria" OF "favorecido" AS character
+  DESCRIPTION ""
+  FORMAT "x(12)"
+  FORMAT-SA ?
+  POSITION 19
+  INITIAL ""
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Conta"
+  LABEL-SA ?
+  COLUMN-LABEL "Conta"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 210
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 24
+
+ADD FIELD "e-mail" OF "favorecido" AS character
+  DESCRIPTION ""
+  FORMAT "x(80)"
+  FORMAT-SA ?
+  POSITION 20
+  INITIAL ""
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "E-mail"
+  LABEL-SA ?
+  COLUMN-LABEL "E-mail"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 220
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 160
+
+ADD FIELD "ins-estadual" OF "favorecido" AS character
+  DESCRIPTION ""
+  FORMAT "x(20)"
+  FORMAT-SA ?
+  POSITION 21
+  INITIAL ""
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Insc. Estadual"
+  LABEL-SA ?
+  COLUMN-LABEL "Insc Est"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 230
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 40
+
+ADD FIELD "contato" OF "favorecido" AS character
+  DESCRIPTION ""
+  FORMAT "x(40)"
+  FORMAT-SA ?
+  POSITION 22
+  INITIAL ""
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Contato"
+  LABEL-SA ?
+  COLUMN-LABEL "Contato"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 240
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 80
+
+ADD FIELD "data-nasc" OF "favorecido" AS date
+  DESCRIPTION ""
+  FORMAT "99/99/9999"
+  FORMAT-SA ?
+  POSITION 23
+  INITIAL ?
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Data Nascimento"
+  LABEL-SA ?
+  COLUMN-LABEL "DtNasc"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 250
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 4
+
+ADD FIELD "tipo-retencao" OF "imposto" AS integer
+  DESCRIPTION ""
+  FORMAT "9"
+  FORMAT-SA ?
+  POSITION 14
+  INITIAL "0"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Tipo Reten‡Æo"
+  LABEL-SA ?
+  COLUMN-LABEL "TpRet"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 130
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 4
+
+ADD FIELD "cidade" OF "param-mn" AS character
+  DESCRIPTION ""
+  FORMAT "X(30)"
+  FORMAT-SA ?
+  POSITION 24
+  INITIAL ""
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Cidade"
+  LABEL-SA ?
+  COLUMN-LABEL "Cidade"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 230
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 60
+
+ADD FIELD "nom-projeto" OF "pedido" AS character
+  DESCRIPTION ""
+  FORMAT "x(80)"
+  FORMAT-SA ?
+  POSITION 23
+  INITIAL ""
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Nome Projeto"
+  LABEL-SA ?
+  COLUMN-LABEL "Projeto"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 220
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 160
+
+ADD FIELD "cd-favorecido" OF "usuario" AS integer
+  DESCRIPTION ""
+  FORMAT "9999"
+  FORMAT-SA ?
+  POSITION 7
+  INITIAL "0"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Favorecido"
+  LABEL-SA ?
+  COLUMN-LABEL "Fav"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 60
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 4
+
+.
+PSC
+cpstream=ibm850
+.
+0000006481

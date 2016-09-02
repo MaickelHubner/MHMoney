@@ -1,0 +1,135 @@
+ADD FIELD "dt-real-ini" OF "tarefa" AS date
+  DESCRIPTION ""
+  FORMAT "99/99/9999"
+  FORMAT-SA ?
+  POSITION 17
+  INITIAL ?
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Data In¡cio"
+  LABEL-SA ?
+  COLUMN-LABEL "Dt Ini"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 160
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 4
+
+ADD FIELD "dt-real-fim" OF "tarefa" AS date
+  DESCRIPTION ""
+  FORMAT "99/99/9999"
+  FORMAT-SA ?
+  POSITION 18
+  INITIAL ?
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Data T‚rmino"
+  LABEL-SA ?
+  COLUMN-LABEL "Dt T‚rmino"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 170
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 4
+
+ADD FIELD "dt-ini-apos" OF "tarefa" AS date
+  DESCRIPTION ""
+  FORMAT "99/99/9999"
+  FORMAT-SA ?
+  POSITION 19
+  INITIAL ?
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Iniciar Ap¢s"
+  LABEL-SA ?
+  COLUMN-LABEL "Ini Ap¢s"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 180
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 4
+
+ADD FIELD "rest-nome" OF "tarefa" AS character
+  DESCRIPTION "Nome do usu rio"
+  FORMAT "X(8)"
+  FORMAT-SA ?
+  POSITION 20
+  INITIAL ""
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Nome Restri‡Æo"
+  LABEL-SA ?
+  COLUMN-LABEL "Nome Rest"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 190
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 16
+
+ADD FIELD "rest-sequencia" OF "tarefa" AS integer
+  DESCRIPTION ""
+  FORMAT ">>>>9"
+  FORMAT-SA ?
+  POSITION 21
+  INITIAL "0"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Sequˆncia Restri‡Æo"
+  LABEL-SA ?
+  COLUMN-LABEL "Seq Rest"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 200
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 4
+
+.
+PSC
+cpstream=ibm850
+.
+0000003825

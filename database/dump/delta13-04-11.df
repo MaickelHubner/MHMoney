@@ -1,0 +1,309 @@
+ADD TABLE "tarefa"
+  AREA "Schema Area"
+  LABEL "Tarefa"
+  DUMP-NAME "mn056"
+
+ADD FIELD "nome" OF "tarefa" AS character 
+  DESCRIPTION "Nome do usu rio"
+  FORMAT "X(8)"
+  INITIAL ""
+  LABEL "Nome"
+  POSITION 2
+  MAX-WIDTH 16
+  COLUMN-LABEL "Nome"
+  ORDER 10
+
+ADD FIELD "ds-tarefa" OF "tarefa" AS character 
+  DESCRIPTION "Descri‡Æo da tarefa"
+  FORMAT "x(40)"
+  INITIAL ""
+  LABEL "Descri‡Æo"
+  POSITION 3
+  MAX-WIDTH 80
+  COLUMN-LABEL "Descri‡Æo"
+  ORDER 20
+
+ADD FIELD "ds-observacao" OF "tarefa" AS character 
+  FORMAT "x(2000)"
+  INITIAL ""
+  LABEL "Observa‡Æo"
+  POSITION 4
+  MAX-WIDTH 4000
+  COLUMN-LABEL "Observa‡Æo"
+  ORDER 30
+
+ADD FIELD "dt-cri-tarefa" OF "tarefa" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Cria‡Æo"
+  POSITION 5
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt Cri"
+  ORDER 40
+
+ADD FIELD "situacao" OF "tarefa" AS integer 
+  DESCRIPTION "1 - Pendente
+2 - Iniciada
+3 - Conclu¡da
+9 - Suspensa/Cancelada"
+  FORMAT "9"
+  INITIAL "1"
+  LABEL "Situa‡Æo"
+  POSITION 6
+  MAX-WIDTH 4
+  COLUMN-LABEL "Sit"
+  ORDER 50
+
+ADD FIELD "cd-favorecido" OF "tarefa" AS integer 
+  FORMAT "9999"
+  INITIAL "0"
+  LABEL "Favorecido"
+  POSITION 7
+  MAX-WIDTH 4
+  COLUMN-LABEL "Fav"
+  ORDER 60
+
+ADD FIELD "perc-con" OF "tarefa" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "% ConclusÆo"
+  POSITION 8
+  MAX-WIDTH 17
+  COLUMN-LABEL "% Conc"
+  DECIMALS 2
+  ORDER 70
+
+ADD FIELD "dt-alert-tarefa" OF "tarefa" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Alerta"
+  POSITION 9
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt Alerta"
+  ORDER 80
+
+ADD FIELD "sequencia" OF "tarefa" AS integer 
+  FORMAT ">>>>9"
+  INITIAL "0"
+  LABEL "Sequˆncia"
+  POSITION 10
+  MAX-WIDTH 4
+  COLUMN-LABEL "Seq"
+  ORDER 90
+
+ADD FIELD "responsavel" OF "tarefa" AS character 
+  FORMAT "X(8)"
+  INITIAL ""
+  LABEL "Respons vel"
+  POSITION 11
+  MAX-WIDTH 16
+  COLUMN-LABEL "Respons vel"
+  ORDER 100
+
+ADD INDEX "seq" ON "tarefa" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "nome" ASCENDING 
+  INDEX-FIELD "sequencia" ASCENDING 
+
+ADD INDEX "data-alert" ON "tarefa" 
+  AREA "Schema Area"
+  INDEX-FIELD "nome" ASCENDING 
+  INDEX-FIELD "dt-alert-tarefa" ASCENDING 
+  INDEX-FIELD "situacao" ASCENDING 
+
+ADD INDEX "fav" ON "tarefa" 
+  AREA "Schema Area"
+  INDEX-FIELD "cd-favorecido" ASCENDING 
+  INDEX-FIELD "dt-alert-tarefa" ASCENDING 
+  INDEX-FIELD "situacao" ASCENDING 
+  INDEX-FIELD "nome" ASCENDING 
+
+ADD FIELD "cd-contato" OF "atendimento" AS integer
+  DESCRIPTION "Codigo contato"
+  FORMAT "->,>>>,>>9"
+  FORMAT-SA ?
+  POSITION 9
+  INITIAL "0"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Contato"
+  LABEL-SA ?
+  COLUMN-LABEL "Contato"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 80
+  MANDATORY
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 4
+
+ADD FIELD "ds-observacao" OF "contato" AS character
+  DESCRIPTION ""
+  FORMAT "x(2000)"
+  FORMAT-SA ?
+  POSITION 11
+  INITIAL ""
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Observa‡Æo"
+  LABEL-SA ?
+  COLUMN-LABEL "Observa‡Æo"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 100
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 4000
+
+ADD FIELD "foto" OF "contato" AS character
+  DESCRIPTION ""
+  FORMAT "x(80)"
+  FORMAT-SA ?
+  POSITION 12
+  INITIAL ""
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Foto"
+  LABEL-SA ?
+  COLUMN-LABEL "Foto"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 110
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 160
+
+ADD FIELD "ativo" OF "favorecido" AS logical
+  DESCRIPTION ""
+  FORMAT "Sim/NÆo"
+  FORMAT-SA ?
+  POSITION 24
+  INITIAL "Sim"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Ativo"
+  LABEL-SA ?
+  COLUMN-LABEL "Ativo"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 260
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 1
+
+ADD FIELD "dt-pagto-parc" OF "parc-nota-fiscal" AS date
+  DESCRIPTION ""
+  FORMAT "99/99/9999"
+  FORMAT-SA ?
+  POSITION 9
+  INITIAL ?
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Data Prev Pagto"
+  LABEL-SA ?
+  COLUMN-LABEL "Dt Prev"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 80
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 4
+
+ADD FIELD "qt-liberada" OF "pedido-item" AS decimal
+  DESCRIPTION ""
+  FORMAT "->>,>>9.99"
+  FORMAT-SA ?
+  POSITION 13
+  INITIAL "0"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Qtde Liberada"
+  LABEL-SA ?
+  COLUMN-LABEL "Qt Lib"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS 2
+  ORDER 150
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 17
+
+ADD FIELD "hora-fechada" OF "pedido-item" AS logical
+  DESCRIPTION ""
+  FORMAT "Sim/NÆo"
+  FORMAT-SA ?
+  POSITION 14
+  INITIAL "Sim"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Hora Fechada"
+  LABEL-SA ?
+  COLUMN-LABEL "Fec"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 160
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 1
+
+.
+PSC
+cpstream=ibm850
+.
+0000007205

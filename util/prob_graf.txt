@@ -1,0 +1,17 @@
+Copiar o MSOWC.DLL para o diretório
+
+C:\Arquivos de programas\Microsoft Office\Office10
+
+OBS: "Arquivos de programas" pode ser "Program files" dependendo da linguagem do windows
+
+Abrir a janela de executar (Iniciar\Executar... ou Start\Run...)
+
+Colocar a linha abaixo
+
+regsvr32 "C:\Arquivos de programas\Microsoft Office\Office10\msowc.dll"
+regsvr32 "C:\Program Files\Microsoft Office\Office10\msowc.dll"
+
+dar OK.
+
+OBS: No Windows Vista é necessário acessar o Painel de Controle, procurar por UAC e desativar
+antes de registrar a DLL

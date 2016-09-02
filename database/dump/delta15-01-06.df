@@ -1,0 +1,161 @@
+ADD FIELD "ativo" OF "contato" AS logical
+  DESCRIPTION ""
+  FORMAT "Sim/NÆo"
+  FORMAT-SA ?
+  POSITION 13
+  INITIAL "Sim"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Ativo"
+  LABEL-SA ?
+  COLUMN-LABEL "Ativo"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 120
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 1
+
+ADD FIELD "mensageiro" OF "contato" AS character
+  DESCRIPTION ""
+  FORMAT "x(200)"
+  FORMAT-SA ?
+  POSITION 14
+  INITIAL ""
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Mensageiro"
+  LABEL-SA ?
+  COLUMN-LABEL "Mensageiro"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 130
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 400
+
+ADD FIELD "area-empresa" OF "contato" AS character
+  DESCRIPTION ""
+  FORMAT "x(60)"
+  FORMAT-SA ?
+  POSITION 15
+  INITIAL ""
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "µrea Empresa"
+  LABEL-SA ?
+  COLUMN-LABEL "µrea"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 140
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 120
+
+ADD FIELD "usuar-indicacao" OF "pedido" AS character
+  DESCRIPTION ""
+  FORMAT "x(8)"
+  FORMAT-SA ?
+  POSITION 35
+  INITIAL ""
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Indica‡Æo"
+  LABEL-SA ?
+  COLUMN-LABEL "Indica‡Æo"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 340
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 16
+
+ADD FIELD "dt-validade" OF "pedido" AS date
+  DESCRIPTION ""
+  FORMAT "99/99/9999"
+  FORMAT-SA ?
+  POSITION 36
+  INITIAL ?
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Data Validade"
+  LABEL-SA ?
+  COLUMN-LABEL "Validade"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 330
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 4
+
+ADD FIELD "obriga-num" OF "sub-cat" AS logical
+  DESCRIPTION ""
+  FORMAT "Sim/NÆo"
+  FORMAT-SA ?
+  POSITION 10
+  INITIAL "NÆo"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "N£mero Obrigat¢rio no Movimento"
+  LABEL-SA ?
+  COLUMN-LABEL "N£mero Obrigat¢rio no Movimento"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 90
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 1
+
+.
+PSC
+cpstream=ibm850
+.
+0000002668

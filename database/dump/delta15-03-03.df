@@ -1,0 +1,57 @@
+ADD FIELD "dt-plan-ini" OF "tarefa" AS date
+  DESCRIPTION ""
+  FORMAT "99/99/9999"
+  FORMAT-SA ?
+  POSITION 26
+  INITIAL ?
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Data Plan Ini"
+  LABEL-SA ?
+  COLUMN-LABEL "Dt Pl Ini"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 230
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 4
+
+ADD FIELD "dt-plan-fim" OF "tarefa" AS date
+  DESCRIPTION ""
+  FORMAT "99/99/9999"
+  FORMAT-SA ?
+  POSITION 27
+  INITIAL ?
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Data Plan Fim"
+  LABEL-SA ?
+  COLUMN-LABEL "Dt Pl Fim"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 240
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 4
+
+.
+PSC
+cpstream=ibm850
+.
+0000000881

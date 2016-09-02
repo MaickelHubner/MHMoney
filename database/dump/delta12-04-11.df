@@ -1,0 +1,166 @@
+ADD TABLE "custo"
+  AREA "Schema Area"
+  LABEL "Custo Hora"
+  DESCRIPTION "Custo Hora"
+  DUMP-NAME "mn054"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn054.p" CRC "?" 
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn054.p" CRC "?" 
+
+ADD FIELD "nome" OF "custo" AS character 
+  FORMAT "X(8)"
+  INITIAL ""
+  LABEL "Nome"
+  POSITION 2
+  MAX-WIDTH 16
+  COLUMN-LABEL "Nome"
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "periodo" OF "custo" AS character 
+  DESCRIPTION "Periodo"
+  FORMAT "x(6)"
+  INITIAL ""
+  LABEL "Periodo"
+  POSITION 3
+  MAX-WIDTH 12
+  COLUMN-LABEL "Periodo"
+  ORDER 20
+  MANDATORY
+
+ADD FIELD "qt-horas" OF "custo" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Qtde Horas"
+  POSITION 4
+  MAX-WIDTH 17
+  COLUMN-LABEL "Qt Horas"
+  DECIMALS 2
+  ORDER 30
+
+ADD FIELD "valor" OF "custo" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Valor"
+  POSITION 5
+  MAX-WIDTH 17
+  COLUMN-LABEL "Valor"
+  DECIMALS 2
+  ORDER 40
+
+ADD FIELD "val-custo" OF "custo" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Custo"
+  POSITION 6
+  MAX-WIDTH 17
+  COLUMN-LABEL "Custo"
+  DECIMALS 2
+  ORDER 50
+
+ADD INDEX "usuar-per" ON "custo" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  DESCRIPTION "usuar-per"
+  INDEX-FIELD "nome" ASCENDING 
+  INDEX-FIELD "periodo" ASCENDING 
+
+UPDATE TABLE "apontamento"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn042.p" CRC "?"
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn042.p" CRC "?"
+
+UPDATE TABLE "atendimento"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn050.p" CRC "?"
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn050.p" CRC "?"
+
+UPDATE TABLE "caracteristica"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn052.p" CRC "?"
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn052.p" CRC "?"
+
+UPDATE TABLE "contato"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn051.p" CRC "?"
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn051.p" CRC "?"
+
+UPDATE TABLE "contato-caracteristica"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn053.p" CRC "?"
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn053.p" CRC "?"
+
+UPDATE TABLE "forma-pagto"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn048.p" CRC "?"
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn048.p" CRC "?"
+
+UPDATE TABLE "imposto"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn046.p" CRC "?"
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn046.p" CRC "?"
+
+UPDATE TABLE "nota-fiscal"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn043.p" CRC "?"
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn043.p" CRC "?"
+
+UPDATE TABLE "nota-fiscal-imp"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn047.p" CRC "?"
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn047.p" CRC "?"
+
+UPDATE TABLE "nota-fiscal-item"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn044.p" CRC "?"
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn044.p" CRC "?"
+
+UPDATE TABLE "parc-nota-fiscal"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn045.p" CRC "?"
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn045.p" CRC "?"
+
+UPDATE TABLE "pedido"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn039.p" CRC "?"
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn039.p" CRC "?"
+
+ADD FIELD "nr-pedido-ant" OF "pedido" AS integer
+  DESCRIPTION "Numero do pedido da antecipa‡Æo."
+  FORMAT ">>>>,>>9"
+  FORMAT-SA ?
+  POSITION 24
+  INITIAL "0"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Pedido Ant"
+  LABEL-SA ?
+  COLUMN-LABEL "Pedido Ant"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 230
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 4
+
+UPDATE TABLE "pedido-item"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn040.p" CRC "?"
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn040.p" CRC "?"
+
+UPDATE TABLE "pedido-item-anexo"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn041.p" CRC "?"
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn041.p" CRC "?"
+
+UPDATE TABLE "reembolso"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn036.p" CRC "?"
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn036.p" CRC "?"
+
+UPDATE TABLE "tabela-preco"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn037.p" CRC "?"
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn037.p" CRC "?"
+
+UPDATE TABLE "tabela-preco-item"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn038.p" CRC "?"
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn038.p" CRC "?"
+
+.
+PSC
+cpstream=ibm850
+.
+0000005129

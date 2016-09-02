@@ -1,0 +1,298 @@
+ADD TABLE "ped-exec"
+  AREA "Schema Area"
+  LABEL "Pedido de Execu‡Æo"
+  DUMP-NAME "mn058"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn058.p" CRC "9306" 
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn058.p" CRC "20189" 
+
+ADD FIELD "sequencia" OF "ped-exec" AS integer 
+  FORMAT ">>>>>>9"
+  INITIAL "0"
+  LABEL "Sequˆncia"
+  POSITION 2
+  MAX-WIDTH 4
+  COLUMN-LABEL "Seq"
+  ORDER 10
+
+ADD FIELD "ds-pedido-exec" OF "ped-exec" AS character 
+  FORMAT "x(40)"
+  INITIAL ""
+  LABEL "Descri‡Æo"
+  POSITION 3
+  MAX-WIDTH 80
+  COLUMN-LABEL "Descri‡Æo"
+  ORDER 20
+
+ADD FIELD "ds-caminho" OF "ped-exec" AS character 
+  FORMAT "x(200)"
+  INITIAL ""
+  LABEL "Caminho Arquivo"
+  POSITION 4
+  MAX-WIDTH 400
+  COLUMN-LABEL "Caminho Arquivo"
+  ORDER 30
+
+ADD FIELD "tipo-periodo" OF "ped-exec" AS integer 
+  FORMAT "9"
+  INITIAL "0"
+  LABEL "Tipo Per¡odo"
+  POSITION 5
+  MAX-WIDTH 4
+  COLUMN-LABEL "Tipo"
+  ORDER 40
+
+ADD FIELD "num-periodo" OF "ped-exec" AS integer 
+  FORMAT ">>9"
+  INITIAL "0"
+  LABEL "N£mero Per¡odo"
+  POSITION 6
+  MAX-WIDTH 4
+  COLUMN-LABEL "Num"
+  ORDER 50
+
+ADD FIELD "dt-pedido-exec" OF "ped-exec" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data éltima Execu‡Æo"
+  POSITION 7
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt Ult Exec"
+  ORDER 60
+
+ADD FIELD "hr-pedido-exec" OF "ped-exec" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Hora éltima Execu‡Æo"
+  POSITION 8
+  MAX-WIDTH 16
+  COLUMN-LABEL "Hr Ult Exec"
+  ORDER 70
+
+ADD FIELD "nome" OF "ped-exec" AS character 
+  FORMAT "X(8)"
+  INITIAL ""
+  LABEL "Nome"
+  POSITION 9
+  MAX-WIDTH 16
+  COLUMN-LABEL "Nome"
+  ORDER 80
+
+ADD INDEX "seq" ON "ped-exec" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "sequencia" ASCENDING 
+
+ADD FIELD "desp-viag" OF "item" AS logical
+  DESCRIPTION ""
+  FORMAT "Sim/NÆo"
+  FORMAT-SA ?
+  POSITION 12
+  INITIAL "NÆo"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Despesa de Viagem"
+  LABEL-SA ?
+  COLUMN-LABEL "Desp Viag"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 110
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 1
+
+ADD FIELD "fator-reemb" OF "item" AS decimal
+  DESCRIPTION ""
+  FORMAT "->>,>>9.99"
+  FORMAT-SA ?
+  POSITION 13
+  INITIAL "1"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Fator Reembolso"
+  LABEL-SA ?
+  COLUMN-LABEL "Fat Reemb"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS 2
+  ORDER 120
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 17
+
+ADD FIELD "conta-desp-viag" OF "param-mn" AS integer
+  DESCRIPTION ""
+  FORMAT "999"
+  FORMAT-SA ?
+  POSITION 26
+  INITIAL "0"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Conta Despesas de Viagem"
+  LABEL-SA ?
+  COLUMN-LABEL "ContaDespViag"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 250
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 4
+
+ADD FIELD "fav-desp-viag" OF "param-mn" AS integer
+  DESCRIPTION ""
+  FORMAT "9999"
+  FORMAT-SA ?
+  POSITION 27
+  INITIAL "0"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Favorecido Desp Viagem"
+  LABEL-SA ?
+  COLUMN-LABEL "FavDespViag"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 260
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 4
+
+ADD FIELD "compromisso" OF "visita" AS logical
+  DESCRIPTION ""
+  FORMAT "Sim/NÆo"
+  FORMAT-SA ?
+  POSITION 14
+  INITIAL "NÆo"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Compromisso"
+  LABEL-SA ?
+  COLUMN-LABEL "Compr"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 140
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 1
+
+ADD FIELD "ocupado" OF "visita" AS logical
+  DESCRIPTION ""
+  FORMAT "Sim/NÆo"
+  FORMAT-SA ?
+  POSITION 15
+  INITIAL "Sim"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Ocupado"
+  LABEL-SA ?
+  COLUMN-LABEL "Ocupado"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 150
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 1
+
+ADD FIELD "qt-visita" OF "visita" AS decimal
+  DESCRIPTION ""
+  FORMAT "->>,>>9.99"
+  FORMAT-SA ?
+  POSITION 16
+  INITIAL "0"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Qtde Comp"
+  LABEL-SA ?
+  COLUMN-LABEL "Qt Comp"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS 2
+  ORDER 160
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 17
+
+ADD FIELD "nr-pedido" OF "visita" AS integer
+  DESCRIPTION ""
+  FORMAT ">>>>,>>9"
+  FORMAT-SA ?
+  POSITION 17
+  INITIAL "0"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Pedido"
+  LABEL-SA ?
+  COLUMN-LABEL "Pedido"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 170
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 4
+
+.
+PSC
+cpstream=ibm850
+.
+0000005350

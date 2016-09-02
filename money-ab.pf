@@ -1,0 +1,8 @@
+-d dmy 
+-cpstream "ibm850" 
+#-db c:/maickel/mhmoney/database/ABConsult/money.db -ld money -1
+-db money -S 65500 -N tcp -H 192.168.0.19 -ld money
+-E
+-rand 2
+-s 124
+-Mm 4096

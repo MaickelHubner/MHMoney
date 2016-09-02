@@ -1,0 +1,1 @@
+APPLY "CHOOSE" TO btDel-page1 IN FRAME {&FRAME-NAME}.

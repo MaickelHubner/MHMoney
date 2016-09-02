@@ -1,0 +1,45 @@
+ADD FIELD "pc-impto" OF "pedido" AS decimal 
+  FORMAT "->>9.9999"
+  INITIAL "0"
+  LABEL "% Imposto"
+  POSITION 19
+  MAX-WIDTH 17
+  COLUMN-LABEL "% Imp"
+  DECIMALS 2
+  ORDER 180
+
+ADD FIELD "val-itens" OF "pedido" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Valor Itens"
+  POSITION 20
+  MAX-WIDTH 17
+  COLUMN-LABEL "Vl Itens"
+  DECIMALS 2
+  ORDER 190
+
+ADD FIELD "val-desconto" OF "pedido" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Valor Desconto"
+  POSITION 21
+  MAX-WIDTH 17
+  COLUMN-LABEL "Vl Desc"
+  DECIMALS 2
+  ORDER 200
+
+ADD FIELD "val-impostos" OF "pedido" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Impostos"
+  POSITION 22
+  MAX-WIDTH 17
+  COLUMN-LABEL "Vl Imp"
+  DECIMALS 2
+  ORDER 210
+
+.
+PSC
+cpstream=ibm850
+.
+0000004071

@@ -1,0 +1,31 @@
+ADD FIELD "imp-etiq" OF "param-mn" AS character
+  DESCRIPTION ""
+  FORMAT "x(200)"
+  FORMAT-SA ?
+  POSITION 28
+  INITIAL ""
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Impr. Etiqueta"
+  LABEL-SA ?
+  COLUMN-LABEL "Impressora Etiqueta"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 270
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 400
+
+.
+PSC
+cpstream=ibm850
+.
+0000000456

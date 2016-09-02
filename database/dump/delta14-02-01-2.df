@@ -1,0 +1,8 @@
+UPDATE TABLE "ped-exec"
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn058.p" CRC "27616"
+
+.
+PSC
+cpstream=ibm850
+.
+0000000114

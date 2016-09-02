@@ -1,0 +1,124 @@
+<html>
+
+<head>
+<title>Manual de Utilização do MHMoney 2005</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<style>
+A:hover	{color:#0080FF;}
+A	{text-decoration:none;}
+</style>
+</head>
+
+<body link="#319B64" vlink="#319B64" alink="#319B64">
+
+<p align="left"><img src="mhmoney2.JPG" width="125" height="40"
+alt="mhmoney2.JPG (2525 bytes)"><img src="money.JPG" width="250" height="204"
+alt="money.JPG (7185 bytes)" align="right"></p>
+
+<p align="left">&nbsp;</p>
+
+<p align="left"><font face="Verdana" color="#319B64"><big><big><big>Manual de Utilização</big></big></big><br>
+Versão 2.0.031</font></p>
+
+<p align="left">&nbsp;</p>
+
+<p align="left">&nbsp;</p>
+
+<p align="center"><font face="Verdana" color="#319B64"><small><a href="0201.htm">Entendendo
+e Utilizando Contas</a>&nbsp;&nbsp; |&nbsp;&nbsp; <a href="index.htm">Conteúdo</a>
+&nbsp;&nbsp; |&nbsp;&nbsp; <a href="0202.htm">Movimentando Contas</a></small></font></p>
+
+<hr>
+
+<p align="left"><font face="Verdana" color="#319B64"><strong>2.1.1. Moedas e Cotações</strong></font></p>
+
+<p align="left">&nbsp;</p>
+
+<p align="left"><font face="Verdana" color="#319B64">Por princípio, o MH Money 2005 é um
+sistema multi-moeda. Isso na prática significa que ele pode trabalhar com até 999 moedas
+diferentes. A moeda é o conceito abstrato da diferença de valor entre unidades de medida
+de dinheiro. São exemplos de moeda, o Real, o Dólar, a cota de um fundo de investimento
+e até o valor do crédito na sua vídeo locadora.</font></p>
+
+<p align="left"><font face="Verdana" color="#319B64">As moedas são cadastradas pelo
+programa abaixo:</font></p>
+
+<p align="center"><img src="020101-001.JPG" width="613" height="299"
+alt="020101-001.JPG (25418 bytes)"></p>
+
+<p align="left"><font face="Verdana" color="#319B64"><strong>Observação Importante</strong>
+- A moeda com código 0 (zero) é considerada a moeda principal do sistema. Essa moeda
+não deve ser eliminada. Se não existir nenhuma moeda principal cadastrada poderão
+ocorrer erros no funcionamento do MH Money 2005. Nesse caso basta cadastrar uma moeda com
+código zero. A moeda principal é sempre sugerida inicialmente em qualquer cadastro ou
+consulta. É comum considerar a moeda principal como aquela na qual ocorrerão a maioria
+das movimentações, normalmente a moeda corrente do país.</font></p>
+
+<p align="left"><font face="Verdana" color="#319B64">Os campos do cadastro são:</font></p>
+
+<p align="left"><font face="Verdana" color="#319B64"><strong>Código</strong> - Um número
+de 0 a 999, sugerido automaticamente na inclusão.<br>
+<strong>Nome</strong> - O nome da moeda. Uma descrição que será utilizada para
+seleção no MH Money 2005.<br>
+<strong>Sigla</strong> - A sigla da moeda. Utilizada em relatórios para identificar de
+forma reduzida a moeda da movimentação.</font></p>
+
+<p align="left"><font face="Verdana" color="#319B64">No entando somente diferenciar a
+moeda não é suficiente. É necessário estabelecer a relação entre duas moedas para
+que se tenha um indicativo de seu valor. Essa relação é conhecida por cotação. O
+botão Cotação </font><img src="020101-002.JPG" width="38" height="38"
+alt="020101-002.JPG (1258 bytes)" align="middle"><font face="Verdana" color="#319B64">
+abre o programa que estabelece as cotações de moedas no MH Money 2005, abaixo:</font></p>
+
+<p align="center"><img src="020101-003.JPG" width="671" height="407"
+alt="020101-003.JPG (34630 bytes)"></p>
+
+<p align="left"><font face="Verdana" color="#319B64">O programa Cotação de Moedas mostra
+o histórico da variação das cotações da moeda ordenadas por data. Não é permitido
+incluir cotação para a moeda principal do sistema (código 0). Todas as demais
+cotações serão informadas em função da moeda principal. A cotação é informada no
+programa abaixo:</font></p>
+
+<p align="center"><img src="020101-004.JPG" width="566" height="216"
+alt="020101-004.JPG (16865 bytes)"></p>
+
+<p align="left"><font face="Verdana" color="#319B64">Os campos a serem informados são os
+seguintes:</font></p>
+
+<p align="left"><font face="Verdana" color="#319B64"><strong>Data Início</strong> - A
+data em que o valor da cotação começa a ser utilizado pelo sistema.<br>
+<strong>Data Fim</strong> - O último dia em que a cotação será utilizada pelo sistema.<br>
+<strong>Valor</strong> - O valor da moeda no período informado, em relação à moeda
+principal. Por exemplo, digamos que em determinado dia o Dólar esteja valendo R$ 2,75.
+Supondo que a moeda principal do sistema seja Real, isso significa dizer que 1 Dólar =
+2,75 Reais. É essa a relação de cotação que deverá ser cadastrada. No mesmo exemplo,
+supondo que o Euro esteja valendo US$ 1,50. Isso significa dizer que 1 Euro = 1,50 Dólar
+= 5,50 Reais. A cotação para o Euro nesse dias seria 5,50.</font></p>
+
+<p align="left"><font face="Verdana" color="#319B64">O MH Money 2005 trabalha com o dia
+como sendo a menor unidade de tempo para cotar determinada moeda (informando data fim
+igual a data início). Isso significa que não é possível controlar historicamente a
+variação ao longo do dia do valor da moeda, apesar desse controle ser permitido
+pontualmente, alterando a cotação ao longo do dia.</font></p>
+
+<p align="left"><font face="Verdana" color="#319B64">A conversão de moedas no sistema
+será utilizada da seguinte forma:</font></p>
+
+<p align="left"><font face="Verdana" color="#319B64"><strong>Períodos </strong>- É
+utilizada a cotação no último dia do período.<br>
+<strong>Datas</strong> - É utilizada a cotação na data<br>
+<strong>Meses</strong> - É utilizada a cotação no último dia do mês, salvo em casos
+especiais que serão sempre especificados.</font></p>
+
+<p align="left">&nbsp;</p>
+
+<hr>
+
+<p align="center"><font face="Verdana" color="#319B64"><small><a href="0201.htm">Entendendo
+e Utilizando Contas</a>&nbsp;&nbsp; |&nbsp;&nbsp; <a href="index.htm">Conteúdo</a>
+&nbsp;&nbsp; |&nbsp;&nbsp; <a href="0202.htm">Movimentando Contas</a></small></font></p>
+
+<p><br>
+</p>
+</body>
+</html>

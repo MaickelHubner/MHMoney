@@ -1,0 +1,1 @@
+APPLY "CHOOSE" TO btUpdate-page1 IN FRAME {&FRAME-NAME}.

@@ -1,0 +1,48 @@
+ADD INDEX "conta-fim" ON "agenda"
+  AREA "Schema Area"
+  INDEX-FIELD "cd-conta" ASCENDING
+  INDEX-FIELD "dt-fim" ASCENDING
+
+ADD INDEX "conta-ini" ON "agenda"
+  AREA "Schema Area"
+  INDEX-FIELD "cd-conta" ASCENDING
+  INDEX-FIELD "dt-ini" ASCENDING
+
+ADD INDEX "data-ult-pag" ON "agenda"
+  AREA "Schema Area"
+  INDEX-FIELD "dt-ultimo-pag" ASCENDING
+
+ADD INDEX "data" ON "agenda-valor"
+  AREA "Schema Area"
+  INDEX-FIELD "cd-agenda" ASCENDING
+  INDEX-FIELD "dt-ini" ASCENDING
+  INDEX-FIELD "dt-end" ASCENDING
+
+ADD INDEX "agenda" ON "imposto"
+  AREA "Schema Area"
+  INDEX-FIELD "cd-agenda" ASCENDING
+
+ADD INDEX "imposto" ON "nota-fiscal-imp"
+  AREA "Schema Area"
+  INDEX-FIELD "cod-imposto" ASCENDING
+  INDEX-FIELD "situacao" ASCENDING
+
+ADD INDEX "sit-pag" ON "parc-nota-fiscal"
+  AREA "Schema Area"
+  INDEX-FIELD "situacao" ASCENDING
+  INDEX-FIELD "dt-pagto-parc" ASCENDING
+
+ADD INDEX "ped-ant" ON "pedido"
+  AREA "Schema Area"
+  INDEX-FIELD "nr-pedido-ant" ASCENDING
+
+ADD INDEX "prev-fat" ON "pedido"
+  AREA "Schema Area"
+  INDEX-FIELD "dt-previsao-fat" ASCENDING
+  INDEX-FIELD "situacao" ASCENDING
+
+.
+PSC
+cpstream=ibm850
+.
+0000001143

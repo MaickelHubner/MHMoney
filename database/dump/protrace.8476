@@ -1,0 +1,43 @@
+=====================================================
+PROGRESS stack trace as of Mon Jul 01 08:38:51 2013
+=====================================================
+Startup parameters:
+-pf C:\Progress\OpenEdge\startup.pf,-cpinternal ISO8859-1,-cpstream ISO8859-1,-cpcoll Basic,-cpcase Basic,-d dmy,-numsep 44,-numdec 46,(end .pf),-basekey ini,-ininame \\192.168.0.19\Sistema\MHMoney\pro-rede.ini,-pf \\192.168.0.19\Sistema\MHMoney\money-rede.pf,-d dmy,-cpstream ibm850,-db money,-S 65500,-N tcp,-H 192.168.0.19,-ld money,-E,-rand 2,-s 124,-Mm 4096,-T C:\Temp,(end .pf),-p main.p,-debugalert
+
+Exception code: C0000005 ACCESS_VIOLATION
+Fault address:  63E31BF0 01:00000BF0 C:\Windows\system32\audiodev.dll
+
+Registers:
+EAX:63E57070
+EBX:00000000
+ECX:00000000
+EDX:00000000
+ESI:07D8A270
+EDI:00000000
+CS:EIP:0023:63E31BF0
+SS:ESP:002B:073DFB74  EBP:073DFBD0
+DS:002B  ES:002B  FS:0053  GS:002B
+Flags:00010246
+
+Call Stack:
+Address   Frame
+63E31BF0  00000000  0001:00000BF0 C:\Windows\system32\audiodev.dll
+63E327D5  00000000  DllCanUnloadNow+6A2
+63E32B9F  00000000  DllCanUnloadNow+A6C
+63E32B3A  00000000  DllCanUnloadNow+A07
+63E32ACB  00000000  DllCanUnloadNow+998
+63E32A68  00000000  DllCanUnloadNow+935
+63E329E9  00000000  DllCanUnloadNow+8B6
+75D1D7D0  00000000  Ordinal789+79B7
+640C040F  00000000  DllCanUnloadNow+20731
+640A08F6  00000000  DllCanUnloadNow+C18
+75C663BB  00000000  Ordinal767+433
+75C68C43  00000000  DAD_SetDragImage+732
+75C68D77  00000000  DAD_SetDragImage+866
+76FAB2B1  00000000  PathBuildRootW+4C
+775A94D2  00000000  vsnprintf+181
+775943E9  00000000  TpCallbackIndependent+7DC
+76B133AA  00000000  BaseThreadInitThunk+12
+77579EF2  00000000  RtlInitializeExceptionChain+63
+77579EC5  00000000  RtlInitializeExceptionChain+36
+

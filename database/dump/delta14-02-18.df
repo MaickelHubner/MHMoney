@@ -1,0 +1,74 @@
+ADD TABLE "meta"
+  AREA "Schema Area"
+  LABEL "Metas"
+  DUMP-NAME "mn059"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn059.p" CRC "60964" 
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn059.p" CRC "19802" 
+
+ADD FIELD "cd-meta" OF "meta" AS integer 
+  FORMAT ">>9"
+  INITIAL "0"
+  LABEL "C¢digo"
+  POSITION 2
+  MAX-WIDTH 4
+  COLUMN-LABEL "Cod"
+  ORDER 10
+
+ADD FIELD "ano" OF "meta" AS integer 
+  FORMAT "9999"
+  INITIAL "0"
+  LABEL "Ano"
+  POSITION 3
+  MAX-WIDTH 4
+  COLUMN-LABEL "Ano"
+  ORDER 20
+
+ADD FIELD "ds-meta" OF "meta" AS character 
+  FORMAT "x(60)"
+  INITIAL ""
+  LABEL "Descri‡Æo"
+  POSITION 4
+  MAX-WIDTH 120
+  COLUMN-LABEL "Descri‡Æo"
+  ORDER 30
+
+ADD FIELD "frequencia" OF "meta" AS integer 
+  FORMAT ">9"
+  INITIAL "0"
+  LABEL "Frequˆncia"
+  POSITION 5
+  MAX-WIDTH 4
+  COLUMN-LABEL "Freq"
+  ORDER 40
+
+ADD FIELD "val-meta" OF "meta" AS decimal 
+  FORMAT "->>>,>>>,>>9.9999"
+  INITIAL "0"
+  LABEL "Valor"
+  POSITION 6
+  MAX-WIDTH 432
+  COLUMN-LABEL "Valor"
+  EXTENT 12
+  DECIMALS 2
+  ORDER 50
+
+ADD FIELD "formula" OF "meta" AS character 
+  FORMAT "x(2000)"
+  INITIAL ""
+  LABEL "F¢rmula"
+  POSITION 7
+  MAX-WIDTH 4000
+  COLUMN-LABEL "F¢rmula"
+  ORDER 60
+
+ADD INDEX "cod" ON "meta" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cd-meta" ASCENDING 
+
+.
+PSC
+cpstream=ibm850
+.
+0000001378

@@ -1,0 +1,255 @@
+[PRODUTO] 2.1.183 01/08/2016
+[FUNÇÃO] ab.p 2.0.000 01/01/2005 %APP Builder
+[FUNÇÃO] abrelote.p 2.0.001 01/03/2006 %Importa arquivo de lote
+[FUNÇÃO] acerta_moeda.p 2.0.001 20/01/2005 %Acerta código de moeda nas movimentações das contas
+[PROGRAMA] agend.w 2.0.011 04/08/2015 %Agendamentos
+[FUNÇÃO] agenda-transf.p 2.0.001 20/01/2005 %Espelha código de agendamento nas transações
+[PROGRAMA] agenda-valor_det.w 2.0.002 16/03/2006 %Detalhes de valor de Agendamento
+[PROGRAMA] agrup.w 2.0.002 16/03/2006 %Movimentos Agrupados
+[PROGRAMA] alerta.w 2.0.002 16/03/2006 %Alertas do Usuário
+[PROGRAMA] alerta-exc.w 2.0.004 17/03/2006 %Exceções de Alerta
+[PROGRAMA] anexo.w 2.1.001 29/06/2013 %Anexos do Item do Pedido
+[PROGRAMA] aniversarios.w 2.1.004 26/01/2014 %Próximos Aniversários e Tarefas Pendentes
+[PROGRAMA] apont.w 2.1.003 23/01/2014 %Apontamentos do Usuário
+[PROGRAMA] apont-desp_det.w 2.1.004 19/05/2016 %Detalhes do Apontamento
+[PROGRAMA] apontamento_det.w 2.1.022 11/07/2016 %Detalhes do Apontamento
+[FUNÇÃO] applhelp.p 2.0.001 18/03/2005 %Manual do Produto
+[PROGRAMA] atendimento_det.w 2.1.007 23/03/2015 %Detalhes do Atendimento
+[PROGRAMA] atualiza.w 2.0.002 29/06/2013 %Atualização Automática do MHMoney 2005
+[PROGRAMA] backup.w 2.0.004 07/11/2008 %Backup do Sistema
+[PROGRAMA] bens.w 2.0.015 04/08/2015 %Cadastro de Bens
+[FUNÇÃO] calcCPMF.p 2.0.002 18/07/2014 %Calcula CPMF da Conta
+[FUNÇÃO] calcCPMFdata.p 2.0.002 18/07/2014 %Calcula CPMF para uma data qualquer
+[FUNÇÃO] calcImpNF.p 2.1.001 26/10/2011 %Calcula Impostos da Nota Fiscal
+[FUNÇÃO] calc_prioridade.p 2.1.004 31/01/2014 %Calcula Datas Tarefas OS por Prioridade
+[FUNÇÃO] calcRepItem.p 2.0.001 20/01/2005 %Calcula Reposição do Item
+[PROGRAMA] cat.w 2.0.004 04/08/2015 %Cadastro de Categorias
+[PROGRAMA] caracteristica.w 2.1.002 04/08/2015 %Cadastro de Característica
+[PROGRAMA] compofc.w 2.0.008 29/06/2013 %Importar Arquivo OFC
+[PROGRAMA] compra.w 2.0.005 03/08/2015 %Cadastro de Compras
+[PROGRAMA] compromisso.w 2.1.000 31/01/2014 %Compromissos
+[PROGRAMA] consmov.w 2.0.012 07/08/2015 %Consulta de Movimentos
+[PROGRAMA] contas.w 2.0.006 04/08/2015 %Cadastro de Contas
+[PROGRAMA] contato_det.w 2.1.005 08/06/2015 %Detalhes do Contato
+[PROGRAMA] contato-caracteristica.w 2.1.000 28/02/2012 %Características do contato
+[PROGRAMA] contato-caracteristica_det.w 2.1.001 29/06/2013 %Detalhes de Características do contato
+[INCLUDE] cotacao.i 2.0.001 20/03/2005 %Definição para Cotação de Moedas
+[PROGRAMA] cotacao.w 2.0.007 03/08/2015 %Cotação de Moedas
+[PROGRAMA] cotacao_det.w 2.0.005 24/03/2015 %Detalhes de Cotação
+[PROGRAMA] crm.w 2.1.017 04/08/2015 %CRM
+[PROGRAMA] custo-hora.w 2.1.006 02/09/2014 %Consulta de Custos
+[PROGRAMA] custo-hora-calc.w 2.1.007 03/08/2015 %Cálculo de Custos
+[FUNÇÃO] custos.p 2.0.000 01/01/2005 %Custos
+[PROGRAMA] data.w 2.0.000 01/01/2005 %Data
+[PROGRAMA] desp-viag.w 2.1.004 21/03/2016 %Despesas de Viagem
+[INCLUDE] disp_movto.i 2.0.000 01/01/2005 %Funções de Display de Movimentos
+[FUNÇÃO] exportalote.p 2.0.001 01/03/2006 %Exporta arquivo de lote
+[PROGRAMA] fat.w 2.1.007 03/08/2015 %Faturamento de Pedidos
+[PROGRAMA] fatbalc.w 2.1.001 29/06/2013 %Faturamento de Balcão
+[PROGRAMA] fav.w 2.1.008 04/08/2015 %Cadastro de Favorecidos
+[PROGRAMA] feriado.w 2.0.001 16/03/2006 %Cadastro de Feriados
+[PROGRAMA] feriado_det.w 2.0.002 16/03/2006 %Detalhe do Feriado
+[PROGRAMA] fluxo.w 2.0.004 18/07/2014 %Fluxo de Caixa Mensal
+[PROGRAMA] formapag.w 2.1.001 29/06/2013 %Formas de Pagamento
+[PROGRAMA] g001.w 2.0.004 29/06/2013 %Evolução de Saldo
+[PROGRAMA] g002.w 2.0.002 17/03/2006 %Patrimônio Financeiro Diário
+[PROGRAMA] g003.w 2.0.006 30/10/2015 %Previsão de Saldo
+[PROGRAMA] g004.w 2.0.001 17/03/2006 %Patrimônio Financeiro Mês a Mês
+[PROGRAMA] g005.w 2.0.003 23/01/2009 %Rendimento X Despesas Mês a Mês
+[PROGRAMA] g015.w 2.0.001 17/03/2006 %Principais Categorias
+[PROGRAMA] g016.w 2.0.001 17/03/2006 %Principais Sub-Categorias
+[PROGRAMA] g017.w 2.0.001 17/03/2006 %Maiores Favorecidos
+[PROGRAMA] g018.w 2.0.002 17/03/2006 %Custos Mês a Mês
+[PROGRAMA] g019.w 2.0.004 07/08/2009 %Movimentação da Categoria\Sub-Categoria
+[PROGRAMA] g021.w 2.0.001 17/03/2006 %Evolução Patrimonial
+[FUNÇÃO] gera-comp.p 2.1.010 31/05/2016 %Gera Comprovantes de Pagamento
+[FUNÇÃO] gera-desp-viag.p 2.1.000 23/03/2015 %Gera Comprovante de Despesas de Viagem
+[FUNÇÃO] gera-resumo.p 2.1.004 24/02/2016 %Gera Resumo de Atividades do Usuário
+[PROGRAMA] geramovtocompra.w 2.1.004 18/09/2015 %Gera Movimento de Compra para Contas
+[PROGRAMA] geraparc.w 2.1.004 01/04/2016 %Gera Parcelas da Nota Fiscal
+[PROGRAMA] geraparcmov.w 2.1.001 03/08/2015 %Gera Parcelamento de Movimentação Financeira
+[FUNÇÃO] gerapend.p 2.1.009 15/02/2016 %Gera Pendências do Usuário
+[PROGRAMA] gerarfa.w 2.1.000 26/06/2009 %Gerar Folha de Apontamentos
+[PROGRAMA] graftab.w 2.0.002 14/01/2009 %Tabela de Dados de Gráfico
+[PROGRAMA] grafview.w 2.0.003 14/01/2009 %Visualizador de Gráficos
+[PROGRAMA] hist-item.w 2.0.002 29/06/2013 %Histórico do Item
+[INCLUDE] ir.i 2.0.000 01/01/2005 %Definição para cálculo de IR
+[PROGRAMA] imp.w 2.0.001 17/03/2006 %Importar Arquivos
+[PROGRAMA] implote.w 2.0.002 29/06/2013 %Importando Movimentos...
+[PROGRAMA] imposto.w 2.1.003 04/08/2015 %Manutenção de Impostos
+[PROGRAMA] ini.w 2.0.002 14/04/2005 %Splash Screen de Inicialização
+[PROGRAMA] install.w 2.0.002 09/04/2007 %Instalação do MH Money 2005
+[PROGRAMA] invent.w 2.0.002 15/10/2007 %Inventário de Itens
+[PROGRAMA] item.w 2.1.003 04/08/2015 %Cadastro de Itens
+[PROGRAMA] item-compra.w 2.0.011 04/09/2015 %Itens da Compra
+[PROGRAMA] item-compra_det.w 2.0.003 23/03/2015 %Detalhe do Item da Compra
+[PROGRAMA] item-nota.w 2.1.001 29/06/2013 %Itens da Nota Fiscal
+[PROGRAMA] item-poupanca_det.w 2.0.001 17/03/2006 %Detalhe do Item da Poupança
+[PROGRAMA] item-tabpreco.w 2.1.000 18/06/2009 %Itens da Tabela de Preço
+[PROGRAMA] lote.w 2.0.004 04/09/2015 %Lotes para Sincronização de Dados
+[PROGRAMA] mailmkt.w 2.1.000 29/07/2015 %Envio de E-mail Marketing
+[PROGRAMA] main.p 2.1.000 27/05/2009 %Procedimento Inicial
+[PROGRAMA] menu.w 2.1.004 06/04/2011 %MH Money 2005
+[PROGRAMA] menu-emp.w 2.1.030 01/04/2016 %MH Money 2005
+[PROGRAMA] meta.w 2.1.000 18/02/2014 %Cadastro de Metas
+[PROGRAMA] moeda.w 2.0.001 15/03/2006 %Cadastro de Moedas
+[PROGRAMA] monitor.w 2.1.002 05/02/2014 %Monitor de Pedidos de Execução
+[PROGRAMA] mov.w 2.0.011 04/09/2015 %Movimentos da Conta
+[PROGRAMA] mov-bens.w 2.0.003 16/03/2006 %Movimentos do Bem
+[PROGRAMA] mov-bens_det.w 2.0.005 21/03/2016 %Detalhes do Movimento do Bem
+[PROGRAMA] mov-conta_det.w 2.1.019 28/01/2016 %Detalhes do Movimento
+[PROGRAMA] mov-conta-transf.w 2.0.006 28/01/2016 %Transfere Movimento para outra Conta
+[PROGRAMA] movimpto.w 2.1.003 23/03/2015 %Impostos do Movimento
+[PROGRAMA] movlote.w 2.0.002 17/03/2006 %Campos do Movimento do Lote
+[PROGRAMA] movreemb.w 2.0.001 16/03/2006 %Movimentos Reembolsados
+[PROGRAMA] nota.w 2.1.002 04/08/2015 %Manutenção de Notas Fiscais
+[PROGRAMA] nota-fiscal-item_det.w 2.1.000 01/07/2009 %Detalhes do Item da Nota Fiscal
+[PROGRAMA] orc.w 2.0.008 04/08/2015 %Planejamento de Orçamento
+[PROGRAMA] orcacomp.w 2.0.008 04/09/2015 %Acompanhamento de Orçamento
+[INCLUDE] orcamento.i 2.0.007 17/09/2014 %Funções de Orçamento
+[PROGRAMA] os.w 2.1.003 03/03/2015 %Manutenção de Ordens de Serviço
+[PROGRAMA] painel-os.w 2.1.006 23/03/2015 %Painel de Serviços
+[PROGRAMA] param.w 2.1.006 23/03/2015 %Parâmetros Locais
+[PROGRAMA] parc-nota.w 2.1.001 14/01/2013 %Parcelas da Nota Fiscal
+[PROGRAMA] parc-nota-fiscal_det.w 2.1.001 14/01/2013 %Detalhes da Parcela da Nota Fiscal
+[FUNÇÃO] pat_geral.p 2.0.000 12/01/2009 %Patrimônio Geral
+[FUNÇÃO] patrimonio.p 2.0.000 01/01/2005 %Patrimônio
+[FUNÇÃO] patrimon-tot.p 2.0.002 06/04/2006 %Patrimônio Total
+[PROGRAMA] pedido.w 2.1.016 04/08/2015 %Manutenção de Pedidos
+[PROGRAMA] ped-exec_det.w 2.1.000 31/01/2014 %Detalhes do Pedido de Execução
+[PROGRAMA] ped-item.w 2.1.004 23/03/2015 %Itens do Pedido
+[PROGRAMA] ped-nota.w 2.1.001 26/10/2011 %Pedidos da Nota Fiscal
+[PROGRAMA] pedido-ant.w 2.1.001 22/08/2012 %Manutenção de Pedido X Antecipação
+[PROGRAMA] pedido-ant_det.w 2.1.000 20/03/2012 %Detalhes da Antecipação
+[PROGRAMA] pedido-item_det.w 2.1.008 27/01/2014 %Detalhes do Item do Pedido
+[PROGRAMA] pedido-item-anexo_det.w 2.1.002 23/03/2015 %Detalhes do Anexo do Item do Pedido
+[PROGRAMA] pedido-viab.w 2.1.000 22/08/2012 %Estudo de Viabilidade de Pedido
+[PROGRAMA] poup.w 2.0.002 04/08/2015 %Planejamento de Poupança
+[PROGRAMA] poupano.w 2.0.001 17/03/2006 %Planejamento de Poupança Anual
+[PROGRAMA] poup-conta.w 2.0.001 17/03/2006 %Contas Relacionadas à Poupança
+[FUNÇÃO] prevXreal.p 2.0.002 18/11/2011 %Previsto X Realizado no Mês
+[PROGRAMA] programa.w 2.0.002 16/03/2006 %Programação de Agendamento
+[PROGRAMA] projeto.w 2.0.012 04/09/2015 %Projetos
+[PROGRAMA] projdes.w 2.0.003 30/10/2015 %Previsão de Desembolso do Projeto
+[PROGRAMA] proj-periodo.w 2.0.001 17/03/2006 %Períodos do Projeto
+[PROGRAMA] proj-periodo_det.w 2.0.001 17/03/2006 %Detalhe do Período
+[FUNÇÃO] projval.p 2.0.001 11/01/2005 %Calculo de Valores do Nível do Projeto
+[PROGRAMA] prox.w 2.1.015 30/10/2015 %Próximos Movimentos Agendados
+[INCLUDE] proxpag.i 2.0.010 30/10/2015 %Cálculo da próxima data de pagamento do agendamento
+[PROGRAMA] r001.w 2.0.004 08/01/2009 %Balanço Mensal
+[PROGRAMA] r002.w 2.0.002 27/12/2006 %Fluxo de Caixa
+[PROGRAMA] r003.w 2.0.001 17/03/2006 %Extrato Mensal
+[PROGRAMA] r004.w 2.0.004 25/10/2011 %Patrimônio Financeiro Diário
+[PROGRAMA] r005.w 2.1.004 15/02/2016 %Previsão de Saldo
+[PROGRAMA] r006.w 2.0.001 17/03/2006 %Custos X Despesas Mensal
+[PROGRAMA] r007.w 2.0.002 08/01/2009 %Rendimentos X Despesas Mensal
+[PROGRAMA] r008.w 2.0.001 17/03/2006 %Patrimônio Financeiro Mês a Mês
+[PROGRAMA] r009.w 2.0.002 12/01/2009 %Relatório Mensal
+[PROGRAMA] r010.w 2.0.001 17/03/2006 %Rendimento X Despesas Mês a Mês
+[PROGRAMA] r011.w 2.0.003 12/05/2011 %Relatório Anual
+[PROGRAMA] r012.w 2.0.005 13/05/2011 %Movimentação por Responsável
+[PROGRAMA] r013.w 2.0.001 17/03/2006 %Valor de Bens
+[PROGRAMA] r014.w 2.0.001 17/03/2006 %Inflação de Item no Período
+[PROGRAMA] r015.w 2.0.001 17/03/2006 %Despesas na Categoria por Responsável
+[PROGRAMA] r016.w 2.0.003 18/11/2011 %Simulação de Orçamento
+[PROGRAMA] r017.w 2.0.002 20/05/2008 %Inflação no Período
+[PROGRAMA] r018.w 2.0.001 17/03/2006 %Principais Categorias
+[PROGRAMA] r019.w 2.0.001 17/03/2006 %Principais Sub-Categorias
+[PROGRAMA] r020.w 2.0.001 17/03/2006 %Maiores Favorecidos
+[PROGRAMA] r021.w 2.0.000 26/02/2008 %Últimas Faturas Pagas
+[PROGRAMA] r022.w 2.1.000 03/11/2009 %Movimentação por Favorecido
+[PROGRAMA] r023.w 2.1.003 30/09/2011 %Valor/Hora por Pedido
+[PROGRAMA] r024.w 2.0.002 13/01/2009 %Balanço Anual
+[PROGRAMA] r025.w 2.0.004 13/05/2011 %Balança Comercial Anual
+[PROGRAMA] r026.w 2.0.002 13/01/2009 %Acompanhamento de Balança Comercial
+[PROGRAMA] r027.w 2.0.001 17/03/2006 %Custos Mês a Mês
+[PROGRAMA] r028.w 2.0.002 12/01/2009 %Comparativo Mensal
+[PROGRAMA] r029.w 2.1.000 09/12/2009 %Juros de Poupança
+[PROGRAMA] r030.w 2.0.002 17/03/2006 %Evolução Patrimonial
+[PROGRAMA] r031.w 2.0.003 13/05/2011 %Resumo de Movimentação
+[PROGRAMA] r032.w 2.0.007 14/01/2010 %Poupança Previsto X Realizado
+[PROGRAMA] r033.w 2.0.003 18/11/2011 %Acompanhamento de Orçamento
+[PROGRAMA] r034.w 2.0.007 29/06/2013 %Retorno de Investimento
+[PROGRAMA] r035.w 2.0.004 27/02/2008 %Percentual de Formação de Juros
+[PROGRAMA] r036.w 2.0.018 30/10/2015 %Projeção de Poupança
+[PROGRAMA] r037.w 2.0.003 17/03/2006 %Dados Para Imposto de Renda
+[PROGRAMA] r038.w 2.1.002 30/10/2015 %Lucratividade de Ações
+[PROGRAMA] r039.w 2.0.008 14/09/2009 %Lucratividade de Investimento
+[PROGRAMA] r040.w 2.0.011 11/11/2015 %Lista de Compras
+[PROGRAMA] r041.w 2.1.001 12/02/2014 %Potencial de Vendas
+[PROGRAMA] r042.w 2.1.000 03/08/2015 %Clientes por Cidade/Estado
+[FUNÇÃO] recXdesp.p 2.0.000 01/01/2005 %Receitas X Despesas
+[PROGRAMA] reembolsa.w 2.0.001 17/03/2006 %Controle de Reembolsos
+[INCLUDE] reg.i 2.1.001 03/02/2014 %Controle de Registro
+[FUNÇÃO] relat-apont.p 2.1.004 01/08/2016 %Relatório de Apontamentos
+[PROGRAMA] relbem.w 2.0.002 16/03/2006 %Movimentos X Bens
+[PROGRAMA] relped.w 2.1.000 24/06/2009 %Pedidos X Nota Fiscal
+[PROGRAMA] relproj.w 2.0.004 18/04/2013 %Movimentos X Projetos
+[PROGRAMA] relview.w 2.0.002 17/03/2006 %Visualizador de Relatórios
+[FUNÇÃO] renddesp.p 2.0.001 12/01/2009 %Cálculo de Rendimentos X Despesas
+[PROGRAMA] restricao.w 2.0.002 16/03/2006 %Restrições do Usuário
+[INCLUDE] run_menu.i 2.0.001 13/02/2006 %Executar programas via menu
+[PROGRAMA] saldo.w 2.0.007 12/02/2014 %Atualização de Saldo
+[INCLUDE] seg.i 2.0.002 15/09/2005 %Controle de Segurança
+[PROGRAMA] senha.w 2.0.004 14/01/2009 %Login
+[INCLUDE] sinctest.i 2.0.000 01/01/2005 %Testes de Sincronização
+[PROGRAMA] sobre.w 2.0.002 17/03/2006 %Sobre o MH Money 2005
+[FUNÇÃO] som.p 2.0.000 13/02/2006 %Controles de som
+[PROGRAMA] subcat.w 2.0.005 04/08/2015 %Cadastro de Sub-Categorias
+[PROGRAMA] sub-cat_det.w 2.0.004 06/01/2015 %Detalhes da Sub-Categoria
+[PROGRAMA] subniv.w 2.0.001 17/03/2006 %Subnível do Projeto
+[PROGRAMA] tabir.w 2.0.001 15/03/2006 %Tabela de IR
+[PROGRAMA] tabirfaixa.w 2.0.001 15/03/2006 %Faixas da Tabela de IR
+[PROGRAMA] tabela-ir-faixa_det.w 2.0.001 16/03/2006 %Detalhe da Faixa da Tabela de IR
+[PROGRAMA] tabpreco.w 2.1.000 18/06/2009 %Tabela de Preço
+[PROGRAMA] tabela-preco-item_det.w 2.1.001 23/01/2014 %Detalhes do Item da Tabela de Preço
+[PROGRAMA] tarefa.w 2.1.006 04/08/2015 %Tarefas do Usuário
+[PROGRAMA] tarefa_det.w 2.1.016 03/08/2015 %Detalhe da Tarefa
+[PROGRAMA] tarefa-os.w 2.1.000 29/06/2013 %Tarefas da OS
+[FUNÇÃO] tarefas-usu.p 2.1.000 08/12/2014 %Tarefas do Usuário para uso no resumo
+[INCLUDE] ttmovto.i 2.1.009 15/02/2016 %Definição de Procedures de Movimentação e Previsão
+[PROGRAMA] usuario.w 2.0.010 23/03/2015 %Cadastro de Usuários
+[PROGRAMA] usuar_apont.w 2.1.045 04/08/2015 %Apontamentos do Usuário
+[PROGRAMA] usuarped.w 2.1.002 06/01/2015 %Usuários do Item do Pedido
+[PROGRAMA] valagend.w 2.0.002 16/03/2006 %Valores do Agendamento
+[PROGRAMA] valida.w 2.1.002 15/01/2015 %Registro do Produto
+[INCLUDE] valida.i 2.1.000 27/07/2009 %Definições de Registro do Produto
+[PROGRAMA] valor.w 2.0.000 01/01/2005 %Valor
+[PROGRAMA] valliq.w 2.0.006 20/05/2011 %Consulta Valor Líquido
+[FUNÇÃO] valorbem.p 2.0.007 12/03/2015 %Valor do Bem
+[FUNÇÃO] var_camb.p 2.0.000 12/01/2009 %Variação Cambial no Mês
+[FUNÇÃO] vendabem.p 2.0.003 29/12/2005 %Valor de venda do Bem
+[INCLUDE] version.i 2.0.001 02/10/2014 %Controle de Versão
+[INCLUDE] viab.i 2.1.000 22/08/2005 %Definição de Temp-Table de Estudo de Viabilidade
+[FUNÇÃO] viab.p 2.1.003 17/07/2013 %Cálculo de Viabilidade de Pedidos
+[PROGRAMA] visita.w 2.1.002 03/08/2015 %Visitas Comerciais
+[PROGRAMA] visita_det.w 2.1.008 04/08/2015 %Detalhes da Visita Comercial
+[INCLUDE] winalert.i 2.0.000 01/01/2005 %Definição de Temp-Table de Alerta
+[PROGRAMA] winalert.w 2.1.013 17/02/2015 %Alerta
+[INCLUDE] winalert_exec.i 2.0.000 01/01/2005 %Código do Botão de Execução de Alertas
+[PROGRAMA] zagenda.w 2.0.001 26/01/2005 %Pesquisa de Agendamentos
+[PROGRAMA] zcaracteristica.w 2.1.000 28/02/2012 %Pesquisa de Característica
+[PROGRAMA] zcategoria.w 2.0.000 01/01/2005 %Pesquisa de Categorias
+[PROGRAMA] zcliente.w 2.1.000 28/02/2012 %Pesquisa de Clientes
+[PROGRAMA] zconta.w 2.0.000 01/01/2005 %Pesquisa de Contas
+[PROGRAMA] zcontato.w 2.1.000 23/03/2015 %Pesquisa de Contatos
+[PROGRAMA] zfavorecido.w 2.0.000 01/01/2005 %Pesquisa de Favorecidos
+[PROGRAMA] zmoeda.w 2.0.000 01/01/2005 %Pesquisa de Moedas
+[PROGRAMA] zmov-conta.w 2.1.000 23/03/2015 %Pesquisa de Movimento Financeiro
+[PROGRAMA] znota-fiscal.w 2.1.001 15/01/2015 %Pesquisa de Moedas
+[PROGRAMA] zordem-serv.w 2.1.000 23/03/2015 %Pesquisa de Ordem de Serviço
+[PROGRAMA] zpedido.w 2.1.001 06/01/2015 %Pesquisa de Pedidos
+[PROGRAMA] zpoupanca.w 2.0.000 01/01/2005 %Pesquisa de Poupança
+[PROGRAMA] zprojeto.w 2.0.000 01/01/2005 %Pesquisa de Projeto
+[PROGRAMA] zsub-cat.w 2.0.002 19/04/2006 %Pesquisa de Sub-Categorias
+[PROGRAMA] ztabela-ir.w 2.0.000 01/01/2005 %Pesquisa de Tabela de IR
+[PROGRAMA] ztabela-preco.w 2.1.000 09/06/2009 %Pesquisa de Tabela de Preço
+[PROGRAMA] zusuario.w 2.0.000 01/01/2005 %Pesquisa de Usuários
+[INCLUDE] cd-caracteristica.i 2.1.000 28/02/2012 %Código da Característica
+[INCLUDE] cd-conta.i 2.0.000 01/01/2005 %Código de Conta
+[INCLUDE] cd-favorecido.i 2.0.000 01/01/2005 %Código de Favorecido
+[INCLUDE] cd-item.i 2.0.000 01/01/2005 %Código de Item
+[INCLUDE] cd-moeda.i 2.0.000 01/01/2005 %Código de Moeda
+[INCLUDE] cd-sub.i 2.0.000 01/01/2005 %Código de Sub-Categoria
+[INCLUDE] cod-categoria.i 2.0.000 01/01/2005 %Código de Categoria
+[INCLUDE] cod-imposto.i 2.1.000 12/09/2011 %Código de Imposto

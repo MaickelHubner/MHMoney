@@ -1,0 +1,109 @@
+ADD FIELD "usuario" OF "atendimento" AS character
+  DESCRIPTION "Usu†rio"
+  FORMAT "x(20)"
+  FORMAT-SA ?
+  POSITION 8
+  INITIAL ""
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Usu†rio"
+  LABEL-SA ?
+  COLUMN-LABEL "Usu†rio"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 70
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 40
+
+ADD FIELD "nome-apelido" OF "contato" AS character
+  DESCRIPTION "Apelido do contato"
+  FORMAT "X(20)"
+  FORMAT-SA ?
+  POSITION 10
+  INITIAL ""
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Apelido"
+  LABEL-SA ?
+  COLUMN-LABEL "Apelido"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 90
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 120
+
+ADD FIELD "nr-pedido" OF "mov-conta" AS integer
+  DESCRIPTION ""
+  FORMAT ">>>>,>>9"
+  FORMAT-SA ?
+  POSITION 27
+  INITIAL "0"
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Pedido"
+  LABEL-SA ?
+  COLUMN-LABEL "Pedido"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 250
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 4
+
+ADD FIELD "dt-previsao-fat" OF "pedido" AS date
+  DESCRIPTION "Data de previs∆o de faturamento"
+  FORMAT "99/99/9999"
+  FORMAT-SA ?
+  POSITION 26
+  INITIAL ?
+  INITIAL-SA ?
+  HELP ""
+  HELP-SA ""
+  LABEL "Data Previs∆o Fat"
+  LABEL-SA ?
+  COLUMN-LABEL "Dt Prev Fat"
+  COLUMN-LABEL-SA ?
+  CAN-READ "*"
+  CAN-WRITE "*"
+  VALEXP ?
+  VALMSG ""
+  VALMSG-SA ""
+  VIEW-AS ?
+  EXTENT 0
+  DECIMALS ?
+  ORDER 240
+  NULL-ALLOWED
+  NOT-CASE-SENSITIVE
+  MAX-WIDTH 4
+
+.
+PSC
+cpstream=ibm850
+.
+0000001808
