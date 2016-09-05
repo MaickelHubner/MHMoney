@@ -4046,3 +4046,53 @@
 [2016/09/02@14:15:40.057-0300] P-1712       T-3924  I ABL      : (15109) No fechamento do banco de dados o n£mero de transaá‰es ao vivo Ç 0. 
 [2016/09/02@14:15:40.080-0300] P-1712       T-3924  I ABL      : (15743) Before Image Log Completion at Block 173 Offset 5734. 
 [2016/09/02@14:15:40.162-0300] P-1712       T-3924  I ABL      : (334)   Fim de sess∆o Single-user. 
+
+                Fri Sep 02 14:52:50 2016
+[2016/09/02@14:52:50.214-0300] P-1840       T-5296  I ABL      : (451)   Sess∆o Single-user iniciada por Hubner em CON:. 
+[2016/09/02@14:52:50.230-0300] P-1840       T-5296  I ABL      : (15321) Inicializaá∆o do log Before Image no bloco 173  offset 5734. 
+[2016/09/02@14:52:50.230-0300] P-1840       T-5296  I ABL      : (12699) Banco de dados money Opá‰es:  
+[2016/09/02@14:56:25.673-0300] P-1840       T-5296  I ABL      : (15109) No fechamento do banco de dados o n£mero de transaá‰es ao vivo Ç 0. 
+[2016/09/02@14:56:25.673-0300] P-1840       T-5296  I ABL      : (15743) Before Image Log Completion at Block 174 Offset 1988. 
+[2016/09/02@14:56:25.693-0300] P-1840       T-5296  I ABL      : (334)   Fim de sess∆o Single-user. 
+
+                Fri Sep 02 18:16:07 2016
+[2016/09/02@18:16:07.395-0300] P-5784       T-5788  I ABL      : (451)   Sess∆o Single-user iniciada por Hubner em CON:. 
+[2016/09/02@18:16:07.395-0300] P-5784       T-5788  I ABL      : (15321) Inicializaá∆o do log Before Image no bloco 174  offset 1988. 
+[2016/09/02@18:16:07.413-0300] P-5784       T-5788  I ABL      : (12699) Banco de dados money Opá‰es:  
+[2016/09/02@18:19:27.099-0300] P-5784       T-5788  I ABL      : (15109) No fechamento do banco de dados o n£mero de transaá‰es ao vivo Ç 0. 
+[2016/09/02@18:19:27.114-0300] P-5784       T-5788  I ABL      : (15743) Before Image Log Completion at Block 175 Offset 6134. 
+[2016/09/02@18:19:27.130-0300] P-5784       T-5788  I ABL      : (334)   Fim de sess∆o Single-user. 
+
+                Sat Sep 03 11:23:25 2016
+[2016/09/03@11:23:25.971-0300] P-5764       T-5768  I ABL      : (451)   Sess∆o Single-user iniciada por Hubner em CON:. 
+[2016/09/03@11:23:25.972-0300] P-5764       T-5768  I ABL      : (15321) Inicializaá∆o do log Before Image no bloco 175  offset 6134. 
+[2016/09/03@11:23:25.977-0300] P-5764       T-5768  I ABL      : (12699) Banco de dados money Opá‰es:  
+
+                Sun Sep 04 10:51:12 2016
+[2016/09/04@10:51:12.720-0300] P-5764       T-5768  I ABL      : (15109) No fechamento do banco de dados o n£mero de transaá‰es ao vivo Ç 0. 
+[2016/09/04@10:51:12.722-0300] P-5764       T-5768  I ABL      : (15743) Before Image Log Completion at Block 188 Offset 4807. 
+[2016/09/04@10:51:12.743-0300] P-5764       T-5768  I ABL      : (334)   Fim de sess∆o Single-user. 
+
+                Mon Sep 05 09:19:04 2016
+[2016/09/05@09:19:04.325-0300] P-5080       T-5848  I ABL      : (451)   Sess∆o Single-user iniciada por Hubner em CON:. 
+[2016/09/05@09:19:04.325-0300] P-5080       T-5848  I ABL      : (15321) Inicializaá∆o do log Before Image no bloco 188  offset 4807. 
+[2016/09/05@09:19:04.341-0300] P-5080       T-5848  I ABL      : (12699) Banco de dados money Opá‰es:  
+[2016/09/05@09:22:32.574-0300] P-5080       T-5848  I ABL      : (15109) No fechamento do banco de dados o n£mero de transaá‰es ao vivo Ç 0. 
+[2016/09/05@09:22:32.574-0300] P-5080       T-5848  I ABL      : (15743) Before Image Log Completion at Block 188 Offset 4807. 
+[2016/09/05@09:22:32.579-0300] P-5080       T-5848  I ABL      : (334)   Fim de sess∆o Single-user. 
+
+                Mon Sep 05 09:23:32 2016
+[2016/09/05@09:23:32.088-0300] P-7808       T-7812  I ABL      : (451)   Sess∆o Single-user iniciada por Hubner em CON:. 
+[2016/09/05@09:23:32.088-0300] P-7808       T-7812  I ABL      : (15321) Inicializaá∆o do log Before Image no bloco 188  offset 4807. 
+[2016/09/05@09:23:32.092-0300] P-7808       T-7812  I ABL      : (12699) Banco de dados money Opá‰es:  
+[2016/09/05@09:26:04.747-0300] P-7808       T-7812  I ABL      : (15109) No fechamento do banco de dados o n£mero de transaá‰es ao vivo Ç 0. 
+[2016/09/05@09:26:04.747-0300] P-7808       T-7812  I ABL      : (15743) Before Image Log Completion at Block 188 Offset 4807. 
+[2016/09/05@09:26:04.762-0300] P-7808       T-7812  I ABL      : (334)   Fim de sess∆o Single-user. 
+
+                Mon Sep 05 09:26:07 2016
+[2016/09/05@09:26:07.024-0300] P-7292       T-7296  I ABL      : (451)   Sess∆o Single-user iniciada por Hubner em CON:. 
+[2016/09/05@09:26:07.024-0300] P-7292       T-7296  I ABL      : (15321) Inicializaá∆o do log Before Image no bloco 188  offset 4807. 
+[2016/09/05@09:26:07.024-0300] P-7292       T-7296  I ABL      : (12699) Banco de dados money Opá‰es:  
+[2016/09/05@13:02:49.295-0300] P-7292       T-7296  I ABL      : (15109) No fechamento do banco de dados o n£mero de transaá‰es ao vivo Ç 0. 
+[2016/09/05@13:02:49.298-0300] P-7292       T-7296  I ABL      : (15743) Before Image Log Completion at Block 190 Offset 6517. 
+[2016/09/05@13:02:49.319-0300] P-7292       T-7296  I ABL      : (334)   Fim de sess∆o Single-user. 

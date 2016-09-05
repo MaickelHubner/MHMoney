@@ -1254,7 +1254,7 @@ END.
 &ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL m_F11 C-Win
 ON CHOOSE OF MENU-ITEM m_F11 /* F11 */
 DO:
-  run F:\start_f11.p.
+  run start_f11.p.
 END.
 
 /* _UIB-CODE-BLOCK-END */

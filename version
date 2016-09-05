@@ -1,4 +1,4 @@
-[PRODUTO] 2.1.183 01/08/2016
+[PRODUTO] 2.1.184 05/09/2016
 [FUNÇÃO] ab.p 2.0.000 01/01/2005 %APP Builder
 [FUNÇÃO] abrelote.p 2.0.001 01/03/2006 %Importa arquivo de lote
 [FUNÇÃO] acerta_moeda.p 2.0.001 20/01/2005 %Acerta código de moeda nas movimentações das contas
@@ -89,8 +89,8 @@
 [PROGRAMA] lote.w 2.0.004 04/09/2015 %Lotes para Sincronização de Dados
 [PROGRAMA] mailmkt.w 2.1.000 29/07/2015 %Envio de E-mail Marketing
 [PROGRAMA] main.p 2.1.000 27/05/2009 %Procedimento Inicial
-[PROGRAMA] menu.w 2.1.004 06/04/2011 %MH Money 2005
-[PROGRAMA] menu-emp.w 2.1.030 01/04/2016 %MH Money 2005
+[PROGRAMA] menu.w 2.1.005 05/09/2016 %MH Money 2005
+[PROGRAMA] menu-emp.w 2.1.031 05/09/2016 %MH Money 2005
 [PROGRAMA] meta.w 2.1.000 18/02/2014 %Cadastro de Metas
 [PROGRAMA] moeda.w 2.0.001 15/03/2006 %Cadastro de Moedas
 [PROGRAMA] monitor.w 2.1.002 05/02/2014 %Monitor de Pedidos de Execução
