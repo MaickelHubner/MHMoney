@@ -727,6 +727,7 @@ DEFINE VARIABLE vl-sobra-prox AS DECIMAL    NO-UNDO.
 DEFINE VARIABLE dtAux-prox AS DATE       NO-UNDO.
 DEFINE VARIABLE iDia AS INTEGER     NO-UNDO.
 DEFINE VARIABLE dtAux AS DATE       NO-UNDO.
+DEFINE VARIABLE dt-prox AS DATE    NO-UNDO.
 
 /* Output padrÆo */
 {func\relat\ini.i 1}
@@ -745,6 +746,7 @@ FIND LAST agenda NO-LOCK
     WHERE (agenda.cd-conta = iConta OR agenda.conta-transf = iConta)
     AND   agenda.cd-favorecido = poupanca.cd-fav-padrao NO-ERROR.
 IF AVAIL agenda THEN DO:
+    ASSIGN dt-prox = agenda.prox-data-pag.
     FIND FIRST prog-agenda OF agenda
         WHERE prog-agenda.id-tipo = 2 NO-ERROR.
     IF AVAIL prog-agenda THEN DO:
@@ -779,6 +781,7 @@ FOR EACH mov-conta OF conta NO-LOCK
     WHERE mov-conta.dt-mov >= data-ini
     AND   mov-conta.dt-mov <= data-fim
     AND   mov-conta.agrupado = 0
+    AND   mov-conta.id-situacao < 3 /* Reconciliado */
     USE-INDEX data:
 
      CREATE tt-mov-conta.
@@ -786,10 +789,11 @@ FOR EACH mov-conta OF conta NO-LOCK
 
 END.
 
-ASSIGN deSaldo = conta.vl-saldo-ini.
+ASSIGN deSaldo = conta.vl-saldo.
 
 FOR EACH mov-conta OF conta NO-LOCK
     WHERE mov-conta.agrupado = 0
+    AND   mov-conta.dt-mov >= conta.dt-saldo
     AND   mov-conta.dt-mov < data-ini
     USE-INDEX data:
 
@@ -821,11 +825,21 @@ IF data-ini > TODAY THEN DO:
 END.
 
 /* Calcula o Saldo at‚ a pr¢xima data agendada de transferˆncia */
-IF DATE(MONTH(data-ini), iDia, YEAR(data-ini)) > data-ini THEN DO:
+IF dt-prox >= data-ini THEN DO:
     FOR EACH tt-mov-conta OF conta NO-LOCK
         WHERE tt-mov-conta.agrupado = 0
-        AND   tt-mov-conta.dt-mov >= data-ini
-        AND   tt-mov-conta.dt-mov < DATE(MONTH(data-ini), iDia, YEAR(data-ini))
+        /*AND   tt-mov-conta.dt-mov >= data-ini*/
+        AND   tt-mov-conta.dt-mov <= dt-prox
+        USE-INDEX data:
+
+        ASSIGN deSaldo = deSaldo + fnCotacao(tt-mov-conta.de-valor,tt-mov-conta.cd-moeda,0,tt-mov-conta.dt-mov).
+
+    END.
+    FOR EACH tt-mov-conta NO-LOCK
+        WHERE tt-mov-conta.conta-transf = conta.cd-conta
+        AND   tt-mov-conta.agrupado = 0
+        /*AND   tt-mov-conta.dt-mov >= data-ini*/
+        AND   tt-mov-conta.dt-mov <= dt-prox
         USE-INDEX data:
 
         ASSIGN deSaldo = deSaldo + fnCotacao(tt-mov-conta.de-valor,tt-mov-conta.cd-moeda,0,tt-mov-conta.dt-mov).
@@ -854,6 +868,11 @@ ASSIGN iCont = 1.
 REPEAT iAno = YEAR(data-ini) TO YEAR(data-fim):
     REPEAT iMes = (IF iAno = YEAR(data-ini) THEN MONTH(data-ini) ELSE 1) TO (IF iAno = YEAR(data-fim) THEN MONTH(data-fim) ELSE 12):
 
+        IF iAno <> YEAR(data-ini)
+        OR iMes <> MONTH(data-ini) THEN DO:
+            ASSIGN dt-prox = DATE(iMes, iDia, iAno).
+        END.
+
         ASSIGN cMes =  fnMes(iMes) + "/" + STRING(iAno,"9999")
                vl-min = /*deSaldo*/ 9999999
                vl-poup = 0
@@ -864,8 +883,8 @@ REPEAT iAno = YEAR(data-ini) TO YEAR(data-fim):
         FOR EACH tt-mov-conta
             /*WHERE MONTH(tt-mov-conta.dt-mov) = iMes
             AND   YEAR(tt-mov-conta.dt-mov) = iAno*/
-            WHERE tt-mov-conta.dt-mov >= DATE(iMes, iDia, iAno)
-            AND   tt-mov-conta.dt-mov < DATE(MONTH(dtAux), iDia, YEAR(dtAux))
+            WHERE tt-mov-conta.dt-mov > dt-prox
+            AND   tt-mov-conta.dt-mov <= DATE(MONTH(dtAux), iDia, YEAR(dtAux))
             BREAK BY tt-mov-conta.dt-mov:
 
             IF tt-mov-conta.id-tipo <> 3 THEN
