@@ -1,4 +1,4 @@
-[PRODUTO] 2.1.184 05/09/2016
+[PRODUTO] 2.1.185 09/01/2017
 [FUNÇÃO] ab.p 2.0.000 01/01/2005 %APP Builder
 [FUNÇÃO] abrelote.p 2.0.001 01/03/2006 %Importa arquivo de lote
 [FUNÇÃO] acerta_moeda.p 2.0.001 20/01/2005 %Acerta código de moeda nas movimentações das contas
@@ -135,7 +135,7 @@
 [PROGRAMA] proj-periodo_det.w 2.0.001 17/03/2006 %Detalhe do Período
 [FUNÇÃO] projval.p 2.0.001 11/01/2005 %Calculo de Valores do Nível do Projeto
 [PROGRAMA] prox.w 2.1.015 30/10/2015 %Próximos Movimentos Agendados
-[INCLUDE] proxpag.i 2.0.010 30/10/2015 %Cálculo da próxima data de pagamento do agendamento
+[INCLUDE] proxpag.i 2.0.011 09/01/2017 %Cálculo da próxima data de pagamento do agendamento
 [PROGRAMA] r001.w 2.0.004 08/01/2009 %Balanço Mensal
 [PROGRAMA] r002.w 2.0.002 27/12/2006 %Fluxo de Caixa
 [PROGRAMA] r003.w 2.0.001 17/03/2006 %Extrato Mensal
@@ -167,7 +167,7 @@
 [PROGRAMA] r029.w 2.1.000 09/12/2009 %Juros de Poupança
 [PROGRAMA] r030.w 2.0.002 17/03/2006 %Evolução Patrimonial
 [PROGRAMA] r031.w 2.0.003 13/05/2011 %Resumo de Movimentação
-[PROGRAMA] r032.w 2.0.007 14/01/2010 %Poupança Previsto X Realizado
+[PROGRAMA] r032.w 2.0.008 09/01/2017 %Poupança Previsto X Realizado
 [PROGRAMA] r033.w 2.0.003 18/11/2011 %Acompanhamento de Orçamento
 [PROGRAMA] r034.w 2.0.007 29/06/2013 %Retorno de Investimento
 [PROGRAMA] r035.w 2.0.004 27/02/2008 %Percentual de Formação de Juros

@@ -32,6 +32,7 @@ PROCEDURE calculaProximoPag:
     DEFINE VARIABLE iContDia AS INTEGER     NO-UNDO.
     DEFINE VARIABLE dtContAux AS DATE    NO-UNDO.
     DEFINE VARIABLE dtPagAnt AS DATE    NO-UNDO.
+    DEFINE VARIABLE iDia AS INTEGER     NO-UNDO.
 
     DEFINE BUFFER bfProg FOR prog-agenda.
     DEFINE BUFFER bfProg-mes FOR prog-agenda.
@@ -84,11 +85,28 @@ PROCEDURE calculaProximoPag:
                         WHERE bfProg.cd-agenda = prog-agenda.cd-agenda
                         AND   bfProg.id-tipo = 2) THEN DO:
                 /* Mensal */
+                CASE MONTH(dtTemp):
+                    WHEN 2 THEN ASSIGN iDia = 28.
+                    WHEN 4 THEN ASSIGN iDia = 30.
+                    WHEN 6 THEN ASSIGN iDia = 30.
+                    WHEN 9 THEN ASSIGN iDia = 30.
+                    WHEN 11 THEN ASSIGN iDia = 30.
+                    OTHERWISE ASSIGN iDia = 99.
+                END CASE.
                 FOR FIRST bfProg-mes NO-LOCK
                     WHERE bfProg-mes.cd-agenda = prog-agenda.cd-agenda
                     AND   bfProg-mes.id-tipo = 2
                     AND   (bfProg-mes.valor = DAY(dtTemp)
                     OR    bfProg-mes.num-periodo <> 0):
+                END.
+                IF NOT AVAIL bfProg-mes AND DAY(dtTemp) >= iDia THEN DO:
+                    FOR FIRST bfProg-mes NO-LOCK
+                        WHERE bfProg-mes.cd-agenda = prog-agenda.cd-agenda
+                        AND   bfProg-mes.id-tipo = 2
+                        AND   bfProg-mes.valor >= iDia:
+                    END.
+                END.
+                IF AVAIL bfProg-mes THEN DO:
                     IF bfProg-mes.num-periodo <> 0 THEN DO:
                         FIND FIRST agenda OF bfProg-mes NO-LOCK.
                         ASSIGN l-sim = NO

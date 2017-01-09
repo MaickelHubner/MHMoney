@@ -27,7 +27,7 @@ IF NOT l-aux THEN RETURN "NOK".
 CREATE "Excel.Application" ch-excel.
 CASE i-moeda:
     WHEN 25 THEN ASSIGN ch-arquivo = ch-excel:Workbooks:OPEN("C:\Users\Hubner\Desktop\Historico_ETER3.xlsx").
-    WHEN 26 THEN ASSIGN ch-arquivo = ch-excel:Workbooks:OPEN("C:\Users\Hubner\Desktop\Historico_WHRL4.xlsx").
+    /*WHEN 26 THEN ASSIGN ch-arquivo = ch-excel:Workbooks:OPEN("C:\Users\Hubner\Desktop\Historico_WHRL4.xlsx").*/
     WHEN 30 THEN ASSIGN ch-arquivo = ch-excel:Workbooks:OPEN("C:\Users\Hubner\Desktop\Historico_RNGO11.xlsx").
     /*WHEN 32 THEN ASSIGN ch-arquivo = ch-excel:Workbooks:OPEN("C:\Users\Hubner\Desktop\XPDividendos.xlsx").*/
     /*WHEN 33 THEN ASSIGN ch-arquivo = ch-excel:Workbooks:OPEN("C:\Users\Hubner\Desktop\XPReferenciado.xlsx").*/

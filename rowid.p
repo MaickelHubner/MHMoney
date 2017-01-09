@@ -1,6 +1,6 @@
 DEFINE OUTPUT PARAMETER r-Temp AS ROWID.
-FIND FIRST agenda NO-LOCK WHERE agenda.cd-agenda = integer("56") NO-ERROR.
-IF AVAIL agenda THEN
-    ASSIGN r-Temp = ROWID(agenda).
+FIND FIRST conta NO-LOCK WHERE conta.cd-conta = integer("8") NO-ERROR.
+IF AVAIL conta THEN
+    ASSIGN r-Temp = ROWID(conta).
 ELSE
     ASSIGN r-Temp = ?.

@@ -755,7 +755,7 @@ FOR EACH poup-conta NO-LOCK
     END.
 
     ASSIGN deReal = dePrev.
-    ASSIGN dePrev = fnCotacao(dePrev,conta.cd-moeda,0,dtPrim).       
+    ASSIGN dePrev = fnCotacao(dePrev,conta.cd-moeda,0,DATE(1,1, item-poupanca.ano) - 1).
 
     IF dtComeca = ? THEN
         ASSIGN dtComeca = DATE(1,1,item-poupanca.ano).
