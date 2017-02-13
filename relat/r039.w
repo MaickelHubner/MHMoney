@@ -53,7 +53,8 @@ DEFINE TEMP-TABLE tt-roi
     FIELD pc-ir AS DECIMAL
     FIELD vl-ir AS DECIMAL
     FIELD taxa AS DECIMAL FORMAT "->>>>9.9999"
-    FIELD tx-ir AS DECIMAL FORMAT "->>>>9.9999".
+    FIELD tx-ir AS DECIMAL FORMAT "->>>>9.9999"
+    FIELD vl-mes-ant AS DECIMAL.
 
 /* _UIB-CODE-BLOCK-END */
 &ANALYZE-RESUME
@@ -654,6 +655,7 @@ DEFINE VARIABLE lDiferencaIR AS LOGICAL     NO-UNDO INITIAL NO.
 DEFINE VARIABLE deTotalIR AS DECIMAL     NO-UNDO.
 DEFINE VARIABLE deValorTot AS DECIMAL FORMAT "->>>,>>9.99"    NO-UNDO.
 DEFINE VARIABLE iMeses AS INTEGER     NO-UNDO.
+DEFINE VARIABLE deMesAnt AS DECIMAL     NO-UNDO.
 
 ASSIGN data-ini = DATE(mes-ini,1,ano-ini)
        data-fim = fnUltimoDia(mes-fim,ano-fim).
@@ -732,7 +734,8 @@ END.
 
 ASSIGN deTotAquis = fnCotacao(deReal,conta.cd-moeda,moeda,(data-ini - 1))
        deTotalIR = 0
-       iMeses = 0.
+       iMeses = 0
+       deMesAnt = deTotAquis.
 REPEAT iAno = YEAR(data-ini) TO YEAR(data-fim):
     REPEAT iMes = IF YEAR(data-ini) = iAno THEN MONTH(data-ini) ELSE 1 TO IF YEAR(data-fim) = iAno THEN MONTH(data-fim) ELSE 12:
 
@@ -741,6 +744,7 @@ REPEAT iAno = YEAR(data-ini) TO YEAR(data-fim):
         CREATE tt-roi.
         ASSIGN tt-roi.mes = iMes
                tt-roi.ano = iAno
+               tt-roi.vl-mes-ant = deMesAnt
                iMeses = iMeses + 1.
 
         IF conta.perc-ir = 0 THEN DO:
@@ -791,8 +795,9 @@ REPEAT iAno = YEAR(data-ini) TO YEAR(data-fim):
                     ASSIGN tt-roi.vl-ir = 0.
             END.
              
-        ASSIGN tt-roi.taxa = IF tt-roi.vl-mes <> 0 THEN ((tt-roi.vl-jur / tt-roi.vl-mes) * 100) ELSE 0
-               tt-roi.tx-ir = IF tt-roi.vl-mes <> 0 THEN (((tt-roi.vl-jur - tt-roi.vl-ir) / tt-roi.vl-mes) * 100) ELSE 0.
+        ASSIGN tt-roi.taxa = IF tt-roi.vl-mes-ant <> 0 THEN ((tt-roi.vl-jur / (tt-roi.vl-mes-ant + tt-roi.vl-aqu)) * 100) ELSE 0
+               tt-roi.tx-ir = IF tt-roi.vl-mes-ant <> 0 THEN (((tt-roi.vl-jur - tt-roi.vl-ir) / (tt-roi.vl-mes-ant + tt-roi.vl-aqu)) * 100) ELSE 0
+               deMesAnt = tt-roi.vl-mes.
 
     END.
 END.
