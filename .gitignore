@@ -1,0 +1,9 @@
+*.r
+database/desenv/
+database/maickel/
+database/Otima/
+database/Tetra/
+desenv/
+exec/
+lotes/
+temp/

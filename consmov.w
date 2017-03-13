@@ -39,7 +39,8 @@ CREATE WIDGET-POOL.
 
 /* Local Variable Definitions ---                                       */
 
-DEFINE TEMP-TABLE tt-mov-cons LIKE mov-conta.
+DEFINE TEMP-TABLE tt-mov-cons LIKE mov-conta
+    FIELD de-valor-real AS DEC COLUMN-LABEL "Valor (R$)".
 
 DEFINE VARIABLE cFav AS CHARACTER COLUMN-LABEL "Favorecido" FORMAT "X(20)" NO-UNDO.
 DEFINE VARIABLE cCat AS CHARACTER COLUMN-LABEL "Categoria" FORMAT "X(20)" NO-UNDO.
@@ -192,7 +193,7 @@ DEFINE IMAGE IMAGE-2
 
 DEFINE RECTANGLE RECT-5
      EDGE-PIXELS 2 GRAPHIC-EDGE  NO-FILL   
-     SIZE 87 BY 2.25.
+     SIZE 99 BY 2.25.
 
 /* Query definitions                                                    */
 &ANALYZE-SUSPEND
@@ -213,9 +214,10 @@ DEFINE BROWSE brConsulta
       fnResp(tt-mov-cons.usuar-resp) @ cResp
       moeda.sigla FORMAT "X(3)":U
       tt-mov-cons.de-valor FORMAT "->>>,>>>,>>9.99":U WIDTH 12
+      tt-mov-cons.de-valor-real FORMAT "->>>,>>>,>>9.99":U WIDTH 12
 /* _UIB-CODE-BLOCK-END */
 &ANALYZE-RESUME
-    WITH NO-ROW-MARKERS SIZE 87 BY 18.5
+    WITH NO-ROW-MARKERS SIZE 99 BY 18.5
          FONT 1.
 
 
@@ -224,18 +226,18 @@ DEFINE BROWSE brConsulta
 DEFINE FRAME DEFAULT-FRAME
      brConsulta AT ROW 3.75 COL 2
      btRel AT ROW 1.5 COL 9.14 WIDGET-ID 4
-     deTotal AT ROW 22.38 COL 71 COLON-ALIGNED WIDGET-ID 2
+     deTotal AT ROW 22.38 COL 83 COLON-ALIGNED WIDGET-ID 2
      btDet AT ROW 1.5 COL 3
-     data-ini AT ROW 1.92 COL 31 COLON-ALIGNED
-     data-end AT ROW 1.92 COL 52 COLON-ALIGNED NO-LABEL
-     btExit AT ROW 1.5 COL 82
-     IMAGE-1 AT ROW 1.5 COL 44
-     IMAGE-2 AT ROW 1.5 COL 48
+     data-ini AT ROW 1.92 COL 37 COLON-ALIGNED
+     data-end AT ROW 1.92 COL 58 COLON-ALIGNED NO-LABEL
+     btExit AT ROW 1.5 COL 94
+     IMAGE-1 AT ROW 1.5 COL 50
+     IMAGE-2 AT ROW 1.5 COL 54
      RECT-5 AT ROW 1.25 COL 2
     WITH 1 DOWN NO-BOX KEEP-TAB-ORDER OVERLAY 
          SIDE-LABELS NO-UNDERLINE THREE-D 
          AT COL 1 ROW 1
-         SIZE 88.43 BY 22.25
+         SIZE 100.43 BY 22.25
          FONT 1.
 
 
@@ -259,7 +261,7 @@ IF SESSION:DISPLAY-TYPE = "GUI":U THEN
          COLUMN             = 7.86
          ROW                = 7.08
          HEIGHT             = 22.25
-         WIDTH              = 88.43
+         WIDTH              = 100.43
          MAX-HEIGHT         = 34.92
          MAX-WIDTH          = 205.71
          VIRTUAL-HEIGHT     = 34.92
@@ -780,6 +782,7 @@ FOR EACH money.mov-conta NO-LOCK
         ASSIGN deTotal = deTotal + fnCotacao(mov-conta.de-valor, mov-conta.cd-moeda, 0, mov-conta.dt-mov).
         CREATE tt-mov-cons.
         BUFFER-COPY mov-conta TO tt-mov-cons.
+        ASSIGN tt-mov-cons.de-valor-real = fnCotacao(mov-conta.de-valor, mov-conta.cd-moeda, 0, mov-conta.dt-mov).
     END.
 END.
 DISPLAY deTotal
