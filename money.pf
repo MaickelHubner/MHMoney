@@ -1,6 +1,0 @@
--d dmy 
--cpstream "ibm850" 
--db c:/maickel/mhmoney/database/maickel/money.db -ld money -1
--E
--rand 2
--s 124

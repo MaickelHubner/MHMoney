@@ -1,8 +1,0 @@
--d dmy 
--cpstream "ibm850" 
--db money -S 65500 -N tcp -H localhost -ld money
--E
--rand 2
--s 124
--Mm 4096
--T C:\Temp 
