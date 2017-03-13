@@ -1,1 +1,0 @@
-C:\Maickel\dlc101a\bin\procopy c:\maickel\MHMoney\database\MHSoftware\money.db c:\MHMoney\database\ABConsult\money.db
