@@ -8,6 +8,7 @@
 *.pf
 *.ini
 Licenciamento.xlsx
+backup/
 database/trg/d/*.r
 database/trg/w/*.r
 database/desenv/

@@ -1,5 +1,0 @@
-"Debora" "IMP.W"
-"Debora" "LOTE.W"
-"Debora" "MOVLOTE.W"
-"Debora" "PARAM.W"
-"Debora" "RESTRICAO.W"
