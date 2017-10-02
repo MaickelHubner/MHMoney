@@ -124,8 +124,8 @@ DEFINE QUERY brProx FOR
 DEFINE BROWSE brProx
 &ANALYZE-SUSPEND _UIB-CODE-BLOCK _DISPLAY-FIELDS brProx C-Win _FREEFORM
   QUERY brProx NO-LOCK DISPLAY
-      tt-item.ds-item FORMAT "X(80)":U WIDTH 30
-      tt-item.reposicao FORMAT ">>>>9":U
+      tt-item.ds-item FORMAT "X(80)":U WIDTH 27
+      tt-item.reposicao FORMAT "->>,>>9.9999":U
       tt-item.dt-ult-compra FORMAT "99/99/9999":U
       tt-item.dt-prox
 /* _UIB-CODE-BLOCK-END */

@@ -1,0 +1,73 @@
+=====================================================
+PROGRESS stack trace as of Mon Oct 02 10:23:46 2017
+=====================================================
+Startup parameters:
+-pf C:\Progress\OpenEdge\startup.pf,-cpinternal ISO8859-1,-cpstream ISO8859-1,-cpcoll Basic,-cpcase Basic,-d dmy,-numsep 44,-numdec 46,(end .pf),-basekey ini,-ininame C:\Maickel\MHMoney\pro.ini,-pf C:\Maickel\MHMoney\money-rede.pf,-d dmy,-cpstream ibm850,-db money,-S 65500,-N tcp,-H localhost,-ld money,-E,-rand 2,-s 124,-Mm 4096,-T C:\Temp,(end .pf),-p main.p
+
+Exception code: C0000005 ACCESS_VIOLATION
+Fault address:  102CF26E 01:002CE26E C:\Progress\OpenEdge\bin\prow32.dll
+
+Registers:
+EAX:086C1F58
+EBX:08DB707C
+ECX:45003A72
+EDX:0000000E
+ESI:0266EF78
+EDI:0000000E
+CS:EIP:0023:102CF26E
+SS:ESP:002B:0019DF90  EBP:086C1FF4
+DS:002B  ES:002B  FS:0053  GS:002B
+Flags:00210202
+
+Call Stack:
+Address   Frame
+102CF26E  00000000  dbut_utsetuid+A592E
+102A9168  00000000  dbut_utsetuid+7F828
+102A932C  00000000  dbut_utsetuid+7F9EC
+100F58F2  00000000  DllStartup+6DE42
+1059F2EC  00000000  dbut_utmalloc+7321C
+1008F58F  00000000  DllStartup+7ADF
+10090177  00000000  DllStartup+86C7
+1008F58F  00000000  DllStartup+7ADF
+10090177  00000000  DllStartup+86C7
+
+
+** ABL Stack Trace **
+
+--> RunFile adeedit/_proedit.p (adeedit/_proedit.r) at line 10404
+    USER-INTERFACE-TRIGGER adeedit/_proedit.p (adeedit/_proedit.r) at line 1985
+    adeedit/_proedit.p (adeedit/_proedit.r) at line 12279
+    _edit.p (C:\Progress\OpenEdge\gui\_edit.r) at line 408
+    USER-INTERFACE-TRIGGER menu.w (C:\Maickel\MHMoney\menu.r) at line 2951
+    menu.w (C:\Maickel\MHMoney\menu.r) at line 5595
+    main.p (C:\Maickel\MHMoney\main.r) at line 6
+
+** Persistent procedures/Classes **
+
+Handle  File Name
+003725  C:\Maickel\MHMoney\func\ProgressGL\ProExtra.r
+003724  C:\Maickel\MHMoney\func\ProgressGL\Winfunc.r
+003723  C:\Maickel\MHMoney\func\ProgressGL\Windows.r
+
+//=====================================================
+PROGRESS stack trace as of Mon Oct 02 10:23:53 2017
+//=====================================================
+Exception code: C0000005 ACCESS_VIOLATION
+Fault address:  102CF26E 01:002CE26E C:\Progress\OpenEdge\bin\prow32.dll
+
+Registers:
+EAX:086C1F58
+EBX:08DB707C
+ECX:45003A72
+EDX:0000000E
+ESI:0266EF78
+EDI:0000000E
+CS:EIP:0023:102CF26E
+SS:ESP:002B:0019E12C  EBP:086C1FF4
+DS:002B  ES:002B  FS:0053  GS:002B
+Flags:00210202
+
+Call Stack:
+Address   Frame
+102CF26E  0019E138  dbut_utsetuid+A592E
+

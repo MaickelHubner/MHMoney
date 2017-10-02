@@ -1,0 +1,15 @@
+UPDATE FIELD "reposicao" OF "item" AS decimal
+  FORMAT "->>,>>9.9999"
+  INITIAL "0"
+  LABEL "Tempo de Reposi‡Æo"
+  POSITION 14
+  MAX-WIDTH 19
+  COLUMN-LABEL "Reposi‡Æo"
+  DECIMALS 4
+  ORDER 130
+
+.
+PSC
+cpstream=ibm850
+.
+0000002459

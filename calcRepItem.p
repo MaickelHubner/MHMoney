@@ -21,9 +21,9 @@ FOR EACH compra NO-LOCK
 
         ASSIGN iDias = compra.dt-compra - dtAnt.
         IF item.reposicao <> 0 THEN
-            ASSIGN item.reposicao = ((item.reposicao + INT(iDias / deQuant)) / 2).
+            ASSIGN item.reposicao = ((item.reposicao + (iDias / deQuant)) / 2).
         ELSE
-            ASSIGN item.reposicao = INT(iDias / deQuant).
+            ASSIGN item.reposicao = iDias / deQuant.
 
     END.
 

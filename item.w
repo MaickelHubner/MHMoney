@@ -235,9 +235,9 @@ DEFINE FRAME DEFAULT-FRAME
           VIEW-AS FILL-IN 
           SIZE 10 BY .79
      btGoTo AT ROW 1.5 COL 48.43
-     item.reposicao AT ROW 11.75 COL 67 COLON-ALIGNED
+     item.reposicao AT ROW 11.75 COL 63.5 COLON-ALIGNED
           VIEW-AS FILL-IN 
-          SIZE 4.72 BY .79
+          SIZE 8.72 BY .79
      item.desp-viag AT ROW 8 COL 29 WIDGET-ID 6
           VIEW-AS TOGGLE-BOX
           SIZE 16 BY .83

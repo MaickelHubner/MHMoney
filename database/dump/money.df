@@ -151,11 +151,34 @@ ADD FIELD "calc-cpmf" OF "agenda" AS logical
   COLUMN-LABEL "CPMF"
   ORDER 160
 
+ADD FIELD "usuar-resp" OF "agenda" AS character 
+  FORMAT "X(8)"
+  INITIAL ""
+  LABEL "Usu rio Respons vel"
+  POSITION 18
+  MAX-WIDTH 16
+  COLUMN-LABEL "Usu rio Resp"
+  ORDER 170
+
 ADD INDEX "codigo" ON "agenda" 
   AREA "Schema Area"
   UNIQUE
   PRIMARY
   INDEX-FIELD "cd-agenda" ASCENDING 
+
+ADD INDEX "conta-fim" ON "agenda" 
+  AREA "Schema Area"
+  INDEX-FIELD "cd-conta" ASCENDING 
+  INDEX-FIELD "dt-fim" ASCENDING 
+
+ADD INDEX "conta-ini" ON "agenda" 
+  AREA "Schema Area"
+  INDEX-FIELD "cd-conta" ASCENDING 
+  INDEX-FIELD "dt-ini" ASCENDING 
+
+ADD INDEX "data-ult-pag" ON "agenda" 
+  AREA "Schema Area"
+  INDEX-FIELD "dt-ultimo-pag" ASCENDING 
 
 ADD TABLE "agenda-valor"
   AREA "Schema Area"
@@ -207,6 +230,12 @@ ADD INDEX "codigo" ON "agenda-valor"
   PRIMARY
   INDEX-FIELD "cd-agenda" ASCENDING 
   INDEX-FIELD "dt-ini" ASCENDING 
+
+ADD INDEX "data" ON "agenda-valor" 
+  AREA "Schema Area"
+  INDEX-FIELD "cd-agenda" ASCENDING 
+  INDEX-FIELD "dt-ini" ASCENDING 
+  INDEX-FIELD "dt-end" ASCENDING 
 
 ADD TABLE "alerta"
   AREA "Schema Area"
@@ -444,8 +473,8 @@ ADD TABLE "apontamento"
   AREA "Schema Area"
   LABEL "Apontamento"
   DUMP-NAME "mn042"
-  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn042.p" CRC "34822" 
-  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn042.p" CRC "36392" 
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn042.p" CRC "?" 
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn042.p" CRC "?" 
 
 ADD FIELD "nome" OF "apontamento" AS character 
   FORMAT "X(8)"
@@ -529,6 +558,79 @@ ADD FIELD "codigo-fa" OF "apontamento" AS integer
   COLUMN-LABEL "FA"
   ORDER 90
 
+ADD FIELD "nome-tarefa" OF "apontamento" AS character 
+  DESCRIPTION "Nome do usu rio"
+  FORMAT "X(8)"
+  INITIAL ""
+  LABEL "Nome"
+  POSITION 11
+  MAX-WIDTH 16
+  COLUMN-LABEL "Nome"
+  ORDER 100
+
+ADD FIELD "seq-tarefa" OF "apontamento" AS integer 
+  FORMAT ">>>>9"
+  INITIAL "0"
+  LABEL "Sequˆncia"
+  POSITION 12
+  MAX-WIDTH 4
+  COLUMN-LABEL "Seq"
+  ORDER 110
+
+ADD FIELD "seq-visita" OF "apontamento" AS integer 
+  FORMAT ">>>>>>9"
+  INITIAL "0"
+  LABEL "Seq Visita"
+  POSITION 13
+  MAX-WIDTH 4
+  COLUMN-LABEL "Seq Visita"
+  ORDER 120
+
+ADD FIELD "nr-mov" OF "apontamento" AS character 
+  FORMAT "X(25)"
+  INITIAL ""
+  LABEL "Documento"
+  POSITION 15
+  MAX-WIDTH 24
+  COLUMN-LABEL "Docto"
+  ORDER 130
+
+ADD FIELD "cd-favorecido" OF "apontamento" AS integer 
+  FORMAT "9999"
+  INITIAL "0"
+  LABEL "Favorecido"
+  POSITION 16
+  MAX-WIDTH 4
+  COLUMN-LABEL "Fav"
+  ORDER 140
+
+ADD FIELD "ds-fav-apont" OF "apontamento" AS character 
+  FORMAT "X(40)"
+  INITIAL ""
+  LABEL "Descri‡Æo Fav. Apont."
+  POSITION 17
+  MAX-WIDTH 80
+  COLUMN-LABEL "Desc. Fav. Apont."
+  ORDER 150
+
+ADD FIELD "reembolsavel" OF "apontamento" AS logical 
+  FORMAT "yes/no"
+  INITIAL "yes"
+  LABEL "Reembols vel"
+  POSITION 18
+  MAX-WIDTH 1
+  COLUMN-LABEL "Reembol."
+  ORDER 160
+
+ADD FIELD "tipo-despesa" OF "apontamento" AS character 
+  FORMAT "x(30)"
+  INITIAL ""
+  LABEL "Tipo Despesa"
+  POSITION 19
+  MAX-WIDTH 60
+  COLUMN-LABEL "Tp. Despesa"
+  ORDER 170
+
 ADD INDEX "codigo" ON "apontamento" 
   AREA "Schema Area"
   UNIQUE
@@ -536,6 +638,181 @@ ADD INDEX "codigo" ON "apontamento"
   INDEX-FIELD "nome" ASCENDING 
   INDEX-FIELD "data" ASCENDING 
   INDEX-FIELD "hora-ini" ASCENDING 
+
+ADD INDEX "data" ON "apontamento" 
+  AREA "Schema Area"
+  INDEX-FIELD "data" ASCENDING 
+  INDEX-FIELD "hora-ini" ASCENDING 
+  INDEX-FIELD "hora-fim" ASCENDING 
+  INDEX-FIELD "qt-apontada" ASCENDING 
+  INDEX-FIELD "nome" ASCENDING 
+
+ADD INDEX "fa" ON "apontamento" 
+  AREA "Schema Area"
+  INDEX-FIELD "codigo-fa" ASCENDING 
+
+ADD INDEX "pedido" ON "apontamento" 
+  AREA "Schema Area"
+  INDEX-FIELD "nr-pedido" ASCENDING 
+  INDEX-FIELD "sequencia" ASCENDING 
+  INDEX-FIELD "data" ASCENDING 
+  INDEX-FIELD "hora-ini" ASCENDING 
+  INDEX-FIELD "hora-fim" ASCENDING 
+  INDEX-FIELD "qt-apontada" ASCENDING 
+  INDEX-FIELD "nome" ASCENDING 
+
+ADD INDEX "pedido-usuario" ON "apontamento" 
+  AREA "Schema Area"
+  INDEX-FIELD "nr-pedido" ASCENDING 
+  INDEX-FIELD "sequencia" ASCENDING 
+  INDEX-FIELD "nome" ASCENDING 
+  INDEX-FIELD "data" ASCENDING 
+  INDEX-FIELD "hora-ini" ASCENDING 
+
+ADD INDEX "tarefa" ON "apontamento" 
+  AREA "Schema Area"
+  INDEX-FIELD "nome-tarefa" ASCENDING 
+  INDEX-FIELD "seq-tarefa" ASCENDING 
+  INDEX-FIELD "data" ASCENDING 
+  INDEX-FIELD "hora-ini" ASCENDING 
+  INDEX-FIELD "hora-fim" ASCENDING 
+  INDEX-FIELD "qt-apontada" ASCENDING 
+  INDEX-FIELD "nome" ASCENDING 
+
+ADD INDEX "tarefa-usuario" ON "apontamento" 
+  AREA "Schema Area"
+  INDEX-FIELD "nome-tarefa" ASCENDING 
+  INDEX-FIELD "seq-tarefa" ASCENDING 
+  INDEX-FIELD "nome" ASCENDING 
+  INDEX-FIELD "data" ASCENDING 
+  INDEX-FIELD "hora-ini" ASCENDING 
+
+ADD INDEX "visita" ON "apontamento" 
+  AREA "Schema Area"
+  INDEX-FIELD "seq-visita" ASCENDING 
+  INDEX-FIELD "nome" ASCENDING 
+  INDEX-FIELD "data" ASCENDING 
+  INDEX-FIELD "hora-ini" ASCENDING 
+
+ADD INDEX "visita2" ON "apontamento" 
+  AREA "Schema Area"
+  INDEX-FIELD "seq-visita" ASCENDING 
+  INDEX-FIELD "data" ASCENDING 
+  INDEX-FIELD "hora-ini" ASCENDING 
+  INDEX-FIELD "nome" ASCENDING 
+
+ADD INDEX "visita3" ON "apontamento" 
+  AREA "Schema Area"
+  INDEX-FIELD "seq-visita" ASCENDING 
+  INDEX-FIELD "reembolsavel" ASCENDING 
+  INDEX-FIELD "data" ASCENDING 
+
+ADD TABLE "atendimento"
+  AREA "Schema Area"
+  LABEL "Atendimento"
+  DESCRIPTION "Atendimento efetuado em Cliente"
+  DUMP-NAME "mn050"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn050.p" CRC "?" 
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn050.p" CRC "?" 
+
+ADD FIELD "cd-favorecido" OF "atendimento" AS integer 
+  DESCRIPTION "codigo do favorecido (cliente)"
+  FORMAT "9999"
+  INITIAL "0"
+  LABEL "Favorecido"
+  POSITION 2
+  MAX-WIDTH 4
+  COLUMN-LABEL "Fav"
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "data" OF "atendimento" AS date 
+  DESCRIPTION "Data do atendimento"
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Atendimento"
+  POSITION 3
+  MAX-WIDTH 4
+  COLUMN-LABEL "Data Atend"
+  ORDER 20
+
+ADD FIELD "contato" OF "atendimento" AS character 
+  DESCRIPTION "Contato"
+  FORMAT "x(60)"
+  INITIAL ""
+  LABEL "Contato"
+  POSITION 5
+  MAX-WIDTH 120
+  COLUMN-LABEL "Contato"
+  ORDER 40
+
+ADD FIELD "observacao" OF "atendimento" AS character 
+  DESCRIPTION "Observa‡Æo"
+  FORMAT "x(2000)"
+  INITIAL ""
+  LABEL "Observa‡Æo"
+  POSITION 6
+  MAX-WIDTH 4000
+  COLUMN-LABEL "Obs"
+  ORDER 50
+
+ADD FIELD "hora" OF "atendimento" AS character 
+  FORMAT "x(05)"
+  INITIAL ""
+  LABEL "Hora"
+  POSITION 7
+  MAX-WIDTH 10
+  COLUMN-LABEL "Hora"
+  ORDER 60
+
+ADD FIELD "usuario" OF "atendimento" AS character 
+  DESCRIPTION "Usu rio"
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Usu rio"
+  POSITION 8
+  MAX-WIDTH 40
+  COLUMN-LABEL "Usu rio"
+  ORDER 70
+
+ADD FIELD "cd-contato" OF "atendimento" AS integer 
+  DESCRIPTION "Codigo contato"
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  LABEL "Contato"
+  POSITION 9
+  MAX-WIDTH 4
+  COLUMN-LABEL "Contato"
+  ORDER 80
+  MANDATORY
+
+ADD FIELD "nome" OF "atendimento" AS character 
+  DESCRIPTION "Nome do usu rio"
+  FORMAT "X(8)"
+  INITIAL ""
+  LABEL "Nome"
+  POSITION 10
+  MAX-WIDTH 16
+  COLUMN-LABEL "Nome"
+  ORDER 90
+
+ADD FIELD "sequencia" OF "atendimento" AS integer 
+  FORMAT ">>>>9"
+  INITIAL "0"
+  LABEL "Sequˆncia"
+  POSITION 11
+  MAX-WIDTH 4
+  COLUMN-LABEL "Seq"
+  ORDER 100
+
+ADD INDEX "idx-atendimento" ON "atendimento" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  DESCRIPTION "idx-atendimento"
+  INDEX-FIELD "cd-favorecido" ASCENDING 
+  INDEX-FIELD "data" ASCENDING 
+  INDEX-FIELD "hora" ASCENDING 
 
 ADD TABLE "bens"
   AREA "Schema Area"
@@ -705,6 +982,42 @@ ADD INDEX "grupo" ON "bens"
   INDEX-FIELD "grupo" DESCENDING 
   INDEX-FIELD "dt-venda" DESCENDING 
   INDEX-FIELD "cd-bens" ASCENDING 
+
+ADD TABLE "caracteristica"
+  AREA "Schema Area"
+  LABEL "caracteristica"
+  DESCRIPTION "Caracteristica do contato"
+  DUMP-NAME "mn052"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn052.p" CRC "?" 
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn052.p" CRC "?" 
+
+ADD FIELD "cd-caracteristica" OF "caracteristica" AS integer 
+  DESCRIPTION "C¢digo da caracteristica"
+  FORMAT "9999"
+  INITIAL "0"
+  LABEL "C¢digo"
+  POSITION 2
+  MAX-WIDTH 4
+  COLUMN-LABEL "C¢digo"
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "ds-caracteristica" OF "caracteristica" AS character 
+  DESCRIPTION "Descri‡Æo da caracteristica"
+  FORMAT "x(40)"
+  INITIAL ""
+  LABEL "Caracteristica"
+  POSITION 3
+  MAX-WIDTH 80
+  COLUMN-LABEL "Caracteristica"
+  ORDER 20
+
+ADD INDEX "idx-caracteristica" ON "caracteristica" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  DESCRIPTION "idx-caracteristica"
+  INDEX-FIELD "cd-caracteristica" ASCENDING 
 
 ADD TABLE "categoria"
   AREA "Schema Area"
@@ -930,6 +1243,229 @@ ADD INDEX "codigo" ON "conta"
   PRIMARY
   INDEX-FIELD "cd-conta" ASCENDING 
 
+ADD TABLE "contato"
+  AREA "Schema Area"
+  LABEL "Contato"
+  DESCRIPTION "Contato do Cliente"
+  DUMP-NAME "mn051"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn051.p" CRC "?" 
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn051.p" CRC "?" 
+
+ADD FIELD "cd-favorecido" OF "contato" AS integer 
+  DESCRIPTION "Codigo do Favorecido (cliente)"
+  FORMAT "9999"
+  INITIAL "0"
+  LABEL "Favorecido"
+  POSITION 2
+  MAX-WIDTH 4
+  COLUMN-LABEL "Fav"
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "cd-contato" OF "contato" AS integer 
+  DESCRIPTION "Codigo contato"
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  LABEL "C¢digo"
+  POSITION 3
+  MAX-WIDTH 4
+  COLUMN-LABEL "Cod"
+  ORDER 20
+  MANDATORY
+
+ADD FIELD "data-nasc" OF "contato" AS date 
+  DESCRIPTION "Data de nascimento"
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Nascimento"
+  POSITION 4
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt Nasc"
+  ORDER 30
+
+ADD FIELD "nome" OF "contato" AS character 
+  DESCRIPTION "Nome do contato"
+  FORMAT "X(60)"
+  INITIAL ""
+  LABEL "Nome"
+  POSITION 5
+  MAX-WIDTH 120
+  COLUMN-LABEL "Nome"
+  ORDER 40
+
+ADD FIELD "telefone" OF "contato" AS character 
+  DESCRIPTION "Telefone"
+  FORMAT "X(20)"
+  INITIAL ""
+  LABEL "Telefone"
+  POSITION 6
+  MAX-WIDTH 40
+  COLUMN-LABEL "Telefone"
+  ORDER 50
+
+ADD FIELD "cargo" OF "contato" AS character 
+  DESCRIPTION "Cargo"
+  FORMAT "x(40)"
+  INITIAL ""
+  LABEL "Cargo"
+  POSITION 7
+  MAX-WIDTH 80
+  COLUMN-LABEL "Cargo"
+  ORDER 60
+
+ADD FIELD "email" OF "contato" AS character 
+  DESCRIPTION "Email"
+  FORMAT "x(100)"
+  INITIAL ""
+  LABEL "Email"
+  POSITION 8
+  MAX-WIDTH 200
+  COLUMN-LABEL "Email"
+  ORDER 70
+
+ADD FIELD "celular" OF "contato" AS character 
+  DESCRIPTION "Celular"
+  FORMAT "X(20)"
+  INITIAL ""
+  LABEL "Celular"
+  POSITION 9
+  MAX-WIDTH 40
+  COLUMN-LABEL "Celular"
+  ORDER 80
+
+ADD FIELD "nome-apelido" OF "contato" AS character 
+  DESCRIPTION "Apelido do contato"
+  FORMAT "X(20)"
+  INITIAL ""
+  LABEL "Apelido"
+  POSITION 10
+  MAX-WIDTH 120
+  COLUMN-LABEL "Apelido"
+  ORDER 90
+
+ADD FIELD "ds-observacao" OF "contato" AS character 
+  FORMAT "x(2000)"
+  INITIAL ""
+  LABEL "Observa‡Æo"
+  POSITION 11
+  MAX-WIDTH 4000
+  COLUMN-LABEL "Observa‡Æo"
+  ORDER 100
+
+ADD FIELD "foto" OF "contato" AS character 
+  FORMAT "x(80)"
+  INITIAL ""
+  LABEL "Foto"
+  POSITION 12
+  MAX-WIDTH 160
+  COLUMN-LABEL "Foto"
+  ORDER 110
+
+ADD FIELD "ativo" OF "contato" AS logical 
+  FORMAT "Sim/NÆo"
+  INITIAL "Sim"
+  LABEL "Ativo"
+  POSITION 13
+  MAX-WIDTH 1
+  COLUMN-LABEL "Ativo"
+  ORDER 120
+
+ADD FIELD "mensageiro" OF "contato" AS character 
+  FORMAT "x(200)"
+  INITIAL ""
+  LABEL "Mensageiro"
+  POSITION 14
+  MAX-WIDTH 400
+  COLUMN-LABEL "Mensageiro"
+  ORDER 130
+
+ADD FIELD "area-empresa" OF "contato" AS character 
+  FORMAT "x(60)"
+  INITIAL ""
+  LABEL "µrea Empresa"
+  POSITION 15
+  MAX-WIDTH 120
+  COLUMN-LABEL "µrea"
+  ORDER 140
+
+ADD INDEX "idx-contato" ON "contato" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  DESCRIPTION "idx-contato"
+  INDEX-FIELD "cd-favorecido" ASCENDING 
+  INDEX-FIELD "cd-contato" ASCENDING 
+
+ADD TABLE "contato-caracteristica"
+  AREA "Schema Area"
+  LABEL "Caracteristicas do contato"
+  DESCRIPTION "Caracteristicas do contato"
+  DUMP-NAME "mn053"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn053.p" CRC "?" 
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn053.p" CRC "?" 
+
+ADD FIELD "cd-favorecido" OF "contato-caracteristica" AS integer 
+  DESCRIPTION "Codigo do Favorecido (cliente)"
+  FORMAT "9999"
+  INITIAL "0"
+  LABEL "Favorecido"
+  POSITION 2
+  MAX-WIDTH 4
+  COLUMN-LABEL "Fav"
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "cd-contato" OF "contato-caracteristica" AS integer 
+  DESCRIPTION "Codigo contato"
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  LABEL "C¢digo"
+  POSITION 3
+  MAX-WIDTH 4
+  COLUMN-LABEL "Cod"
+  ORDER 20
+  MANDATORY
+
+ADD FIELD "sequencia" OF "contato-caracteristica" AS integer 
+  DESCRIPTION "Sequencia"
+  FORMAT "->,>>>,>>9"
+  INITIAL "0"
+  LABEL "Sequencia"
+  POSITION 4
+  MAX-WIDTH 4
+  COLUMN-LABEL "Seq"
+  ORDER 30
+
+ADD FIELD "cd-caracteristica" OF "contato-caracteristica" AS integer 
+  DESCRIPTION "C¢digo da caracteristica"
+  FORMAT "9999"
+  INITIAL "0"
+  LABEL "C¢digo"
+  POSITION 5
+  MAX-WIDTH 4
+  COLUMN-LABEL "C¢digo"
+  ORDER 40
+  MANDATORY
+
+ADD FIELD "descricao" OF "contato-caracteristica" AS character 
+  DESCRIPTION "Descri‡Æo"
+  FORMAT "x(80)"
+  INITIAL ""
+  LABEL "Descri‡Æo"
+  POSITION 6
+  MAX-WIDTH 160
+  COLUMN-LABEL "Descri‡Æo"
+  ORDER 50
+
+ADD INDEX "idx-contato-carac" ON "contato-caracteristica" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  DESCRIPTION "idx-contato-carac"
+  INDEX-FIELD "cd-favorecido" ASCENDING 
+  INDEX-FIELD "cd-contato" ASCENDING 
+  INDEX-FIELD "sequencia" ASCENDING 
+
 ADD TABLE "cotacao"
   AREA "Schema Area"
   LABEL "Cota‡Æo"
@@ -980,6 +1516,73 @@ ADD INDEX "codigo" ON "cotacao"
   PRIMARY
   INDEX-FIELD "cd-moeda" ASCENDING 
   INDEX-FIELD "dt-ini" DESCENDING 
+
+ADD TABLE "custo"
+  AREA "Schema Area"
+  LABEL "Custo Hora"
+  DESCRIPTION "Custo Hora"
+  DUMP-NAME "mn054"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn054.p" CRC "?" 
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn054.p" CRC "?" 
+
+ADD FIELD "nome" OF "custo" AS character 
+  FORMAT "X(8)"
+  INITIAL ""
+  LABEL "Nome"
+  POSITION 2
+  MAX-WIDTH 16
+  COLUMN-LABEL "Nome"
+  ORDER 10
+  MANDATORY
+
+ADD FIELD "periodo" OF "custo" AS character 
+  DESCRIPTION "Periodo"
+  FORMAT "x(6)"
+  INITIAL ""
+  LABEL "Periodo"
+  POSITION 3
+  MAX-WIDTH 12
+  COLUMN-LABEL "Periodo"
+  ORDER 20
+  MANDATORY
+
+ADD FIELD "qt-horas" OF "custo" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Qtde Horas"
+  POSITION 4
+  MAX-WIDTH 17
+  COLUMN-LABEL "Qt Horas"
+  DECIMALS 2
+  ORDER 30
+
+ADD FIELD "valor" OF "custo" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Valor"
+  POSITION 5
+  MAX-WIDTH 17
+  COLUMN-LABEL "Valor"
+  DECIMALS 2
+  ORDER 40
+
+ADD FIELD "val-custo" OF "custo" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Custo"
+  POSITION 6
+  MAX-WIDTH 17
+  COLUMN-LABEL "Custo"
+  DECIMALS 2
+  ORDER 50
+
+ADD INDEX "usuar-per" ON "custo" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  DESCRIPTION "usuar-per"
+  INDEX-FIELD "nome" ASCENDING 
+  INDEX-FIELD "periodo" ASCENDING 
 
 ADD TABLE "favorecido"
   AREA "Schema Area"
@@ -1114,6 +1717,141 @@ ADD FIELD "tipo" OF "favorecido" AS integer
   COLUMN-LABEL "Tipo"
   ORDER 170
 
+ADD FIELD "foto" OF "favorecido" AS character 
+  FORMAT "x(80)"
+  INITIAL ""
+  LABEL "Foto"
+  POSITION 16
+  MAX-WIDTH 160
+  COLUMN-LABEL "Foto"
+  ORDER 180
+
+ADD FIELD "banco" OF "favorecido" AS character 
+  FORMAT "x(40)"
+  INITIAL ""
+  LABEL "Banco"
+  POSITION 17
+  MAX-WIDTH 80
+  COLUMN-LABEL "Banco"
+  ORDER 190
+
+ADD FIELD "agencia" OF "favorecido" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Agˆncia"
+  POSITION 18
+  MAX-WIDTH 24
+  COLUMN-LABEL "Agˆncia"
+  ORDER 200
+
+ADD FIELD "conta-bancaria" OF "favorecido" AS character 
+  FORMAT "x(12)"
+  INITIAL ""
+  LABEL "Conta"
+  POSITION 19
+  MAX-WIDTH 24
+  COLUMN-LABEL "Conta"
+  ORDER 210
+
+ADD FIELD "e-mail" OF "favorecido" AS character 
+  FORMAT "x(80)"
+  INITIAL ""
+  LABEL "E-mail"
+  POSITION 20
+  MAX-WIDTH 160
+  COLUMN-LABEL "E-mail"
+  ORDER 220
+
+ADD FIELD "ins-estadual" OF "favorecido" AS character 
+  FORMAT "x(20)"
+  INITIAL ""
+  LABEL "Insc. Estadual"
+  POSITION 21
+  MAX-WIDTH 40
+  COLUMN-LABEL "Insc Est"
+  ORDER 230
+
+ADD FIELD "contato" OF "favorecido" AS character 
+  FORMAT "x(40)"
+  INITIAL ""
+  LABEL "Contato"
+  POSITION 22
+  MAX-WIDTH 80
+  COLUMN-LABEL "Contato"
+  ORDER 240
+
+ADD FIELD "data-nasc" OF "favorecido" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Nascimento"
+  POSITION 23
+  MAX-WIDTH 4
+  COLUMN-LABEL "DtNasc"
+  ORDER 250
+
+ADD FIELD "ativo" OF "favorecido" AS logical 
+  FORMAT "Sim/NÆo"
+  INITIAL "Sim"
+  LABEL "Ativo"
+  POSITION 24
+  MAX-WIDTH 1
+  COLUMN-LABEL "Ativo"
+  ORDER 260
+
+ADD FIELD "razao-social" OF "favorecido" AS character 
+  FORMAT "x(100)"
+  INITIAL ""
+  LABEL "RazÆo Social"
+  POSITION 25
+  MAX-WIDTH 200
+  COLUMN-LABEL "RazÆo Social"
+  ORDER 270
+
+ADD FIELD "dia-pagto-padrao" OF "favorecido" AS integer 
+  FORMAT ">9"
+  INITIAL "0"
+  LABEL "Dia Pagto PadrÆo"
+  POSITION 26
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dia Pagto PadrÆo"
+  ORDER 280
+
+ADD FIELD "dias-uteis-pagto" OF "favorecido" AS integer 
+  FORMAT ">9"
+  INITIAL "0"
+  LABEL "Adiciona Dias éteis"
+  POSITION 27
+  MAX-WIDTH 4
+  COLUMN-LABEL "Adiciona Dias éteis"
+  ORDER 290
+
+ADD FIELD "dia-semana-pagto" OF "favorecido" AS integer 
+  FORMAT "9"
+  INITIAL "0"
+  LABEL "Dia Semana Pagto"
+  POSITION 28
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dia Semana Pagto"
+  ORDER 300
+
+ADD FIELD "tipo-pagto" OF "favorecido" AS integer 
+  FORMAT "9"
+  INITIAL "1"
+  LABEL "Tipo Pagto"
+  POSITION 29
+  MAX-WIDTH 4
+  COLUMN-LABEL "Tipo Pagto"
+  ORDER 310
+
+ADD FIELD "desconto-prim-parc" OF "favorecido" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Desconta Impto Primeira Parcela"
+  POSITION 30
+  MAX-WIDTH 1
+  COLUMN-LABEL "Desconta Impto Primeira Parcela"
+  ORDER 330
+
 ADD INDEX "codigo" ON "favorecido" 
   AREA "Schema Area"
   UNIQUE
@@ -1155,8 +1893,8 @@ ADD TABLE "forma-pagto"
   AREA "Schema Area"
   LABEL "Forma de Pagamento"
   DUMP-NAME "mn048"
-  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn048.p" CRC "17991" 
-  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn048.p" CRC "15118" 
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn048.p" CRC "?" 
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn048.p" CRC "?" 
 
 ADD FIELD "cd-forma-pagto" OF "forma-pagto" AS integer 
   FORMAT "9999"
@@ -1195,8 +1933,8 @@ ADD TABLE "imposto"
   AREA "Schema Area"
   LABEL "Imposto"
   DUMP-NAME "mn046"
-  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn046.p" CRC "3116" 
-  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn046.p" CRC "7578" 
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn046.p" CRC "?" 
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn046.p" CRC "?" 
 
 ADD FIELD "cod-imposto" OF "imposto" AS integer 
   FORMAT "999"
@@ -1309,11 +2047,24 @@ ADD FIELD "cd-favorecido" OF "imposto" AS integer
   COLUMN-LABEL "Fav"
   ORDER 120
 
+ADD FIELD "tipo-retencao" OF "imposto" AS integer 
+  FORMAT "9"
+  INITIAL "0"
+  LABEL "Tipo Reten‡Æo"
+  POSITION 14
+  MAX-WIDTH 4
+  COLUMN-LABEL "TpRet"
+  ORDER 130
+
 ADD INDEX "codigo" ON "imposto" 
   AREA "Schema Area"
   UNIQUE
   PRIMARY
   INDEX-FIELD "cod-imposto" ASCENDING 
+
+ADD INDEX "agenda" ON "imposto" 
+  AREA "Schema Area"
+  INDEX-FIELD "cd-agenda" ASCENDING 
 
 ADD TABLE "item"
   AREA "Schema Area"
@@ -1376,15 +2127,6 @@ ADD FIELD "dt-ult-compra" OF "item" AS date
   COLUMN-LABEL "Dt. Ult. Compra"
   ORDER 60
 
-ADD FIELD "reposicao" OF "item" AS integer 
-  FORMAT ">>>>9"
-  INITIAL "0"
-  LABEL "Tempo de Reposi‡Æo"
-  POSITION 8
-  MAX-WIDTH 4
-  COLUMN-LABEL "Reposi‡Æo"
-  ORDER 70
-
 ADD FIELD "permite-dec" OF "item" AS logical 
   FORMAT "Sim/NÆo"
   INITIAL "Sim"
@@ -1411,6 +2153,35 @@ ADD FIELD "tipo" OF "item" AS integer
   MAX-WIDTH 4
   COLUMN-LABEL "Tipo"
   ORDER 100
+
+ADD FIELD "desp-viag" OF "item" AS logical 
+  FORMAT "Sim/NÆo"
+  INITIAL "NÆo"
+  LABEL "Despesa de Viagem"
+  POSITION 12
+  MAX-WIDTH 1
+  COLUMN-LABEL "Desp Viag"
+  ORDER 110
+
+ADD FIELD "fator-reemb" OF "item" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "1"
+  LABEL "Fator Reembolso"
+  POSITION 13
+  MAX-WIDTH 17
+  COLUMN-LABEL "Fat Reemb"
+  DECIMALS 2
+  ORDER 120
+
+ADD FIELD "reposicao" OF "item" AS decimal 
+  FORMAT "->>,>>9.9999"
+  INITIAL "0"
+  LABEL "Tempo de Reposi‡Æo"
+  POSITION 14
+  MAX-WIDTH 19
+  COLUMN-LABEL "Reposi‡Æo"
+  DECIMALS 4
+  ORDER 130
 
 ADD INDEX "codigo" ON "item" 
   AREA "Schema Area"
@@ -1838,6 +2609,75 @@ ADD INDEX "codigo" ON "lote-mov-campo"
   INDEX-FIELD "num-mov" ASCENDING 
   INDEX-FIELD "campo" ASCENDING 
 
+ADD TABLE "meta"
+  AREA "Schema Area"
+  LABEL "Metas"
+  DUMP-NAME "mn059"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn059.p" CRC "60964" 
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn059.p" CRC "19802" 
+
+ADD FIELD "cd-meta" OF "meta" AS integer 
+  FORMAT ">>9"
+  INITIAL "0"
+  LABEL "C¢digo"
+  POSITION 2
+  MAX-WIDTH 4
+  COLUMN-LABEL "Cod"
+  ORDER 10
+
+ADD FIELD "ano" OF "meta" AS integer 
+  FORMAT "9999"
+  INITIAL "0"
+  LABEL "Ano"
+  POSITION 3
+  MAX-WIDTH 4
+  COLUMN-LABEL "Ano"
+  ORDER 20
+
+ADD FIELD "ds-meta" OF "meta" AS character 
+  FORMAT "x(60)"
+  INITIAL ""
+  LABEL "Descri‡Æo"
+  POSITION 4
+  MAX-WIDTH 120
+  COLUMN-LABEL "Descri‡Æo"
+  ORDER 30
+
+ADD FIELD "frequencia" OF "meta" AS integer 
+  FORMAT ">9"
+  INITIAL "0"
+  LABEL "Frequˆncia"
+  POSITION 5
+  MAX-WIDTH 4
+  COLUMN-LABEL "Freq"
+  ORDER 40
+
+ADD FIELD "val-meta" OF "meta" AS decimal 
+  FORMAT "->>>,>>>,>>9.9999"
+  INITIAL "0"
+  LABEL "Valor"
+  POSITION 6
+  MAX-WIDTH 432
+  COLUMN-LABEL "Valor"
+  EXTENT 12
+  DECIMALS 2
+  ORDER 50
+
+ADD FIELD "formula" OF "meta" AS character 
+  FORMAT "x(2000)"
+  INITIAL ""
+  LABEL "F¢rmula"
+  POSITION 7
+  MAX-WIDTH 4000
+  COLUMN-LABEL "F¢rmula"
+  ORDER 60
+
+ADD INDEX "cod" ON "meta" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "cd-meta" ASCENDING 
+
 ADD TABLE "moeda"
   AREA "Schema Area"
   LABEL "Moeda"
@@ -2057,7 +2897,7 @@ ADD FIELD "cd-sequencia" OF "mov-conta" AS integer
   ORDER 120
 
 ADD FIELD "nr-mov" OF "mov-conta" AS character 
-  FORMAT "X(12)"
+  FORMAT "X(25)"
   INITIAL ""
   LABEL "N£mero"
   POSITION 15
@@ -2163,6 +3003,24 @@ ADD FIELD "sequencia" OF "mov-conta" AS integer
   MAX-WIDTH 4
   COLUMN-LABEL "Seq"
   ORDER 230
+
+ADD FIELD "nr-pedido" OF "mov-conta" AS integer 
+  FORMAT ">>>>,>>9"
+  INITIAL "0"
+  LABEL "Pedido"
+  POSITION 27
+  MAX-WIDTH 4
+  COLUMN-LABEL "Pedido"
+  ORDER 250
+
+ADD FIELD "seq-visita" OF "mov-conta" AS integer 
+  FORMAT ">>>>>>9"
+  INITIAL "0"
+  LABEL "Seq Visita"
+  POSITION 28
+  MAX-WIDTH 4
+  COLUMN-LABEL "Seq Visita"
+  ORDER 260
 
 ADD INDEX "codigo" ON "mov-conta" 
   AREA "Schema Area"
@@ -2304,8 +3162,8 @@ ADD TABLE "nota-fiscal"
   AREA "Schema Area"
   LABEL "Nota Fiscal"
   DUMP-NAME "mn043"
-  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn043.p" CRC "5803" 
-  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn043.p" CRC "4190" 
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn043.p" CRC "?" 
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn043.p" CRC "?" 
 
 ADD FIELD "nr-controle" OF "nota-fiscal" AS integer 
   FORMAT ">>>>>>9"
@@ -2448,8 +3306,8 @@ ADD TABLE "nota-fiscal-imp"
   AREA "Schema Area"
   LABEL "Imposto da Nota Fiscal"
   DUMP-NAME "mn047"
-  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn047.p" CRC "4360" 
-  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn047.p" CRC "28331" 
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn047.p" CRC "?" 
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn047.p" CRC "?" 
 
 ADD FIELD "nr-controle" OF "nota-fiscal-imp" AS integer 
   FORMAT ">>>>>>9"
@@ -2522,12 +3380,17 @@ ADD INDEX "codigo" ON "nota-fiscal-imp"
   INDEX-FIELD "nr-controle" ASCENDING 
   INDEX-FIELD "cod-imposto" ASCENDING 
 
+ADD INDEX "imposto" ON "nota-fiscal-imp" 
+  AREA "Schema Area"
+  INDEX-FIELD "cod-imposto" ASCENDING 
+  INDEX-FIELD "situacao" ASCENDING 
+
 ADD TABLE "nota-fiscal-item"
   AREA "Schema Area"
   LABEL "Item da Nota Fiscal"
   DUMP-NAME "mn044"
-  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn044.p" CRC "4817" 
-  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn044.p" CRC "56297" 
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn044.p" CRC "?" 
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn044.p" CRC "?" 
 
 ADD FIELD "nr-controle" OF "nota-fiscal-item" AS integer 
   FORMAT ">>>>>>9"
@@ -2641,6 +3504,91 @@ ADD INDEX "codigo" ON "orcamento"
   UNIQUE
   PRIMARY
   INDEX-FIELD "cd-orcamento" ASCENDING 
+
+ADD TABLE "ordem-serv"
+  AREA "Schema Area"
+  LABEL "Ordem de Servi‡o"
+  DUMP-NAME "mn057"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn057.p" CRC "35246" 
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn057.p" CRC "12348" 
+
+ADD FIELD "num-os" OF "ordem-serv" AS integer 
+  FORMAT "999999"
+  INITIAL "0"
+  LABEL "N£mero OS"
+  POSITION 2
+  MAX-WIDTH 4
+  COLUMN-LABEL "Num OS"
+  ORDER 10
+
+ADD FIELD "dt-os" OF "ordem-serv" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data OS"
+  POSITION 3
+  MAX-WIDTH 4
+  COLUMN-LABEL "Data"
+  ORDER 20
+
+ADD FIELD "cd-favorecido" OF "ordem-serv" AS integer 
+  FORMAT "9999"
+  INITIAL "0"
+  LABEL "Favorecido"
+  POSITION 4
+  MAX-WIDTH 4
+  COLUMN-LABEL "Fav"
+  ORDER 30
+
+ADD FIELD "ds-os" OF "ordem-serv" AS character 
+  FORMAT "x(40)"
+  INITIAL ""
+  LABEL "Descri‡Æo"
+  POSITION 5
+  MAX-WIDTH 80
+  COLUMN-LABEL "Descri‡Æo"
+  ORDER 40
+
+ADD FIELD "obs-os" OF "ordem-serv" AS character 
+  FORMAT "x(2000)"
+  INITIAL ""
+  LABEL "Observa‡Æo"
+  POSITION 6
+  MAX-WIDTH 4000
+  COLUMN-LABEL "Observa‡Æo"
+  ORDER 50
+
+ADD FIELD "nr-pedido" OF "ordem-serv" AS integer 
+  FORMAT ">>>>,>>9"
+  INITIAL "0"
+  LABEL "Pedido"
+  POSITION 7
+  MAX-WIDTH 4
+  COLUMN-LABEL "Pedido"
+  ORDER 60
+
+ADD FIELD "situacao" OF "ordem-serv" AS integer 
+  FORMAT "9"
+  INITIAL "1"
+  LABEL "Situa‡Æo"
+  POSITION 8
+  MAX-WIDTH 4
+  COLUMN-LABEL "Sit"
+  ORDER 70
+
+ADD FIELD "nome" OF "ordem-serv" AS character 
+  FORMAT "X(8)"
+  INITIAL ""
+  LABEL "Criador"
+  POSITION 9
+  MAX-WIDTH 16
+  COLUMN-LABEL "Criador"
+  ORDER 80
+
+ADD INDEX "idx-pri" ON "ordem-serv" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "num-os" ASCENDING 
 
 ADD TABLE "param-mn"
   AREA "Schema Area"
@@ -2846,12 +3794,67 @@ ADD FIELD "conta-nf" OF "param-mn" AS integer
   COLUMN-LABEL "Conta NF"
   ORDER 220
 
+ADD FIELD "cidade" OF "param-mn" AS character 
+  FORMAT "X(30)"
+  INITIAL ""
+  LABEL "Cidade"
+  POSITION 24
+  MAX-WIDTH 60
+  COLUMN-LABEL "Cidade"
+  ORDER 230
+
+ADD FIELD "perc-impto-padrao" OF "param-mn" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "% Imposto PadrÆo"
+  POSITION 25
+  MAX-WIDTH 17
+  COLUMN-LABEL "% Imp Pad"
+  DECIMALS 2
+  ORDER 240
+
+ADD FIELD "conta-desp-viag" OF "param-mn" AS integer 
+  FORMAT "999"
+  INITIAL "0"
+  LABEL "Conta Despesas de Viagem"
+  POSITION 26
+  MAX-WIDTH 4
+  COLUMN-LABEL "ContaDespViag"
+  ORDER 250
+
+ADD FIELD "fav-desp-viag" OF "param-mn" AS integer 
+  FORMAT "9999"
+  INITIAL "0"
+  LABEL "Favorecido Desp Viagem"
+  POSITION 27
+  MAX-WIDTH 4
+  COLUMN-LABEL "FavDespViag"
+  ORDER 260
+
+ADD FIELD "imp-etiq" OF "param-mn" AS character 
+  FORMAT "x(200)"
+  INITIAL ""
+  LABEL "Impr. Etiqueta"
+  POSITION 28
+  MAX-WIDTH 400
+  COLUMN-LABEL "Impressora Etiqueta"
+  ORDER 270
+
+ADD FIELD "conta-desp-nreemb" OF "param-mn" AS integer 
+  FORMAT "999"
+  INITIAL "0"
+  LABEL "Conta Desp. N Reemb."
+  POSITION 29
+  MAX-WIDTH 4
+  COLUMN-LABEL "Conta DNR"
+  ORDER 280
+
 ADD TABLE "parc-nota-fiscal"
   AREA "Schema Area"
   LABEL "Parcela da Nota Fiscal"
   DUMP-NAME "mn045"
-  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn045.p" CRC "8595" 
-  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn045.p" CRC "56566" 
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn045.p" CRC "?" 
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn045.p" CRC "?" 
 
 ADD FIELD "nr-controle" OF "parc-nota-fiscal" AS integer 
   FORMAT ">>>>>>9"
@@ -2917,6 +3920,15 @@ ADD FIELD "cd-sequencia" OF "parc-nota-fiscal" AS integer
   COLUMN-LABEL "Seq"
   ORDER 70
 
+ADD FIELD "dt-pagto-parc" OF "parc-nota-fiscal" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Prev Pagto"
+  POSITION 9
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt Prev"
+  ORDER 80
+
 ADD INDEX "codigo" ON "parc-nota-fiscal" 
   AREA "Schema Area"
   UNIQUE
@@ -2924,12 +3936,102 @@ ADD INDEX "codigo" ON "parc-nota-fiscal"
   INDEX-FIELD "nr-controle" ASCENDING 
   INDEX-FIELD "sequencia" ASCENDING 
 
+ADD INDEX "sit-pag" ON "parc-nota-fiscal" 
+  AREA "Schema Area"
+  INDEX-FIELD "situacao" ASCENDING 
+  INDEX-FIELD "dt-pagto-parc" ASCENDING 
+
+ADD TABLE "ped-exec"
+  AREA "Schema Area"
+  LABEL "Pedido de Execu‡Æo"
+  DUMP-NAME "mn058"
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn058.p" CRC "9306" 
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn058.p" CRC "27616" 
+
+ADD FIELD "sequencia" OF "ped-exec" AS integer 
+  FORMAT ">>>>>>9"
+  INITIAL "0"
+  LABEL "Sequˆncia"
+  POSITION 2
+  MAX-WIDTH 4
+  COLUMN-LABEL "Seq"
+  ORDER 10
+
+ADD FIELD "ds-pedido-exec" OF "ped-exec" AS character 
+  FORMAT "x(40)"
+  INITIAL ""
+  LABEL "Descri‡Æo"
+  POSITION 3
+  MAX-WIDTH 80
+  COLUMN-LABEL "Descri‡Æo"
+  ORDER 20
+
+ADD FIELD "ds-caminho" OF "ped-exec" AS character 
+  FORMAT "x(200)"
+  INITIAL ""
+  LABEL "Caminho Arquivo"
+  POSITION 4
+  MAX-WIDTH 400
+  COLUMN-LABEL "Caminho Arquivo"
+  ORDER 30
+
+ADD FIELD "tipo-periodo" OF "ped-exec" AS integer 
+  FORMAT "9"
+  INITIAL "0"
+  LABEL "Tipo Per¡odo"
+  POSITION 5
+  MAX-WIDTH 4
+  COLUMN-LABEL "Tipo"
+  ORDER 40
+
+ADD FIELD "num-periodo" OF "ped-exec" AS integer 
+  FORMAT ">>9"
+  INITIAL "0"
+  LABEL "N£mero Per¡odo"
+  POSITION 6
+  MAX-WIDTH 4
+  COLUMN-LABEL "Num"
+  ORDER 50
+
+ADD FIELD "dt-pedido-exec" OF "ped-exec" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data éltima Execu‡Æo"
+  POSITION 7
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt Ult Exec"
+  ORDER 60
+
+ADD FIELD "hr-pedido-exec" OF "ped-exec" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Hora éltima Execu‡Æo"
+  POSITION 8
+  MAX-WIDTH 16
+  COLUMN-LABEL "Hr Ult Exec"
+  ORDER 70
+
+ADD FIELD "nome" OF "ped-exec" AS character 
+  FORMAT "X(8)"
+  INITIAL ""
+  LABEL "Nome"
+  POSITION 9
+  MAX-WIDTH 16
+  COLUMN-LABEL "Nome"
+  ORDER 80
+
+ADD INDEX "seq" ON "ped-exec" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "sequencia" ASCENDING 
+
 ADD TABLE "pedido"
   AREA "Schema Area"
   LABEL "Pedido"
   DUMP-NAME "mn039"
-  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn039.p" CRC "28588" 
-  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn039.p" CRC "14614" 
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn039.p" CRC "?" 
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn039.p" CRC "?" 
 
 ADD FIELD "nr-pedido" OF "pedido" AS integer 
   FORMAT ">>>>,>>9"
@@ -3085,18 +4187,187 @@ ADD FIELD "nr-controle" OF "pedido" AS integer
   COLUMN-LABEL "Controle"
   ORDER 170
 
+ADD FIELD "pc-impto" OF "pedido" AS decimal 
+  FORMAT "->>9.9999"
+  INITIAL "0"
+  LABEL "% Imposto"
+  POSITION 19
+  MAX-WIDTH 17
+  COLUMN-LABEL "% Imp"
+  DECIMALS 2
+  ORDER 180
+
+ADD FIELD "val-itens" OF "pedido" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Valor Itens"
+  POSITION 20
+  MAX-WIDTH 17
+  COLUMN-LABEL "Vl Itens"
+  DECIMALS 2
+  ORDER 190
+
+ADD FIELD "val-desconto" OF "pedido" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Valor Desconto"
+  POSITION 21
+  MAX-WIDTH 17
+  COLUMN-LABEL "Vl Desc"
+  DECIMALS 2
+  ORDER 200
+
+ADD FIELD "val-impostos" OF "pedido" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Impostos"
+  POSITION 22
+  MAX-WIDTH 17
+  COLUMN-LABEL "Vl Imp"
+  DECIMALS 2
+  ORDER 210
+
+ADD FIELD "nom-projeto" OF "pedido" AS character 
+  FORMAT "x(80)"
+  INITIAL ""
+  LABEL "Nome Projeto"
+  POSITION 23
+  MAX-WIDTH 160
+  COLUMN-LABEL "Projeto"
+  ORDER 220
+
+ADD FIELD "nr-pedido-ant" OF "pedido" AS integer 
+  DESCRIPTION "Numero do pedido da antecipa‡Æo."
+  FORMAT ">>>>,>>9"
+  INITIAL "0"
+  LABEL "Pedido Ant"
+  POSITION 24
+  MAX-WIDTH 4
+  COLUMN-LABEL "Pedido Ant"
+  ORDER 230
+
+ADD FIELD "dt-previsao-fat" OF "pedido" AS date 
+  DESCRIPTION "Data de previsÆo de faturamento"
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data PrevisÆo Fat"
+  POSITION 26
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt Prev Fat"
+  ORDER 240
+
+ADD FIELD "responsavel" OF "pedido" AS character 
+  FORMAT "X(8)"
+  INITIAL ""
+  LABEL "Respons vel"
+  POSITION 27
+  MAX-WIDTH 16
+  COLUMN-LABEL "Resp"
+  ORDER 250
+
+ADD FIELD "dt-lib-homolog" OF "pedido" AS date 
+  DESCRIPTION "Data de previsÆo de faturamento"
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Lib Homologa‡Æo"
+  POSITION 28
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt Lib Hom"
+  ORDER 260
+
+ADD FIELD "dt-encerramento" OF "pedido" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Encerramento"
+  POSITION 29
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt Encerr"
+  ORDER 270
+
+ADD FIELD "dias-garantia" OF "pedido" AS integer 
+  FORMAT ">>9"
+  INITIAL "30"
+  LABEL "Dias Garantia"
+  POSITION 30
+  MAX-WIDTH 4
+  COLUMN-LABEL "Gar"
+  ORDER 280
+
+ADD FIELD "dt-aprovacao" OF "pedido" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Aprova‡Æo"
+  POSITION 31
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt. Aprov"
+  ORDER 290
+
+ADD FIELD "nps" OF "pedido" AS integer 
+  FORMAT ">9"
+  INITIAL "0"
+  LABEL "NPS"
+  POSITION 32
+  MAX-WIDTH 4
+  COLUMN-LABEL "NPS"
+  ORDER 300
+
+ADD FIELD "ds-obs-cli" OF "pedido" AS character 
+  FORMAT "x(2000)"
+  INITIAL ""
+  LABEL "Observa‡äes Cliente"
+  POSITION 33
+  MAX-WIDTH 4000
+  COLUMN-LABEL "Observa‡äes Cliente"
+  ORDER 310
+
+ADD FIELD "prob-fec" OF "pedido" AS integer 
+  FORMAT "9"
+  INITIAL "1"
+  LABEL "Prob Fechamento"
+  POSITION 34
+  MAX-WIDTH 4
+  COLUMN-LABEL "Prob"
+  ORDER 320
+
+ADD FIELD "usuar-indicacao" OF "pedido" AS character 
+  FORMAT "x(8)"
+  INITIAL ""
+  LABEL "Indica‡Æo"
+  POSITION 35
+  MAX-WIDTH 16
+  COLUMN-LABEL "Indica‡Æo"
+  ORDER 340
+
+ADD FIELD "dt-validade" OF "pedido" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Validade"
+  POSITION 36
+  MAX-WIDTH 4
+  COLUMN-LABEL "Validade"
+  ORDER 330
+
 ADD INDEX "codigo" ON "pedido" 
   AREA "Schema Area"
   UNIQUE
   PRIMARY
   INDEX-FIELD "nr-pedido" ASCENDING 
 
+ADD INDEX "ped-ant" ON "pedido" 
+  AREA "Schema Area"
+  INDEX-FIELD "nr-pedido-ant" ASCENDING 
+
+ADD INDEX "prev-fat" ON "pedido" 
+  AREA "Schema Area"
+  INDEX-FIELD "dt-previsao-fat" ASCENDING 
+  INDEX-FIELD "situacao" ASCENDING 
+
 ADD TABLE "pedido-item"
   AREA "Schema Area"
   LABEL "Item do Pedido"
   DUMP-NAME "mn040"
-  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn040.p" CRC "62594" 
-  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn040.p" CRC "29070" 
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn040.p" CRC "?" 
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn040.p" CRC "?" 
 
 ADD FIELD "nr-pedido" OF "pedido-item" AS integer 
   FORMAT ">>>>,>>9"
@@ -3203,6 +4474,52 @@ ADD FIELD "val-total" OF "pedido-item" AS decimal
   DECIMALS 2
   ORDER 140
 
+ADD FIELD "qt-liberada" OF "pedido-item" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Qtde Liberada"
+  POSITION 13
+  MAX-WIDTH 17
+  COLUMN-LABEL "Qt Lib"
+  DECIMALS 2
+  ORDER 150
+
+ADD FIELD "hora-fechada" OF "pedido-item" AS logical 
+  FORMAT "Sim/NÆo"
+  INITIAL "Sim"
+  LABEL "Hora Fechada"
+  POSITION 14
+  MAX-WIDTH 1
+  COLUMN-LABEL "Fec"
+  ORDER 160
+
+ADD FIELD "ds-pedido-item" OF "pedido-item" AS character 
+  FORMAT "x(40)"
+  INITIAL ""
+  LABEL "Descri‡Æo"
+  POSITION 15
+  MAX-WIDTH 80
+  COLUMN-LABEL "Descri‡Æo"
+  ORDER 170
+
+ADD FIELD "ds-observacao" OF "pedido-item" AS character 
+  FORMAT "x(2000)"
+  INITIAL ""
+  LABEL "Observa‡Æo"
+  POSITION 16
+  MAX-WIDTH 4000
+  COLUMN-LABEL "Observa‡Æo"
+  ORDER 180
+
+ADD FIELD "perm-apont-s-tar" OF "pedido-item" AS logical 
+  FORMAT "Sim/NÆo"
+  INITIAL "NÆo"
+  LABEL "Permite Apontar Sem Tarefa"
+  POSITION 17
+  MAX-WIDTH 1
+  COLUMN-LABEL "PermApont?"
+  ORDER 190
+
 ADD INDEX "codigo" ON "pedido-item" 
   AREA "Schema Area"
   UNIQUE
@@ -3214,8 +4531,8 @@ ADD TABLE "pedido-item-anexo"
   AREA "Schema Area"
   LABEL "Anexo do Item do Pedido"
   DUMP-NAME "mn041"
-  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn041.p" CRC "17280" 
-  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn041.p" CRC "61594" 
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn041.p" CRC "?" 
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn041.p" CRC "?" 
 
 ADD FIELD "nr-pedido" OF "pedido-item-anexo" AS integer 
   FORMAT ">>>>,>>9"
@@ -3278,6 +4595,46 @@ ADD INDEX "codigo" ON "pedido-item-anexo"
   INDEX-FIELD "nr-pedido" ASCENDING 
   INDEX-FIELD "sequencia" ASCENDING 
   INDEX-FIELD "nr-anexo" ASCENDING 
+
+ADD TABLE "pedido-item-usu"
+  AREA "Schema Area"
+  LABEL "Item Pedido x Usu rio"
+  DUMP-NAME "mn049"
+
+ADD FIELD "nr-pedido" OF "pedido-item-usu" AS integer 
+  FORMAT ">>>>,>>9"
+  INITIAL "0"
+  LABEL "Pedido"
+  POSITION 2
+  MAX-WIDTH 4
+  COLUMN-LABEL "Pedido"
+  ORDER 10
+
+ADD FIELD "sequencia" OF "pedido-item-usu" AS integer 
+  FORMAT ">>>9"
+  INITIAL "0"
+  LABEL "Sequˆncia"
+  POSITION 3
+  MAX-WIDTH 4
+  COLUMN-LABEL "Seq"
+  ORDER 20
+
+ADD FIELD "nome" OF "pedido-item-usu" AS character 
+  FORMAT "X(8)"
+  INITIAL ""
+  LABEL "Usu rio"
+  POSITION 4
+  MAX-WIDTH 16
+  COLUMN-LABEL "Usu rio"
+  ORDER 30
+
+ADD INDEX "codigo" ON "pedido-item-usu" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "nr-pedido" ASCENDING 
+  INDEX-FIELD "sequencia" ASCENDING 
+  INDEX-FIELD "nome" ASCENDING 
 
 ADD TABLE "poup-conta"
   AREA "Schema Area"
@@ -3602,8 +4959,8 @@ ADD TABLE "reembolso"
   AREA "Schema Area"
   LABEL "Reembolsos"
   DUMP-NAME "mn036"
-  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn036.p" CRC "905" 
-  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn036.p" CRC "43390" 
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn036.p" CRC "?" 
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn036.p" CRC "?" 
 
 ADD FIELD "cd-conta-de" OF "reembolso" AS integer 
   FORMAT "999"
@@ -3728,6 +5085,15 @@ ADD FIELD "inflacao" OF "sub-cat" AS logical
   MAX-WIDTH 1
   COLUMN-LABEL "Infla‡Æo"
   ORDER 80
+
+ADD FIELD "obriga-num" OF "sub-cat" AS logical 
+  FORMAT "Sim/NÆo"
+  INITIAL "NÆo"
+  LABEL "N£mero Obrigat¢rio no Movimento"
+  POSITION 10
+  MAX-WIDTH 1
+  COLUMN-LABEL "N£mero Obrigat¢rio no Movimento"
+  ORDER 90
 
 ADD INDEX "codigo" ON "sub-cat" 
   AREA "Schema Area"
@@ -3896,8 +5262,8 @@ ADD TABLE "tabela-preco"
   AREA "Schema Area"
   LABEL "Tabela de Pre‡o"
   DUMP-NAME "mn037"
-  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn037.p" CRC "34001" 
-  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn037.p" CRC "48772" 
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn037.p" CRC "?" 
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn037.p" CRC "?" 
 
 ADD FIELD "cd-tabela-preco" OF "tabela-preco" AS integer 
   FORMAT "999"
@@ -3960,8 +5326,8 @@ ADD TABLE "tabela-preco-item"
   AREA "Schema Area"
   LABEL "Item da Tabela de Pre‡o"
   DUMP-NAME "mn038"
-  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn038.p" CRC "7982" 
-  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn038.p" CRC "19554" 
+  TABLE-TRIGGER "DELETE" NO-OVERRIDE PROCEDURE "database\trg\d\mn038.p" CRC "?" 
+  TABLE-TRIGGER "WRITE" NO-OVERRIDE PROCEDURE "database\trg\w\mn038.p" CRC "?" 
 
 ADD FIELD "cd-tabela-preco" OF "tabela-preco-item" AS integer 
   FORMAT "999"
@@ -3997,6 +5363,273 @@ ADD INDEX "codigo" ON "tabela-preco-item"
   PRIMARY
   INDEX-FIELD "cd-tabela-preco" ASCENDING 
   INDEX-FIELD "cd-item" ASCENDING 
+
+ADD TABLE "tarefa"
+  AREA "Schema Area"
+  LABEL "Tarefa"
+  DUMP-NAME "mn056"
+
+ADD FIELD "nome" OF "tarefa" AS character 
+  DESCRIPTION "Nome do usu rio"
+  FORMAT "X(8)"
+  INITIAL ""
+  LABEL "Nome"
+  POSITION 2
+  MAX-WIDTH 16
+  COLUMN-LABEL "Nome"
+  ORDER 10
+
+ADD FIELD "ds-tarefa" OF "tarefa" AS character 
+  DESCRIPTION "Descri‡Æo da tarefa"
+  FORMAT "x(40)"
+  INITIAL ""
+  LABEL "Descri‡Æo"
+  POSITION 3
+  MAX-WIDTH 80
+  COLUMN-LABEL "Descri‡Æo"
+  ORDER 20
+
+ADD FIELD "ds-observacao" OF "tarefa" AS character 
+  FORMAT "x(2000)"
+  INITIAL ""
+  LABEL "Observa‡Æo"
+  POSITION 4
+  MAX-WIDTH 4000
+  COLUMN-LABEL "Observa‡Æo"
+  ORDER 30
+
+ADD FIELD "dt-cri-tarefa" OF "tarefa" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Cria‡Æo"
+  POSITION 5
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt Cri"
+  ORDER 40
+
+ADD FIELD "situacao" OF "tarefa" AS integer 
+  DESCRIPTION "1 - Pendente
+2 - Iniciada
+3 - Conclu¡da
+9 - Suspensa/Cancelada"
+  FORMAT "9"
+  INITIAL "1"
+  LABEL "Situa‡Æo"
+  POSITION 6
+  MAX-WIDTH 4
+  COLUMN-LABEL "Sit"
+  ORDER 50
+
+ADD FIELD "cd-favorecido" OF "tarefa" AS integer 
+  FORMAT "9999"
+  INITIAL "0"
+  LABEL "Favorecido"
+  POSITION 7
+  MAX-WIDTH 4
+  COLUMN-LABEL "Fav"
+  ORDER 60
+
+ADD FIELD "perc-con" OF "tarefa" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "% ConclusÆo"
+  POSITION 8
+  MAX-WIDTH 17
+  COLUMN-LABEL "% Conc"
+  DECIMALS 2
+  ORDER 70
+
+ADD FIELD "dt-alert-tarefa" OF "tarefa" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Alerta"
+  POSITION 9
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt Alerta"
+  ORDER 80
+
+ADD FIELD "sequencia" OF "tarefa" AS integer 
+  FORMAT ">>>>9"
+  INITIAL "0"
+  LABEL "Sequˆncia"
+  POSITION 10
+  MAX-WIDTH 4
+  COLUMN-LABEL "Seq"
+  ORDER 90
+
+ADD FIELD "responsavel" OF "tarefa" AS character 
+  FORMAT "X(8)"
+  INITIAL ""
+  LABEL "Respons vel"
+  POSITION 11
+  MAX-WIDTH 16
+  COLUMN-LABEL "Respons vel"
+  ORDER 100
+
+ADD FIELD "num-os" OF "tarefa" AS integer 
+  FORMAT "999999"
+  INITIAL "0"
+  LABEL "N£mero OS"
+  POSITION 12
+  MAX-WIDTH 4
+  COLUMN-LABEL "Num OS"
+  ORDER 110
+
+ADD FIELD "prioridade" OF "tarefa" AS integer 
+  FORMAT ">>>>>9"
+  INITIAL "0"
+  LABEL "Prioridade"
+  POSITION 13
+  MAX-WIDTH 4
+  COLUMN-LABEL "Pri"
+  ORDER 120
+
+ADD FIELD "data-prev-ini" OF "tarefa" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Prev. In¡cio"
+  POSITION 14
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt Ini"
+  ORDER 130
+
+ADD FIELD "data-prev-fim" OF "tarefa" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Prev. Fim"
+  POSITION 15
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt Fim"
+  ORDER 140
+
+ADD FIELD "qtd-horas" OF "tarefa" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Qtde Horas"
+  POSITION 16
+  MAX-WIDTH 17
+  COLUMN-LABEL "Hrs"
+  DECIMALS 2
+  ORDER 150
+
+ADD FIELD "dt-real-ini" OF "tarefa" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data In¡cio"
+  POSITION 17
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt Ini"
+  ORDER 160
+
+ADD FIELD "dt-real-fim" OF "tarefa" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data T‚rmino"
+  POSITION 18
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt T‚rmino"
+  ORDER 170
+
+ADD FIELD "dt-ini-apos" OF "tarefa" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Iniciar Ap¢s"
+  POSITION 19
+  MAX-WIDTH 4
+  COLUMN-LABEL "Ini Ap¢s"
+  ORDER 180
+
+ADD FIELD "rest-nome" OF "tarefa" AS character 
+  DESCRIPTION "Nome do usu rio"
+  FORMAT "X(8)"
+  INITIAL ""
+  LABEL "Nome Restri‡Æo"
+  POSITION 20
+  MAX-WIDTH 16
+  COLUMN-LABEL "Nome Rest"
+  ORDER 190
+
+ADD FIELD "rest-sequencia" OF "tarefa" AS integer 
+  FORMAT ">>>>9"
+  INITIAL "0"
+  LABEL "Sequˆncia Restri‡Æo"
+  POSITION 21
+  MAX-WIDTH 4
+  COLUMN-LABEL "Seq Rest"
+  ORDER 200
+
+ADD FIELD "qtd-lib" OF "tarefa" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Qtde Hr Lib"
+  POSITION 22
+  MAX-WIDTH 17
+  COLUMN-LABEL "Hrs Lib"
+  DECIMALS 2
+  ORDER 210
+
+ADD FIELD "seq-pedido-item" OF "tarefa" AS integer 
+  FORMAT ">>>9"
+  INITIAL "0"
+  LABEL "Sequˆncia"
+  POSITION 23
+  MAX-WIDTH 4
+  COLUMN-LABEL "Seq"
+  ORDER 220
+
+ADD FIELD "dt-plan-ini" OF "tarefa" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Plan Ini"
+  POSITION 26
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt Pl Ini"
+  ORDER 230
+
+ADD FIELD "dt-plan-fim" OF "tarefa" AS date 
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data Plan Fim"
+  POSITION 27
+  MAX-WIDTH 4
+  COLUMN-LABEL "Dt Pl Fim"
+  ORDER 240
+
+ADD INDEX "seq" ON "tarefa" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "nome" ASCENDING 
+  INDEX-FIELD "sequencia" ASCENDING 
+
+ADD INDEX "data-alert" ON "tarefa" 
+  AREA "Schema Area"
+  INDEX-FIELD "nome" ASCENDING 
+  INDEX-FIELD "dt-alert-tarefa" ASCENDING 
+  INDEX-FIELD "situacao" ASCENDING 
+
+ADD INDEX "fav" ON "tarefa" 
+  AREA "Schema Area"
+  INDEX-FIELD "cd-favorecido" ASCENDING 
+  INDEX-FIELD "dt-alert-tarefa" ASCENDING 
+  INDEX-FIELD "situacao" ASCENDING 
+  INDEX-FIELD "nome" ASCENDING 
+
+ADD INDEX "os" ON "tarefa" 
+  AREA "Schema Area"
+  INDEX-FIELD "num-os" ASCENDING 
+  INDEX-FIELD "data-prev-ini" ASCENDING 
+
+ADD INDEX "os-ped" ON "tarefa" 
+  AREA "Schema Area"
+  INDEX-FIELD "num-os" ASCENDING 
+  INDEX-FIELD "seq-pedido-item" ASCENDING 
+  INDEX-FIELD "data-prev-ini" ASCENDING 
+
+ADD INDEX "prior" ON "tarefa" 
+  AREA "Schema Area"
+  INDEX-FIELD "responsavel" ASCENDING 
+  INDEX-FIELD "prioridade" ASCENDING 
 
 ADD TABLE "usuario"
   AREA "Schema Area"
@@ -4050,6 +5683,44 @@ ADD FIELD "cor-campo" OF "usuario" AS integer
   COLUMN-LABEL "Cor"
   ORDER 50
 
+ADD FIELD "cd-favorecido" OF "usuario" AS integer 
+  FORMAT "9999"
+  INITIAL "0"
+  LABEL "Favorecido"
+  POSITION 7
+  MAX-WIDTH 4
+  COLUMN-LABEL "Fav"
+  ORDER 60
+
+ADD FIELD "hrs-dia" OF "usuario" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Horas Dia"
+  POSITION 8
+  MAX-WIDTH 17
+  COLUMN-LABEL "Hrs"
+  DECIMALS 2
+  ORDER 70
+
+ADD FIELD "performance" OF "usuario" AS decimal 
+  FORMAT ">>9.9999"
+  INITIAL "1"
+  LABEL "Performance"
+  POSITION 9
+  MAX-WIDTH 17
+  COLUMN-LABEL "Perf"
+  DECIMALS 2
+  ORDER 80
+
+ADD FIELD "aponta-sem-tarefa" OF "usuario" AS logical 
+  FORMAT "yes/no"
+  INITIAL "no"
+  LABEL "Aponta Sem Tarefa"
+  POSITION 10
+  MAX-WIDTH 1
+  COLUMN-LABEL "Aponta Sem Tarefa"
+  ORDER 90
+
 ADD INDEX "codigo" ON "usuario" 
   AREA "Schema Area"
   UNIQUE
@@ -4088,8 +5759,174 @@ ADD INDEX "codigo" ON "usuario-prog"
   INDEX-FIELD "nome" ASCENDING 
   INDEX-FIELD "programa" ASCENDING 
 
+ADD TABLE "visita"
+  AREA "Schema Area"
+  LABEL "Visitas Comerciais"
+  DESCRIPTION "Visitas realizadas pelo depto comercial a clientes, prospects e parceiros"
+  DUMP-NAME "mn055"
+
+ADD FIELD "nome" OF "visita" AS character 
+  DESCRIPTION "Nome do usu rio"
+  FORMAT "X(8)"
+  INITIAL ""
+  LABEL "Nome"
+  POSITION 2
+  MAX-WIDTH 16
+  COLUMN-LABEL "Nome"
+  ORDER 10
+
+ADD FIELD "dt-visita" OF "visita" AS date 
+  DESCRIPTION "Data da visita"
+  FORMAT "99/99/9999"
+  INITIAL ?
+  LABEL "Data"
+  POSITION 3
+  MAX-WIDTH 4
+  COLUMN-LABEL "Data"
+  ORDER 20
+
+ADD FIELD "ds-visita" OF "visita" AS character 
+  DESCRIPTION "Descri‡Æo da atividade agendada."
+  FORMAT "x(80)"
+  INITIAL ""
+  LABEL "Descri‡Æo"
+  POSITION 4
+  MAX-WIDTH 400
+  COLUMN-LABEL "Descri‡Æo"
+  ORDER 40
+
+ADD FIELD "cd-favorecido" OF "visita" AS integer 
+  FORMAT "9999"
+  INITIAL "0"
+  LABEL "Favorecido"
+  POSITION 7
+  MAX-WIDTH 4
+  COLUMN-LABEL "Fav"
+  ORDER 70
+
+ADD FIELD "sequencia" OF "visita" AS integer 
+  FORMAT ">>>>>>9"
+  INITIAL "0"
+  LABEL "Sequˆncia"
+  POSITION 8
+  MAX-WIDTH 4
+  COLUMN-LABEL "Seq"
+  ORDER 80
+
+ADD FIELD "hora-inicio" OF "visita" AS character 
+  FORMAT "x(5)"
+  INITIAL ""
+  LABEL "Hora In¡cio"
+  POSITION 9
+  MAX-WIDTH 10
+  COLUMN-LABEL "Hr Ini"
+  ORDER 90
+
+ADD FIELD "hora-fim" OF "visita" AS character 
+  FORMAT "x(5)"
+  INITIAL ""
+  LABEL "Hora Final"
+  POSITION 10
+  MAX-WIDTH 10
+  COLUMN-LABEL "Hr Fim"
+  ORDER 100
+
+ADD FIELD "ds-observacao" OF "visita" AS character 
+  FORMAT "x(2000)"
+  INITIAL ""
+  LABEL "Observa‡Æo"
+  POSITION 11
+  MAX-WIDTH 4000
+  COLUMN-LABEL "Observa‡Æo"
+  ORDER 110
+
+ADD FIELD "situacao" OF "visita" AS integer 
+  FORMAT "9"
+  INITIAL "1"
+  LABEL "Situa‡Æo"
+  POSITION 12
+  MAX-WIDTH 4
+  COLUMN-LABEL "Sit"
+  ORDER 120
+
+ADD FIELD "tipo" OF "visita" AS integer 
+  FORMAT "9"
+  INITIAL "1"
+  LABEL "Tipo"
+  POSITION 13
+  MAX-WIDTH 4
+  COLUMN-LABEL "Tipo"
+  ORDER 130
+
+ADD FIELD "compromisso" OF "visita" AS logical 
+  FORMAT "Sim/NÆo"
+  INITIAL "NÆo"
+  LABEL "Compromisso"
+  POSITION 14
+  MAX-WIDTH 1
+  COLUMN-LABEL "Compr"
+  ORDER 140
+
+ADD FIELD "ocupado" OF "visita" AS logical 
+  FORMAT "Sim/NÆo"
+  INITIAL "Sim"
+  LABEL "Ocupado"
+  POSITION 15
+  MAX-WIDTH 1
+  COLUMN-LABEL "Ocupado"
+  ORDER 150
+
+ADD FIELD "qt-visita" OF "visita" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Qtde Comp"
+  POSITION 16
+  MAX-WIDTH 17
+  COLUMN-LABEL "Qt Comp"
+  DECIMALS 2
+  ORDER 160
+
+ADD FIELD "nr-pedido" OF "visita" AS integer 
+  FORMAT ">>>>,>>9"
+  INITIAL "0"
+  LABEL "Pedido"
+  POSITION 17
+  MAX-WIDTH 4
+  COLUMN-LABEL "Pedido"
+  ORDER 170
+
+ADD FIELD "vl-adiantado" OF "visita" AS decimal 
+  FORMAT "->>,>>9.99"
+  INITIAL "0"
+  LABEL "Valor Adiantado"
+  POSITION 18
+  MAX-WIDTH 17
+  COLUMN-LABEL "Vl. Adiantado"
+  DECIMALS 2
+  ORDER 180
+
+ADD INDEX "seq" ON "visita" 
+  AREA "Schema Area"
+  UNIQUE
+  PRIMARY
+  INDEX-FIELD "sequencia" ASCENDING 
+
+ADD INDEX "fav" ON "visita" 
+  AREA "Schema Area"
+  INDEX-FIELD "cd-favorecido" ASCENDING 
+  INDEX-FIELD "dt-visita" ASCENDING 
+  INDEX-FIELD "hora-inicio" ASCENDING 
+  INDEX-FIELD "sequencia" ASCENDING 
+
+ADD INDEX "usuario" ON "visita" 
+  AREA "Schema Area"
+  INDEX-FIELD "nome" ASCENDING 
+  INDEX-FIELD "dt-visita" ASCENDING 
+  INDEX-FIELD "hora-inicio" ASCENDING 
+  INDEX-FIELD "sequencia" ASCENDING 
+
 .
 PSC
 cpstream=ibm850
 .
-0000086340
+0000125749

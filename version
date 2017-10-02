@@ -1,4 +1,4 @@
-[PRODUTO] 2.1.186 13/03/2017
+[PRODUTO] 2.1.187 02/10/2017
 [FUNÇÃO] ab.p 2.0.000 01/01/2005 %APP Builder
 [FUNÇÃO] abrelote.p 2.0.001 01/03/2006 %Importa arquivo de lote
 [FUNÇÃO] acerta_moeda.p 2.0.001 20/01/2005 %Acerta código de moeda nas movimentações das contas
@@ -22,7 +22,7 @@
 [FUNÇÃO] calcCPMFdata.p 2.0.002 18/07/2014 %Calcula CPMF para uma data qualquer
 [FUNÇÃO] calcImpNF.p 2.1.001 26/10/2011 %Calcula Impostos da Nota Fiscal
 [FUNÇÃO] calc_prioridade.p 2.1.004 31/01/2014 %Calcula Datas Tarefas OS por Prioridade
-[FUNÇÃO] calcRepItem.p 2.0.001 20/01/2005 %Calcula Reposição do Item
+[FUNÇÃO] calcRepItem.p 2.0.002 02/10/2017 %Calcula Reposição do Item
 [PROGRAMA] cat.w 2.0.004 04/08/2015 %Cadastro de Categorias
 [PROGRAMA] caracteristica.w 2.1.002 04/08/2015 %Cadastro de Característica
 [PROGRAMA] compofc.w 2.0.008 29/06/2013 %Importar Arquivo OFC
@@ -79,8 +79,8 @@
 [PROGRAMA] imposto.w 2.1.003 04/08/2015 %Manutenção de Impostos
 [PROGRAMA] ini.w 2.0.002 14/04/2005 %Splash Screen de Inicialização
 [PROGRAMA] install.w 2.0.002 09/04/2007 %Instalação do MH Money 2005
-[PROGRAMA] invent.w 2.0.002 15/10/2007 %Inventário de Itens
-[PROGRAMA] item.w 2.1.003 04/08/2015 %Cadastro de Itens
+[PROGRAMA] invent.w 2.0.003 02/10/2017 %Inventário de Itens
+[PROGRAMA] item.w 2.1.004 02/10/2017 %Cadastro de Itens
 [PROGRAMA] item-compra.w 2.0.011 04/09/2015 %Itens da Compra
 [PROGRAMA] item-compra_det.w 2.0.003 23/03/2015 %Detalhe do Item da Compra
 [PROGRAMA] item-nota.w 2.1.001 29/06/2013 %Itens da Nota Fiscal
