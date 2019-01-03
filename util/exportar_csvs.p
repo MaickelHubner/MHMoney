@@ -8,6 +8,9 @@ DEFINE VARIABLE lMovimentos    AS LOGICAL VIEW-AS TOGGLE-BOX LABEL "Movimentos".
 DEFINE VARIABLE lFeriados      AS LOGICAL VIEW-AS TOGGLE-BOX LABEL "Feriados".
 DEFINE VARIABLE lLembretes     AS LOGICAL VIEW-AS TOGGLE-BOX LABEL "Lembretes".
 DEFINE VARIABLE lMovtoLemb     AS LOGICAL VIEW-AS TOGGLE-BOX LABEL "Movimentos do Lembrete".
+DEFINE VARIABLE lEconomias     AS LOGICAL VIEW-AS TOGGLE-BOX LABEL "Economias".
+DEFINE VARIABLE lPlanEcon      AS LOGICAL VIEW-AS TOGGLE-BOX LABEL "Planejamento Anual de Economias".
+DEFINE VARIABLE lOrcamentos    AS LOGICAL VIEW-AS TOGGLE-BOX LABEL "Oráamentos".
 
 UPDATE lFavorecidos
        lFeriados
@@ -23,6 +26,11 @@ UPDATE lFavorecidos
        "-------------------------------"
        lLembretes
        lMovtoLemb
+       "-------------------------------"
+       lEconomias
+       lPlanEcon
+       "-------------------------------"
+       lOrcamentos
     WITH 1 COLUMN.
 
 DEFINE VARIABLE iConta LIKE conta.cd-conta COLUMN-LABEL "Conta" NO-UNDO.
@@ -30,6 +38,9 @@ DEFINE VARIABLE iMoeda LIKE moeda.cd-moeda COLUMN-LABEL "Moeda" NO-UNDO.
 DEFINE VARIABLE dtIni AS DATE COLUMN-LABEL "Data In°cio" FORMAT "99/99/9999" NO-UNDO.
 DEFINE VARIABLE dtFim AS DATE COLUMN-LABEL "Data Fim" FORMAT "99/99/9999" NO-UNDO.
 DEFINE VARIABLE cValor AS CHARACTER   NO-UNDO.
+DEFINE VARIABLE dtAux AS DATE    NO-UNDO.
+DEFINE VARIABLE iMes AS INTEGER     NO-UNDO.
+DEFINE VARIABLE lTodos AS LOGICAL COLUMN-LABEL "Todos os lembretes?" FORMAT "Sim/N∆o" NO-UNDO.
 
 DEFINE BUFFER bf-conta FOR conta.
 DEFINE BUFFER bf-mov-conta FOR mov-conta.
@@ -39,7 +50,7 @@ DEFINE STREAM str-mov.
 
 /* CSV de Moedas */
 IF lMoedas THEN DO:
-    OUTPUT TO "\\vmware-host\Shared Folders\Macintosh HD\Users\hubner\Downloads\moedas.csv" CONVERT TARGET "UTF-8".
+    OUTPUT TO "\\vmware-host\Shared Folders\hubner\Downloads\moedas.csv" CONVERT TARGET "UTF-8".
     PUT UNFORMATTED "nome;sigla" SKIP.
     FOR EACH moeda:
         PUT UNFORMATTED moeda.ds-moeda ";" 
@@ -265,7 +276,7 @@ FUNCTION fnDeParaFavorecido RETURNS CHARACTER
 
 END FUNCTION.
 IF lFavorecidos THEN DO:
-    OUTPUT TO "\\vmware-host\Shared Folders\Macintosh HD\Users\hubner\Downloads\favorecidos.csv" CONVERT TARGET "UTF-8".
+    OUTPUT TO "\\vmware-host\Shared Folders\hubner\Downloads\favorecidos.csv" CONVERT TARGET "UTF-8".
     PUT UNFORMATTED "nome" SKIP.
     FOR EACH favorecido
         WHERE CAN-FIND(FIRST mov-conta OF favorecido):
@@ -296,15 +307,19 @@ IF lCotacoes THEN DO:
         UPDATE dtIni dtFim
             WITH FRAME f-moeda.
 
-        OUTPUT TO "\\vmware-host\Shared Folders\Macintosh HD\Users\hubner\Downloads\cotacoes.csv" CONVERT TARGET "UTF-8".
+        OUTPUT TO "\\vmware-host\Shared Folders\hubner\Downloads\cotacoes.csv" CONVERT TARGET "UTF-8".
         PUT UNFORMATTED "moeda;data_inicio;data_fim;valor" SKIP.
         FOR EACH moeda
             WHERE (IF iMoeda = 0 THEN TRUE ELSE moeda.cd-moeda = iMoeda):
             FOR EACH cotacao OF moeda
                 WHERE (cotacao.dt-ini >= (dtIni - 1) AND cotacao.dt-ini <= (dtFim + 1))
                 OR    (cotacao.dt-end >= (dtIni - 1) AND cotacao.dt-end <= (dtFim + 1)):
+                IF YEAR(cotacao.dt-ini) > 1899 THEN
+                    ASSIGN dtAux = cotacao.dt-ini.
+                ELSE
+                    ASSIGN dtAux = DATE(1, 1, 1900).
                 PUT UNFORMATTED moeda.ds-moeda ";" 
-                                STRING(cotacao.dt-ini, "99/99/9999") ";" 
+                                STRING(dtAux, "99/99/9999") ";" 
                                 STRING(cotacao.dt-end, "99/99/9999") ";"
                                 TRIM(REPLACE(STRING(cotacao.valor, "->>>>>>>>9.999999"), ",", ".")) SKIP.
             END.
@@ -316,7 +331,7 @@ END.
 
 /* CSV de Contas */
 IF lContas THEN DO:
-    OUTPUT TO "\\vmware-host\Shared Folders\Macintosh HD\Users\hubner\Downloads\contas.csv" CONVERT TARGET "UTF-8".
+    OUTPUT TO "\\vmware-host\Shared Folders\hubner\Downloads\contas.csv" CONVERT TARGET "UTF-8".
     PUT UNFORMATTED "descricao;moeda;tipo;saldo_ini;saldo;data_saldo;limite;encerrada;data_encerramento;dias_fatura;favorecido;perc_imposto;conta_pagamento" SKIP.
     FOR EACH conta,
         FIRST moeda OF conta:
@@ -399,7 +414,7 @@ FUNCTION fnDeParaCategoria RETURNS CHARACTER
 
 END FUNCTION.
 IF lCategorias THEN DO:
-    OUTPUT TO "\\vmware-host\Shared Folders\Macintosh HD\Users\hubner\Downloads\categorias.csv" CONVERT TARGET "UTF-8".
+    OUTPUT TO "\\vmware-host\Shared Folders\hubner\Downloads\categorias.csv" CONVERT TARGET "UTF-8".
     PUT UNFORMATTED "descricao;tipo" SKIP.
     FOR EACH categoria:
         PUT UNFORMATTED fnDeParaCategoria(categoria.ds-categoria) ";".
@@ -545,7 +560,7 @@ FUNCTION fnDeParaSubCategoria RETURNS CHARACTER
         WHEN "Aluguel de Trajes" THEN ASSIGN cSub = "Aluguel".
         WHEN "Roupas de Inverno" THEN ASSIGN cSub = "Roupas".
         WHEN "Roupas de Ver∆o" THEN ASSIGN cSub = "Roupas".
-        WHEN "Artigos & Utilit†rios" THEN ASSIGN cSub = "Meias, Lenáos e Cintos".
+        WHEN "Artigos & Utilit†rios" THEN ASSIGN cSub = "Meias, Lenáos, Cintos e Acess¢rios".
         WHEN "Empregadas & Diaristas" THEN ASSIGN cSub = "Empregadas ou Diaristas".
         WHEN "Telefone / Internet M¢vel" THEN ASSIGN cSub = "Telefone e Internet M¢vel".
         WHEN "Reformas em Geral" THEN ASSIGN cSub = "Reforma".
@@ -602,7 +617,7 @@ FUNCTION fnDeParaSubCategoria RETURNS CHARACTER
 
 END FUNCTION.
 IF lSubcategorias THEN DO:
-    OUTPUT TO "\\vmware-host\Shared Folders\Macintosh HD\Users\hubner\Downloads\subcategorias.csv" CONVERT TARGET "UTF-8".
+    OUTPUT TO "\\vmware-host\Shared Folders\hubner\Downloads\subcategorias.csv" CONVERT TARGET "UTF-8".
     PUT UNFORMATTED "categoria;descricao;tipo" SKIP.
     FOR EACH sub-cat,
         FIRST categoria OF sub-cat:
@@ -795,7 +810,7 @@ IF lMovimentos THEN DO:
         UPDATE dtIni dtFim
             WITH FRAME f-conta.
 
-        OUTPUT STREAM str-mov TO "\\vmware-host\Shared Folders\Macintosh HD\Users\hubner\Downloads\movimentos.csv" CONVERT TARGET "UTF-8".
+        OUTPUT STREAM str-mov TO VALUE("\\vmware-host\Shared Folders\hubner\Downloads\movimentos" + (IF iConta <> 0 THEN STRING(iConta) ELSE "") + ".csv") CONVERT TARGET "UTF-8".
         PUT STREAM str-mov UNFORMATTED "conta;identific;favorecido;data;valor;tipo;categoria;subcategoria;situacao;numero;responsavel;data_compensacao;conta_transf;valor_transf;agrupado;lembrete;observacao" SKIP.
         FOR EACH mov-conta
             WHERE mov-conta.dt-mov >= dtIni
@@ -836,7 +851,7 @@ IF lFeriados THEN DO:
     UPDATE dtIni dtFim
         WITH FRAME f-feriado.
 
-    OUTPUT TO "\\vmware-host\Shared Folders\Macintosh HD\Users\hubner\Downloads\feriados.csv" CONVERT TARGET "UTF-8".
+    OUTPUT TO "\\vmware-host\Shared Folders\hubner\Downloads\feriados.csv" CONVERT TARGET "UTF-8".
     PUT UNFORMATTED "data;nome" SKIP.
     FOR EACH feriado
         WHERE feriado.dt-feriado >= dtIni
@@ -851,17 +866,25 @@ END.
 /* CSV de Lembretes */
 IF lLembretes THEN DO:
 
-    OUTPUT TO "\\vmware-host\Shared Folders\Macintosh HD\Users\hubner\Downloads\lembretes.csv" CONVERT TARGET "UTF-8".
+    UPDATE lTodos
+        WITH FRAME f-lembretes.
+
+    OUTPUT TO "\\vmware-host\Shared Folders\hubner\Downloads\lembretes.csv" CONVERT TARGET "UTF-8".
     PUT UNFORMATTED "identific;favorecido;conta;tipo;responsavel;categoria;subcategoria;conta_transf;data_inicio;data_fim;data_ultimo_pagto;data_proximo_pagto;agrupado;valor_atualizado;dia_nao_util;adiciona_dias_uteis;meses;ocorre;quando;semanas;dia_semana;valores" SKIP.
 
     IF lMovtoLemb THEN DO:
-        OUTPUT STREAM str-mov TO "\\vmware-host\Shared Folders\Macintosh HD\Users\hubner\Downloads\mov-lembretes.csv" CONVERT TARGET "UTF-8".
+        OUTPUT STREAM str-mov TO "\\vmware-host\Shared Folders\hubner\Downloads\mov-lembretes.csv" CONVERT TARGET "UTF-8".
         PUT STREAM str-mov UNFORMATTED "conta;identific;favorecido;data;valor;tipo;categoria;subcategoria;situacao;numero;responsavel;data_compensacao;conta_transf;valor_transf;agrupado;lembrete;observacao" SKIP.
     END.
 
     FOR EACH agenda,
         FIRST favorecido OF agenda,
         FIRST conta OF agenda:
+
+        IF NOT lTodos THEN DO:
+            IF agenda.prox-data-pag < TODAY THEN NEXT.
+            IF agenda.prox-data-pag > agenda.dt-fim THEN NEXT.
+        END.
 
         FIND FIRST categoria OF agenda NO-ERROR.
         FIND FIRST sub-cat OF agenda NO-ERROR.
@@ -1036,8 +1059,115 @@ IF lLembretes THEN DO:
 
 END.
 
+/* CSV de Poupanáas */
+IF lEconomias THEN DO:
+    OUTPUT TO "\\vmware-host\Shared Folders\hubner\Downloads\economias.csv" CONVERT TARGET "UTF-8".
+    PUT UNFORMATTED "descricao;favorecido;contas" SKIP.
+    FOR EACH poupanca,
+        FIRST favorecido
+            WHERE favorecido.cd-favorecido = poupanca.cd-fav-padrao:
+        PUT UNFORMATTED poupanca.ds-poupanca ";" 
+                        fnDeParaFavorecido(favorecido.ds-favorecido) ";".
+        FOR EACH poup-conta
+            WHERE poup-conta.cd-poupanca = poupanca.cd-poupanca,
+            FIRST conta OF poup-conta:
+            IF conta.cd-conta = poupanca.cd-conta THEN PUT UNFORMATTED "*".
+            PUT UNFORMATTED conta.ds-conta + "|".
+        END.
+        PUT UNFORMATTED SKIP.
+    END.
+    OUTPUT CLOSE.
+END.
 
+/* CSV de Planejamento de Poupanáas */
+IF lPlanEcon THEN DO:
+    OUTPUT TO "\\vmware-host\Shared Folders\hubner\Downloads\plano_economias.csv" CONVERT TARGET "UTF-8".
+    PUT UNFORMATTED "economia;ano;valor;juros;extras" SKIP.
+    FOR EACH item-poupanca,
+        FIRST poupanca OF item-poupanca:
+        PUT UNFORMATTED poupanca.ds-poupanca ";"
+                        STRING(item-poupanca.ano, "9999") ";"
+                        TRIM(REPLACE(STRING(item-poupanca.vl-deposito, "->>>>>>>>9.99"), ",", ".")) ";"
+                        TRIM(REPLACE(STRING(item-poupanca.pc-juros, "->>9.99"), ",", ".")) ";".
+        REPEAT iMes = 1 TO 12:
+            IF item-poupanca.vl-espontaneo[iMes] <> 0 THEN DO:
+                PUT UNFORMATTED STRING(iMes, "99") ":"
+                                TRIM(REPLACE(STRING(item-poupanca.vl-espontaneo[iMes], "->>>>>>>>9.99"), ",", ".")) "|".
+            END.
+        END.
+        PUT UNFORMATTED SKIP.
+    END.
+    OUTPUT CLOSE.
+END.
 
+DEFINE TEMP-TABLE tt-orc
+    FIELD descricao AS CHAR
+    FIELD ano AS INT
+    FIELD local AS CHAR
+    FIELD valor_mensal AS DEC
+    FIELD valor_extra AS DEC EXTENT 12
+    INDEX idx-pri AS PRIMARY UNIQUE descricao local.
 
+DEFINE VARIABLE c-loc-aux AS CHARACTER   NO-UNDO.
+
+/* CSV de Oráamentos */
+IF lOrcamentos THEN DO:
+    FOR EACH item-orcamento,
+        FIRST orcamento OF item-orcamento:
+        ASSIGN c-loc-aux = "".
+        FIND FIRST categoria OF item-orcamento NO-ERROR.
+        IF AVAIL categoria THEN DO:
+            FIND FIRST sub-cat OF categoria
+                WHERE sub-cat.cd-sub = item-orcamento.cd-sub NO-ERROR.
+            IF AVAIL sub-cat THEN
+                ASSIGN c-loc-aux = fnDeParaSubCategoria(categoria.ds-categoria, sub-cat.ds-sub) + ";;".
+            ELSE
+                ASSIGN c-loc-aux = fnDeParaCategoria(categoria.ds-categoria) + ";GERAL;;".
+        END.
+        ELSE
+            CASE item-orcamento.cod-categoria:
+                WHEN 997 THEN DO:
+                    FIND FIRST conta
+                        WHERE conta.cd-conta = item-orcamento.cd-sub.
+                    ASSIGN c-loc-aux = ";;" + conta.ds-conta + ";".
+                END.
+                WHEN 998 THEN ASSIGN c-loc-aux = "OUTRAS DESPESAS;;;".
+                WHEN 999 THEN ASSIGN c-loc-aux = "OUTRAS RECEITAS;;;".
+            END CASE.
+        
+        FIND FIRST tt-orc 
+            WHERE tt-orc.descricao = orcamento.ds-orcamento
+            AND   tt-orc.local = c-loc-aux NO-ERROR.
+        IF NOT AVAIL tt-orc THEN DO:
+            CREATE tt-orc.
+            ASSIGN tt-orc.descricao = orcamento.ds-orcamento
+                   tt-orc.ano = orcamento.ano
+                   tt-orc.local = c-loc-aux.
+        END.
+        ASSIGN tt-orc.valor_mensal = tt-orc.valor_mensal + item-orcamento.vl-mes.
+        REPEAT iMes = 1 TO 12:
+            ASSIGN tt-orc.valor_extra[iMes] = tt-orc.valor_extra[iMes] + item-orcamento.vl-espontaneo[iMes].
+        END.
+
+    END.
+
+    OUTPUT TO "\\vmware-host\Shared Folders\hubner\Downloads\orcamentos.csv" CONVERT TARGET "UTF-8".
+    PUT UNFORMATTED "descricao;ano;categoria;subcategoria;conta;valor_mensal;extras" SKIP.
+    FOR EACH tt-orc:
+        PUT UNFORMATTED tt-orc.descricao ";"
+                        STRING(tt-orc.ano, "9999") ";"
+                        tt-orc.local
+                        TRIM(REPLACE(STRING(tt-orc.valor_mensal, "->>>>>>>>9.99"), ",", ".")) ";".
+        REPEAT iMes = 1 TO 12:
+            IF tt-orc.valor_extra[iMes] <> 0 THEN DO:
+                PUT UNFORMATTED STRING(iMes, "99") ":"
+                                TRIM(REPLACE(STRING(tt-orc.valor_extra[iMes], "->>>>>>>>9.99"), ",", ".")) "|".
+            END.
+        END.
+        PUT UNFORMATTED SKIP.
+    END.
+    OUTPUT CLOSE.
+
+END.
 
 

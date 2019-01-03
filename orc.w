@@ -428,55 +428,55 @@ DEFINE FRAME fPage1
      btInc AT ROW 1.5 COL 3
      cat AT ROW 1.5 COL 58 COLON-ALIGNED
      sub AT ROW 2.5 COL 58 COLON-ALIGNED
-     item-orcamento.vl-mes AT ROW 4.25 COL 79 COLON-ALIGNED
+     item-orcamento.vl-mes AT ROW 4.25 COL 79 COLON-ALIGNED FORMAT "->>,>>>,>>9.99"
           VIEW-AS FILL-IN 
           SIZE 12 BY .79
      item-orcamento.vl-espontaneo[1] AT ROW 8 COL 21 COLON-ALIGNED
-          LABEL "Janeiro"
+          LABEL "Janeiro" FORMAT "->>,>>>,>>9.99"
           VIEW-AS FILL-IN 
           SIZE 12 BY .79
      item-orcamento.vl-espontaneo[2] AT ROW 9 COL 21 COLON-ALIGNED
-          LABEL "Fevereiro"
+          LABEL "Fevereiro" FORMAT "->>,>>>,>>9.99"
           VIEW-AS FILL-IN 
           SIZE 12 BY .79
      item-orcamento.vl-espontaneo[3] AT ROW 10 COL 21 COLON-ALIGNED
-          LABEL "Mar‡o"
+          LABEL "Mar‡o" FORMAT "->>,>>>,>>9.99"
           VIEW-AS FILL-IN 
           SIZE 12 BY .79
      item-orcamento.vl-espontaneo[4] AT ROW 11 COL 21 COLON-ALIGNED
-          LABEL "Abril"
+          LABEL "Abril" FORMAT "->>,>>>,>>9.99"
           VIEW-AS FILL-IN 
           SIZE 12 BY .79
      item-orcamento.vl-espontaneo[5] AT ROW 8 COL 41 COLON-ALIGNED
-          LABEL "Maio"
+          LABEL "Maio" FORMAT "->>,>>>,>>9.99"
           VIEW-AS FILL-IN 
           SIZE 12 BY .79
      item-orcamento.vl-espontaneo[6] AT ROW 9 COL 41 COLON-ALIGNED
-          LABEL "Junho"
+          LABEL "Junho" FORMAT "->>,>>>,>>9.99"
           VIEW-AS FILL-IN 
           SIZE 12 BY .79
      item-orcamento.vl-espontaneo[7] AT ROW 10 COL 41 COLON-ALIGNED
-          LABEL "Julho"
+          LABEL "Julho" FORMAT "->>,>>>,>>9.99"
           VIEW-AS FILL-IN 
           SIZE 12 BY .79
      item-orcamento.vl-espontaneo[8] AT ROW 11 COL 41 COLON-ALIGNED
-          LABEL "Agosto"
+          LABEL "Agosto" FORMAT "->>,>>>,>>9.99"
           VIEW-AS FILL-IN 
           SIZE 12 BY .79
      item-orcamento.vl-espontaneo[9] AT ROW 8 COL 63 COLON-ALIGNED
-          LABEL "Setembro"
+          LABEL "Setembro" FORMAT "->>,>>>,>>9.99"
           VIEW-AS FILL-IN 
           SIZE 12 BY .79
      item-orcamento.vl-espontaneo[10] AT ROW 9 COL 63 COLON-ALIGNED
-          LABEL "Outubro"
+          LABEL "Outubro" FORMAT "->>,>>>,>>9.99"
           VIEW-AS FILL-IN 
           SIZE 12 BY .79
      item-orcamento.vl-espontaneo[11] AT ROW 10 COL 63 COLON-ALIGNED
-          LABEL "Novembro"
+          LABEL "Novembro" FORMAT "->>,>>>,>>9.99"
           VIEW-AS FILL-IN 
           SIZE 12 BY .79
      item-orcamento.vl-espontaneo[12] AT ROW 11 COL 63 COLON-ALIGNED
-          LABEL "Dezembro"
+          LABEL "Dezembro" FORMAT "->>,>>>,>>9.99"
           VIEW-AS FILL-IN 
           SIZE 12 BY .79
      RECT-3 AT ROW 7.5 COL 14
@@ -485,6 +485,13 @@ DEFINE FRAME fPage1
          AT COL 23 ROW 5.5
          SIZE 95 BY 17.75
          FONT 1.
+
+DEFINE FRAME fPage3
+     brMensal AT ROW 1.25 COL 11
+    WITH 1 DOWN NO-BOX KEEP-TAB-ORDER OVERLAY 
+         SIDE-LABELS NO-UNDERLINE THREE-D 
+         AT COL 23 ROW 5.5
+         SIZE 95 BY 17.75.
 
 DEFINE FRAME fPage2
      brPoup AT ROW 1 COL 3
@@ -551,12 +558,12 @@ DEFINE FRAME fPage2
          SIZE 95 BY 17.75
          FONT 1.
 
-DEFINE FRAME fPage3
-     brMensal AT ROW 1.25 COL 11
+DEFINE FRAME fPage5
+     brAnual AT ROW 1.25 COL 7
     WITH 1 DOWN NO-BOX KEEP-TAB-ORDER OVERLAY 
          SIDE-LABELS NO-UNDERLINE THREE-D 
          AT COL 23 ROW 5.5
-         SIZE 95 BY 17.75.
+         SIZE 95 BY 18.
 
 DEFINE FRAME fPage4
      res-mensal AT ROW 1.5 COL 1 COLON-ALIGNED NO-LABEL
@@ -568,13 +575,6 @@ DEFINE FRAME fPage4
          SIDE-LABELS NO-UNDERLINE THREE-D 
          AT COL 3 ROW 8.75
          SIZE 19 BY 5.
-
-DEFINE FRAME fPage5
-     brAnual AT ROW 1.25 COL 7
-    WITH 1 DOWN NO-BOX KEEP-TAB-ORDER OVERLAY 
-         SIDE-LABELS NO-UNDERLINE THREE-D 
-         AT COL 23 ROW 5.5
-         SIZE 95 BY 18.
 
 
 /* *********************** Procedure Settings ************************ */
@@ -644,29 +644,31 @@ ASSIGN XXTABVALXX = FRAME fPage1:MOVE-AFTER-TAB-ITEM (orcamento.ano:HANDLE IN FR
 /* SETTINGS FOR FRAME fPage1
    Custom                                                               */
 /* SETTINGS FOR FILL-IN item-orcamento.vl-espontaneo[10] IN FRAME fPage1
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-orcamento.vl-espontaneo[11] IN FRAME fPage1
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-orcamento.vl-espontaneo[12] IN FRAME fPage1
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-orcamento.vl-espontaneo[1] IN FRAME fPage1
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-orcamento.vl-espontaneo[2] IN FRAME fPage1
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-orcamento.vl-espontaneo[3] IN FRAME fPage1
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-orcamento.vl-espontaneo[4] IN FRAME fPage1
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-orcamento.vl-espontaneo[5] IN FRAME fPage1
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-orcamento.vl-espontaneo[6] IN FRAME fPage1
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-orcamento.vl-espontaneo[7] IN FRAME fPage1
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-orcamento.vl-espontaneo[8] IN FRAME fPage1
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-orcamento.vl-espontaneo[9] IN FRAME fPage1
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
+/* SETTINGS FOR FILL-IN item-orcamento.vl-mes IN FRAME fPage1
+   EXP-FORMAT                                                           */
 /* SETTINGS FOR FRAME fPage2
    Custom                                                               */
 /* BROWSE-TAB brPoup 1 fPage2 */
@@ -1616,6 +1618,43 @@ END.
 &ANALYZE-RESUME
 
 
+&Scoped-define SELF-NAME item-orcamento.vl-espontaneo[10]
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[10] C-Win
+ON ENTRY OF item-orcamento.vl-espontaneo[10] IN FRAME fPage1 /* Outubro */
+DO:
+    {func\set_entry.i}  
+END.
+
+/* _UIB-CODE-BLOCK-END */
+&ANALYZE-RESUME
+
+
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[10] C-Win
+ON LEAVE OF item-orcamento.vl-espontaneo[10] IN FRAME fPage1 /* Outubro */
+DO:
+  
+    {func\set_leave.i}  
+    ASSIGN INPUT FRAME fPage1 item-orcamento.vl-espontaneo.
+    RUN recalcula.
+
+END.
+
+/* _UIB-CODE-BLOCK-END */
+&ANALYZE-RESUME
+
+
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[10] C-Win
+ON VALUE-CHANGED OF item-orcamento.vl-espontaneo[10] IN FRAME fPage1 /* Outubro */
+DO:
+  
+    ASSIGN INPUT FRAME fPage1 item-orcamento.vl-espontaneo.
+
+END.
+
+/* _UIB-CODE-BLOCK-END */
+&ANALYZE-RESUME
+
+
 &Scoped-define FRAME-NAME fPage2
 &Scoped-define SELF-NAME item-orcamento.vl-espontaneo[10]
 &ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[10] C-Win
@@ -1654,82 +1693,6 @@ END.
 &ANALYZE-RESUME
 
 
-&Scoped-define FRAME-NAME fPage1
-&Scoped-define SELF-NAME item-orcamento.vl-espontaneo[10]
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[10] C-Win
-ON ENTRY OF item-orcamento.vl-espontaneo[10] IN FRAME fPage1 /* Outubro */
-DO:
-    {func\set_entry.i}  
-END.
-
-/* _UIB-CODE-BLOCK-END */
-&ANALYZE-RESUME
-
-
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[10] C-Win
-ON LEAVE OF item-orcamento.vl-espontaneo[10] IN FRAME fPage1 /* Outubro */
-DO:
-  
-    {func\set_leave.i}  
-    ASSIGN INPUT FRAME fPage1 item-orcamento.vl-espontaneo.
-    RUN recalcula.
-
-END.
-
-/* _UIB-CODE-BLOCK-END */
-&ANALYZE-RESUME
-
-
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[10] C-Win
-ON VALUE-CHANGED OF item-orcamento.vl-espontaneo[10] IN FRAME fPage1 /* Outubro */
-DO:
-  
-    ASSIGN INPUT FRAME fPage1 item-orcamento.vl-espontaneo.
-
-END.
-
-/* _UIB-CODE-BLOCK-END */
-&ANALYZE-RESUME
-
-
-&Scoped-define SELF-NAME item-orcamento.vl-espontaneo[11]
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[11] C-Win
-ON ENTRY OF item-orcamento.vl-espontaneo[11] IN FRAME fPage1 /* Novembro */
-DO:
-    {func\set_entry.i}  
-END.
-
-/* _UIB-CODE-BLOCK-END */
-&ANALYZE-RESUME
-
-
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[11] C-Win
-ON LEAVE OF item-orcamento.vl-espontaneo[11] IN FRAME fPage1 /* Novembro */
-DO:
-  
-    {func\set_leave.i}  
-    ASSIGN INPUT FRAME fPage1 item-orcamento.vl-espontaneo.
-    RUN recalcula.
-
-END.
-
-/* _UIB-CODE-BLOCK-END */
-&ANALYZE-RESUME
-
-
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[11] C-Win
-ON VALUE-CHANGED OF item-orcamento.vl-espontaneo[11] IN FRAME fPage1 /* Novembro */
-DO:
-  
-    ASSIGN INPUT FRAME fPage1 item-orcamento.vl-espontaneo.
-
-END.
-
-/* _UIB-CODE-BLOCK-END */
-&ANALYZE-RESUME
-
-
-&Scoped-define FRAME-NAME fPage2
 &Scoped-define SELF-NAME item-orcamento.vl-espontaneo[11]
 &ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[11] C-Win
 ON ENTRY OF item-orcamento.vl-espontaneo[11] IN FRAME fPage2 /* Novembro */
@@ -1768,9 +1731,9 @@ END.
 
 
 &Scoped-define FRAME-NAME fPage1
-&Scoped-define SELF-NAME item-orcamento.vl-espontaneo[12]
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[12] C-Win
-ON ENTRY OF item-orcamento.vl-espontaneo[12] IN FRAME fPage1 /* Dezembro */
+&Scoped-define SELF-NAME item-orcamento.vl-espontaneo[11]
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[11] C-Win
+ON ENTRY OF item-orcamento.vl-espontaneo[11] IN FRAME fPage1 /* Novembro */
 DO:
     {func\set_entry.i}  
 END.
@@ -1779,8 +1742,8 @@ END.
 &ANALYZE-RESUME
 
 
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[12] C-Win
-ON LEAVE OF item-orcamento.vl-espontaneo[12] IN FRAME fPage1 /* Dezembro */
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[11] C-Win
+ON LEAVE OF item-orcamento.vl-espontaneo[11] IN FRAME fPage1 /* Novembro */
 DO:
   
     {func\set_leave.i}  
@@ -1793,8 +1756,8 @@ END.
 &ANALYZE-RESUME
 
 
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[12] C-Win
-ON VALUE-CHANGED OF item-orcamento.vl-espontaneo[12] IN FRAME fPage1 /* Dezembro */
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[11] C-Win
+ON VALUE-CHANGED OF item-orcamento.vl-espontaneo[11] IN FRAME fPage1 /* Novembro */
 DO:
   
     ASSIGN INPUT FRAME fPage1 item-orcamento.vl-espontaneo.
@@ -1844,9 +1807,9 @@ END.
 
 
 &Scoped-define FRAME-NAME fPage1
-&Scoped-define SELF-NAME item-orcamento.vl-espontaneo[1]
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[1] C-Win
-ON ENTRY OF item-orcamento.vl-espontaneo[1] IN FRAME fPage1 /* Janeiro */
+&Scoped-define SELF-NAME item-orcamento.vl-espontaneo[12]
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[12] C-Win
+ON ENTRY OF item-orcamento.vl-espontaneo[12] IN FRAME fPage1 /* Dezembro */
 DO:
     {func\set_entry.i}  
 END.
@@ -1855,8 +1818,8 @@ END.
 &ANALYZE-RESUME
 
 
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[1] C-Win
-ON LEAVE OF item-orcamento.vl-espontaneo[1] IN FRAME fPage1 /* Janeiro */
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[12] C-Win
+ON LEAVE OF item-orcamento.vl-espontaneo[12] IN FRAME fPage1 /* Dezembro */
 DO:
   
     {func\set_leave.i}  
@@ -1869,8 +1832,8 @@ END.
 &ANALYZE-RESUME
 
 
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[1] C-Win
-ON VALUE-CHANGED OF item-orcamento.vl-espontaneo[1] IN FRAME fPage1 /* Janeiro */
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[12] C-Win
+ON VALUE-CHANGED OF item-orcamento.vl-espontaneo[12] IN FRAME fPage1 /* Dezembro */
 DO:
   
     ASSIGN INPUT FRAME fPage1 item-orcamento.vl-espontaneo.
@@ -1919,9 +1882,10 @@ END.
 &ANALYZE-RESUME
 
 
-&Scoped-define SELF-NAME item-orcamento.vl-espontaneo[2]
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[2] C-Win
-ON ENTRY OF item-orcamento.vl-espontaneo[2] IN FRAME fPage2 /* Fevereiro */
+&Scoped-define FRAME-NAME fPage1
+&Scoped-define SELF-NAME item-orcamento.vl-espontaneo[1]
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[1] C-Win
+ON ENTRY OF item-orcamento.vl-espontaneo[1] IN FRAME fPage1 /* Janeiro */
 DO:
     {func\set_entry.i}  
 END.
@@ -1930,12 +1894,12 @@ END.
 &ANALYZE-RESUME
 
 
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[2] C-Win
-ON LEAVE OF item-orcamento.vl-espontaneo[2] IN FRAME fPage2 /* Fevereiro */
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[1] C-Win
+ON LEAVE OF item-orcamento.vl-espontaneo[1] IN FRAME fPage1 /* Janeiro */
 DO:
   
     {func\set_leave.i}  
-    ASSIGN INPUT FRAME fPage2 item-orcamento.vl-espontaneo.
+    ASSIGN INPUT FRAME fPage1 item-orcamento.vl-espontaneo.
     RUN recalcula.
 
 END.
@@ -1944,11 +1908,11 @@ END.
 &ANALYZE-RESUME
 
 
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[2] C-Win
-ON VALUE-CHANGED OF item-orcamento.vl-espontaneo[2] IN FRAME fPage2 /* Fevereiro */
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[1] C-Win
+ON VALUE-CHANGED OF item-orcamento.vl-espontaneo[1] IN FRAME fPage1 /* Janeiro */
 DO:
   
-    ASSIGN INPUT FRAME fPage2 item-orcamento.vl-espontaneo.
+    ASSIGN INPUT FRAME fPage1 item-orcamento.vl-espontaneo.
 
 END.
 
@@ -1956,7 +1920,6 @@ END.
 &ANALYZE-RESUME
 
 
-&Scoped-define FRAME-NAME fPage1
 &Scoped-define SELF-NAME item-orcamento.vl-espontaneo[2]
 &ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[2] C-Win
 ON ENTRY OF item-orcamento.vl-espontaneo[2] IN FRAME fPage1 /* Fevereiro */
@@ -1995,9 +1958,9 @@ END.
 
 
 &Scoped-define FRAME-NAME fPage2
-&Scoped-define SELF-NAME item-orcamento.vl-espontaneo[3]
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[3] C-Win
-ON ENTRY OF item-orcamento.vl-espontaneo[3] IN FRAME fPage2 /* Mar‡o */
+&Scoped-define SELF-NAME item-orcamento.vl-espontaneo[2]
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[2] C-Win
+ON ENTRY OF item-orcamento.vl-espontaneo[2] IN FRAME fPage2 /* Fevereiro */
 DO:
     {func\set_entry.i}  
 END.
@@ -2006,8 +1969,8 @@ END.
 &ANALYZE-RESUME
 
 
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[3] C-Win
-ON LEAVE OF item-orcamento.vl-espontaneo[3] IN FRAME fPage2 /* Mar‡o */
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[2] C-Win
+ON LEAVE OF item-orcamento.vl-espontaneo[2] IN FRAME fPage2 /* Fevereiro */
 DO:
   
     {func\set_leave.i}  
@@ -2020,8 +1983,8 @@ END.
 &ANALYZE-RESUME
 
 
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[3] C-Win
-ON VALUE-CHANGED OF item-orcamento.vl-espontaneo[3] IN FRAME fPage2 /* Mar‡o */
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[2] C-Win
+ON VALUE-CHANGED OF item-orcamento.vl-espontaneo[2] IN FRAME fPage2 /* Fevereiro */
 DO:
   
     ASSIGN INPUT FRAME fPage2 item-orcamento.vl-espontaneo.
@@ -2070,9 +2033,10 @@ END.
 &ANALYZE-RESUME
 
 
-&Scoped-define SELF-NAME item-orcamento.vl-espontaneo[4]
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[4] C-Win
-ON ENTRY OF item-orcamento.vl-espontaneo[4] IN FRAME fPage1 /* Abril */
+&Scoped-define FRAME-NAME fPage2
+&Scoped-define SELF-NAME item-orcamento.vl-espontaneo[3]
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[3] C-Win
+ON ENTRY OF item-orcamento.vl-espontaneo[3] IN FRAME fPage2 /* Mar‡o */
 DO:
     {func\set_entry.i}  
 END.
@@ -2081,12 +2045,12 @@ END.
 &ANALYZE-RESUME
 
 
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[4] C-Win
-ON LEAVE OF item-orcamento.vl-espontaneo[4] IN FRAME fPage1 /* Abril */
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[3] C-Win
+ON LEAVE OF item-orcamento.vl-espontaneo[3] IN FRAME fPage2 /* Mar‡o */
 DO:
   
     {func\set_leave.i}  
-    ASSIGN INPUT FRAME fPage1 item-orcamento.vl-espontaneo.
+    ASSIGN INPUT FRAME fPage2 item-orcamento.vl-espontaneo.
     RUN recalcula.
 
 END.
@@ -2095,11 +2059,11 @@ END.
 &ANALYZE-RESUME
 
 
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[4] C-Win
-ON VALUE-CHANGED OF item-orcamento.vl-espontaneo[4] IN FRAME fPage1 /* Abril */
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[3] C-Win
+ON VALUE-CHANGED OF item-orcamento.vl-espontaneo[3] IN FRAME fPage2 /* Mar‡o */
 DO:
   
-    ASSIGN INPUT FRAME fPage1 item-orcamento.vl-espontaneo.
+    ASSIGN INPUT FRAME fPage2 item-orcamento.vl-espontaneo.
 
 END.
 
@@ -2107,7 +2071,6 @@ END.
 &ANALYZE-RESUME
 
 
-&Scoped-define FRAME-NAME fPage2
 &Scoped-define SELF-NAME item-orcamento.vl-espontaneo[4]
 &ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[4] C-Win
 ON ENTRY OF item-orcamento.vl-espontaneo[4] IN FRAME fPage2 /* Abril */
@@ -2146,9 +2109,9 @@ END.
 
 
 &Scoped-define FRAME-NAME fPage1
-&Scoped-define SELF-NAME item-orcamento.vl-espontaneo[5]
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[5] C-Win
-ON ENTRY OF item-orcamento.vl-espontaneo[5] IN FRAME fPage1 /* Maio */
+&Scoped-define SELF-NAME item-orcamento.vl-espontaneo[4]
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[4] C-Win
+ON ENTRY OF item-orcamento.vl-espontaneo[4] IN FRAME fPage1 /* Abril */
 DO:
     {func\set_entry.i}  
 END.
@@ -2157,8 +2120,8 @@ END.
 &ANALYZE-RESUME
 
 
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[5] C-Win
-ON LEAVE OF item-orcamento.vl-espontaneo[5] IN FRAME fPage1 /* Maio */
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[4] C-Win
+ON LEAVE OF item-orcamento.vl-espontaneo[4] IN FRAME fPage1 /* Abril */
 DO:
   
     {func\set_leave.i}  
@@ -2171,8 +2134,8 @@ END.
 &ANALYZE-RESUME
 
 
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[5] C-Win
-ON VALUE-CHANGED OF item-orcamento.vl-espontaneo[5] IN FRAME fPage1 /* Maio */
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[4] C-Win
+ON VALUE-CHANGED OF item-orcamento.vl-espontaneo[4] IN FRAME fPage1 /* Abril */
 DO:
   
     ASSIGN INPUT FRAME fPage1 item-orcamento.vl-espontaneo.
@@ -2222,9 +2185,9 @@ END.
 
 
 &Scoped-define FRAME-NAME fPage1
-&Scoped-define SELF-NAME item-orcamento.vl-espontaneo[6]
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[6] C-Win
-ON ENTRY OF item-orcamento.vl-espontaneo[6] IN FRAME fPage1 /* Junho */
+&Scoped-define SELF-NAME item-orcamento.vl-espontaneo[5]
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[5] C-Win
+ON ENTRY OF item-orcamento.vl-espontaneo[5] IN FRAME fPage1 /* Maio */
 DO:
     {func\set_entry.i}  
 END.
@@ -2233,8 +2196,8 @@ END.
 &ANALYZE-RESUME
 
 
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[6] C-Win
-ON LEAVE OF item-orcamento.vl-espontaneo[6] IN FRAME fPage1 /* Junho */
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[5] C-Win
+ON LEAVE OF item-orcamento.vl-espontaneo[5] IN FRAME fPage1 /* Maio */
 DO:
   
     {func\set_leave.i}  
@@ -2247,8 +2210,8 @@ END.
 &ANALYZE-RESUME
 
 
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[6] C-Win
-ON VALUE-CHANGED OF item-orcamento.vl-espontaneo[6] IN FRAME fPage1 /* Junho */
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[5] C-Win
+ON VALUE-CHANGED OF item-orcamento.vl-espontaneo[5] IN FRAME fPage1 /* Maio */
 DO:
   
     ASSIGN INPUT FRAME fPage1 item-orcamento.vl-espontaneo.
@@ -2298,9 +2261,9 @@ END.
 
 
 &Scoped-define FRAME-NAME fPage1
-&Scoped-define SELF-NAME item-orcamento.vl-espontaneo[7]
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[7] C-Win
-ON ENTRY OF item-orcamento.vl-espontaneo[7] IN FRAME fPage1 /* Julho */
+&Scoped-define SELF-NAME item-orcamento.vl-espontaneo[6]
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[6] C-Win
+ON ENTRY OF item-orcamento.vl-espontaneo[6] IN FRAME fPage1 /* Junho */
 DO:
     {func\set_entry.i}  
 END.
@@ -2309,8 +2272,8 @@ END.
 &ANALYZE-RESUME
 
 
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[7] C-Win
-ON LEAVE OF item-orcamento.vl-espontaneo[7] IN FRAME fPage1 /* Julho */
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[6] C-Win
+ON LEAVE OF item-orcamento.vl-espontaneo[6] IN FRAME fPage1 /* Junho */
 DO:
   
     {func\set_leave.i}  
@@ -2323,8 +2286,8 @@ END.
 &ANALYZE-RESUME
 
 
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[7] C-Win
-ON VALUE-CHANGED OF item-orcamento.vl-espontaneo[7] IN FRAME fPage1 /* Julho */
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[6] C-Win
+ON VALUE-CHANGED OF item-orcamento.vl-espontaneo[6] IN FRAME fPage1 /* Junho */
 DO:
   
     ASSIGN INPUT FRAME fPage1 item-orcamento.vl-espontaneo.
@@ -2373,9 +2336,10 @@ END.
 &ANALYZE-RESUME
 
 
-&Scoped-define SELF-NAME item-orcamento.vl-espontaneo[8]
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[8] C-Win
-ON ENTRY OF item-orcamento.vl-espontaneo[8] IN FRAME fPage2 /* Agosto */
+&Scoped-define FRAME-NAME fPage1
+&Scoped-define SELF-NAME item-orcamento.vl-espontaneo[7]
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[7] C-Win
+ON ENTRY OF item-orcamento.vl-espontaneo[7] IN FRAME fPage1 /* Julho */
 DO:
     {func\set_entry.i}  
 END.
@@ -2384,12 +2348,12 @@ END.
 &ANALYZE-RESUME
 
 
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[8] C-Win
-ON LEAVE OF item-orcamento.vl-espontaneo[8] IN FRAME fPage2 /* Agosto */
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[7] C-Win
+ON LEAVE OF item-orcamento.vl-espontaneo[7] IN FRAME fPage1 /* Julho */
 DO:
   
     {func\set_leave.i}  
-    ASSIGN INPUT FRAME fPage2 item-orcamento.vl-espontaneo.
+    ASSIGN INPUT FRAME fPage1 item-orcamento.vl-espontaneo.
     RUN recalcula.
 
 END.
@@ -2398,11 +2362,11 @@ END.
 &ANALYZE-RESUME
 
 
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[8] C-Win
-ON VALUE-CHANGED OF item-orcamento.vl-espontaneo[8] IN FRAME fPage2 /* Agosto */
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[7] C-Win
+ON VALUE-CHANGED OF item-orcamento.vl-espontaneo[7] IN FRAME fPage1 /* Julho */
 DO:
   
-    ASSIGN INPUT FRAME fPage2 item-orcamento.vl-espontaneo.
+    ASSIGN INPUT FRAME fPage1 item-orcamento.vl-espontaneo.
 
 END.
 
@@ -2410,7 +2374,6 @@ END.
 &ANALYZE-RESUME
 
 
-&Scoped-define FRAME-NAME fPage1
 &Scoped-define SELF-NAME item-orcamento.vl-espontaneo[8]
 &ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[8] C-Win
 ON ENTRY OF item-orcamento.vl-espontaneo[8] IN FRAME fPage1 /* Agosto */
@@ -2448,6 +2411,82 @@ END.
 &ANALYZE-RESUME
 
 
+&Scoped-define FRAME-NAME fPage2
+&Scoped-define SELF-NAME item-orcamento.vl-espontaneo[8]
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[8] C-Win
+ON ENTRY OF item-orcamento.vl-espontaneo[8] IN FRAME fPage2 /* Agosto */
+DO:
+    {func\set_entry.i}  
+END.
+
+/* _UIB-CODE-BLOCK-END */
+&ANALYZE-RESUME
+
+
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[8] C-Win
+ON LEAVE OF item-orcamento.vl-espontaneo[8] IN FRAME fPage2 /* Agosto */
+DO:
+  
+    {func\set_leave.i}  
+    ASSIGN INPUT FRAME fPage2 item-orcamento.vl-espontaneo.
+    RUN recalcula.
+
+END.
+
+/* _UIB-CODE-BLOCK-END */
+&ANALYZE-RESUME
+
+
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[8] C-Win
+ON VALUE-CHANGED OF item-orcamento.vl-espontaneo[8] IN FRAME fPage2 /* Agosto */
+DO:
+  
+    ASSIGN INPUT FRAME fPage2 item-orcamento.vl-espontaneo.
+
+END.
+
+/* _UIB-CODE-BLOCK-END */
+&ANALYZE-RESUME
+
+
+&Scoped-define SELF-NAME item-orcamento.vl-espontaneo[9]
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[9] C-Win
+ON ENTRY OF item-orcamento.vl-espontaneo[9] IN FRAME fPage2 /* Setembro */
+DO:
+    {func\set_entry.i}  
+END.
+
+/* _UIB-CODE-BLOCK-END */
+&ANALYZE-RESUME
+
+
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[9] C-Win
+ON LEAVE OF item-orcamento.vl-espontaneo[9] IN FRAME fPage2 /* Setembro */
+DO:
+  
+    {func\set_leave.i}  
+    ASSIGN INPUT FRAME fPage2 item-orcamento.vl-espontaneo.
+    RUN recalcula.
+
+END.
+
+/* _UIB-CODE-BLOCK-END */
+&ANALYZE-RESUME
+
+
+&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[9] C-Win
+ON VALUE-CHANGED OF item-orcamento.vl-espontaneo[9] IN FRAME fPage2 /* Setembro */
+DO:
+  
+    ASSIGN INPUT FRAME fPage2 item-orcamento.vl-espontaneo.
+
+END.
+
+/* _UIB-CODE-BLOCK-END */
+&ANALYZE-RESUME
+
+
+&Scoped-define FRAME-NAME fPage1
 &Scoped-define SELF-NAME item-orcamento.vl-espontaneo[9]
 &ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[9] C-Win
 ON ENTRY OF item-orcamento.vl-espontaneo[9] IN FRAME fPage1 /* Setembro */
@@ -2486,43 +2525,6 @@ END.
 
 
 &Scoped-define FRAME-NAME fPage2
-&Scoped-define SELF-NAME item-orcamento.vl-espontaneo[9]
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[9] C-Win
-ON ENTRY OF item-orcamento.vl-espontaneo[9] IN FRAME fPage2 /* Setembro */
-DO:
-    {func\set_entry.i}  
-END.
-
-/* _UIB-CODE-BLOCK-END */
-&ANALYZE-RESUME
-
-
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[9] C-Win
-ON LEAVE OF item-orcamento.vl-espontaneo[9] IN FRAME fPage2 /* Setembro */
-DO:
-  
-    {func\set_leave.i}  
-    ASSIGN INPUT FRAME fPage2 item-orcamento.vl-espontaneo.
-    RUN recalcula.
-
-END.
-
-/* _UIB-CODE-BLOCK-END */
-&ANALYZE-RESUME
-
-
-&ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-espontaneo[9] C-Win
-ON VALUE-CHANGED OF item-orcamento.vl-espontaneo[9] IN FRAME fPage2 /* Setembro */
-DO:
-  
-    ASSIGN INPUT FRAME fPage2 item-orcamento.vl-espontaneo.
-
-END.
-
-/* _UIB-CODE-BLOCK-END */
-&ANALYZE-RESUME
-
-
 &Scoped-define SELF-NAME item-orcamento.vl-mes
 &ANALYZE-SUSPEND _UIB-CODE-BLOCK _CONTROL item-orcamento.vl-mes C-Win
 ON ENTRY OF item-orcamento.vl-mes IN FRAME fPage2 /* Extra */

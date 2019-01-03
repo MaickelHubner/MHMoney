@@ -1,7 +1,7 @@
 DEFINE BUFFER bf-fer FOR feriado.
 
 FOR EACH bf-fer
-    WHERE YEAR(bf-fer.dt-feriado) = 2016:
+    WHERE YEAR(bf-fer.dt-feriado) = 2018:
 
     CREATE feriado.
     BUFFER-COPY bf-fer EXCEPT dt-feriado TO feriado.

@@ -26,14 +26,15 @@ IF NOT l-aux THEN RETURN "NOK".
 
 CREATE "Excel.Application" ch-excel.
 CASE i-moeda:
-    WHEN 25 THEN ASSIGN ch-arquivo = ch-excel:Workbooks:OPEN("C:\Users\Hubner\Desktop\Historico_ETER3.xlsx").
+    /*WHEN 25 THEN ASSIGN ch-arquivo = ch-excel:Workbooks:OPEN("C:\Users\Hubner\Desktop\Historico_ETER3.xlsx").*/
     /*WHEN 26 THEN ASSIGN ch-arquivo = ch-excel:Workbooks:OPEN("C:\Users\Hubner\Desktop\Historico_WHRL4.xlsx").*/
     WHEN 30 THEN ASSIGN ch-arquivo = ch-excel:Workbooks:OPEN("C:\Users\Hubner\Desktop\Historico_RNGO11.xlsx").
     /*WHEN 32 THEN ASSIGN ch-arquivo = ch-excel:Workbooks:OPEN("C:\Users\Hubner\Desktop\XPDividendos.xlsx").*/
     /*WHEN 33 THEN ASSIGN ch-arquivo = ch-excel:Workbooks:OPEN("C:\Users\Hubner\Desktop\XPReferenciado.xlsx").*/
     /*WHEN 35 THEN ASSIGN ch-arquivo = ch-excel:Workbooks:OPEN("C:\Users\Hubner\Desktop\XPPlural.xlsx").*/
-    WHEN 38 THEN ASSIGN ch-arquivo = ch-excel:Workbooks:OPEN("C:\Users\Hubner\Desktop\BB.xlsx").
+    /*WHEN 38 THEN ASSIGN ch-arquivo = ch-excel:Workbooks:OPEN("C:\Users\Hubner\Desktop\BB.xlsx").*/
     WHEN 39 THEN ASSIGN ch-arquivo = ch-excel:Workbooks:OPEN("C:\Users\Hubner\Desktop\Historico_ALPA4.xlsx").
+    WHEN 40 THEN ASSIGN ch-arquivo = ch-excel:Workbooks:OPEN("C:\Users\Hubner\Desktop\Historico_ITUB4.xlsx").
 END CASE.
 
 ASSIGN ch-planilha = ch-arquivo:Sheets:Item(1).        
@@ -109,5 +110,7 @@ FOR EACH tt-cot
 END.
 
 ch-Excel:QUIT.
+RELEASE OBJECT ch-planilha NO-ERROR.
+RELEASE OBJECT ch-arquivo NO-ERROR.
 RELEASE OBJECT ch-Excel NO-ERROR.
 

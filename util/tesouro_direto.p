@@ -24,16 +24,16 @@ REPEAT i-linha = 3 TO 9999:
              ROUND(ch-planilha:Cells(i-linha, 6):Value, 2).
 
         CASE STRING(ch-planilha:Cells(i-linha, 1):VALUE):
-            WHEN "Tesouro IPCA+ 2035 (NTNB Princ)" THEN ASSIGN i-moeda = 37.
-            WHEN "Tesouro Prefixado 2021 (LTN)" THEN ASSIGN i-moeda = 36.
-            WHEN "Tesouro Prefixado com Juros Semestrais 2021 (NTNF)" THEN ASSIGN i-moeda = 24.
-            WHEN "Tesouro Prefixado com Juros Semestrais 2023 (NTNF)" THEN ASSIGN i-moeda = 29.
+            WHEN "Tesouro IPCA+ 2035" THEN ASSIGN i-moeda = 37.
+            WHEN "Tesouro Prefixado 2021" THEN ASSIGN i-moeda = 36.
+            WHEN "Tesouro Prefixado com Juros Semestrais 2021" THEN ASSIGN i-moeda = 24.
+            WHEN "Tesouro Prefixado com Juros Semestrais 2023" THEN ASSIGN i-moeda = 29.
         END CASE.
 
         FIND FIRST moeda NO-LOCK
             WHERE moeda.cd-moeda = i-moeda NO-ERROR.
         IF AVAIL moeda THEN DO:
-        
+
             DISP moeda.ds-moeda.
         
             FIND FIRST cotacao OF moeda
@@ -85,6 +85,8 @@ REPEAT i-linha = 3 TO 9999:
 END.
 
 ch-Excel:QUIT.
+RELEASE OBJECT ch-planilha NO-ERROR.
+RELEASE OBJECT ch-arquivo NO-ERROR.
 RELEASE OBJECT ch-Excel NO-ERROR.
 
 
