@@ -423,6 +423,96 @@ DEFINE FRAME DEFAULT-FRAME
          SIZE 117.57 BY 24.46
          FONT 1.
 
+DEFINE FRAME fPage2
+     brPoup AT ROW 1 COL 3
+     btElimp AT ROW 10 COL 70.14
+     btIncp AT ROW 10 COL 64
+     contas AT ROW 10 COL 19 COLON-ALIGNED
+     vl-poup AT ROW 11 COL 19 COLON-ALIGNED
+     item-orcamento.vl-mes AT ROW 11 COL 48.72 COLON-ALIGNED
+          LABEL "Extra" FORMAT "->>,>>>,>>9.99"
+          VIEW-AS FILL-IN 
+          SIZE 12 BY .79
+     item-orcamento.vl-espontaneo[1] AT ROW 13 COL 21 COLON-ALIGNED
+          LABEL "Janeiro" FORMAT "->>,>>>,>>9.99"
+          VIEW-AS FILL-IN 
+          SIZE 12 BY .79
+     item-orcamento.vl-espontaneo[2] AT ROW 14 COL 21 COLON-ALIGNED
+          LABEL "Fevereiro" FORMAT "->>,>>>,>>9.99"
+          VIEW-AS FILL-IN 
+          SIZE 12 BY .79
+     item-orcamento.vl-espontaneo[3] AT ROW 15 COL 21 COLON-ALIGNED
+          LABEL "Mar‡o" FORMAT "->>,>>>,>>9.99"
+          VIEW-AS FILL-IN 
+          SIZE 12 BY .79
+     item-orcamento.vl-espontaneo[4] AT ROW 16 COL 21 COLON-ALIGNED
+          LABEL "Abril" FORMAT "->>,>>>,>>9.99"
+          VIEW-AS FILL-IN 
+          SIZE 12 BY .79
+     item-orcamento.vl-espontaneo[5] AT ROW 13 COL 40 COLON-ALIGNED
+          LABEL "Maio" FORMAT "->>,>>>,>>9.99"
+          VIEW-AS FILL-IN 
+          SIZE 12 BY .79
+     item-orcamento.vl-espontaneo[6] AT ROW 14 COL 40 COLON-ALIGNED
+          LABEL "Junho" FORMAT "->>,>>>,>>9.99"
+          VIEW-AS FILL-IN 
+          SIZE 12 BY .79
+     item-orcamento.vl-espontaneo[7] AT ROW 15 COL 40 COLON-ALIGNED
+          LABEL "Julho" FORMAT "->>,>>>,>>9.99"
+          VIEW-AS FILL-IN 
+          SIZE 12 BY .79
+     item-orcamento.vl-espontaneo[8] AT ROW 16 COL 40 COLON-ALIGNED
+          LABEL "Agosto" FORMAT "->>,>>>,>>9.99"
+          VIEW-AS FILL-IN 
+          SIZE 12 BY .79
+     item-orcamento.vl-espontaneo[9] AT ROW 13 COL 62 COLON-ALIGNED
+          LABEL "Setembro" FORMAT "->>,>>>,>>9.99"
+          VIEW-AS FILL-IN 
+          SIZE 12 BY .79
+     item-orcamento.vl-espontaneo[10] AT ROW 14 COL 62 COLON-ALIGNED
+          LABEL "Outubro" FORMAT "->>,>>>,>>9.99"
+          VIEW-AS FILL-IN 
+          SIZE 12 BY .79
+     item-orcamento.vl-espontaneo[11] AT ROW 15 COL 62 COLON-ALIGNED
+          LABEL "Novembro" FORMAT "->>,>>>,>>9.99"
+          VIEW-AS FILL-IN 
+          SIZE 12 BY .79
+     item-orcamento.vl-espontaneo[12] AT ROW 16 COL 62 COLON-ALIGNED
+          LABEL "Dezembro" FORMAT "->>,>>>,>>9.99"
+          VIEW-AS FILL-IN 
+          SIZE 12 BY .79
+     RECT-4 AT ROW 12.5 COL 14
+    WITH 1 DOWN NO-BOX KEEP-TAB-ORDER OVERLAY 
+         SIDE-LABELS NO-UNDERLINE THREE-D 
+         AT COL 23 ROW 5.5
+         SIZE 95 BY 17.75
+         FONT 1.
+
+DEFINE FRAME fPage3
+     brMensal AT ROW 1.25 COL 11
+    WITH 1 DOWN NO-BOX KEEP-TAB-ORDER OVERLAY 
+         SIDE-LABELS NO-UNDERLINE THREE-D 
+         AT COL 23 ROW 5.5
+         SIZE 95 BY 17.75.
+
+DEFINE FRAME fPage4
+     res-mensal AT ROW 1.5 COL 1 COLON-ALIGNED NO-LABEL
+     mensal AT ROW 2.5 COL 1 COLON-ALIGNED NO-LABEL
+     res-anual AT ROW 3.5 COL 1 COLON-ALIGNED NO-LABEL
+     anual AT ROW 4.5 COL 17 RIGHT-ALIGNED NO-LABEL
+     RECT-5 AT ROW 1.13 COL 2
+    WITH 1 DOWN NO-BOX KEEP-TAB-ORDER OVERLAY 
+         SIDE-LABELS NO-UNDERLINE THREE-D 
+         AT COL 3 ROW 8.75
+         SIZE 19 BY 5.
+
+DEFINE FRAME fPage5
+     brAnual AT ROW 1.25 COL 7
+    WITH 1 DOWN NO-BOX KEEP-TAB-ORDER OVERLAY 
+         SIDE-LABELS NO-UNDERLINE THREE-D 
+         AT COL 23 ROW 5.5
+         SIZE 95 BY 18.
+
 DEFINE FRAME fPage1
      btElim AT ROW 1.5 COL 9.14
      btInc AT ROW 1.5 COL 3
@@ -485,96 +575,6 @@ DEFINE FRAME fPage1
          AT COL 23 ROW 5.5
          SIZE 95 BY 17.75
          FONT 1.
-
-DEFINE FRAME fPage3
-     brMensal AT ROW 1.25 COL 11
-    WITH 1 DOWN NO-BOX KEEP-TAB-ORDER OVERLAY 
-         SIDE-LABELS NO-UNDERLINE THREE-D 
-         AT COL 23 ROW 5.5
-         SIZE 95 BY 17.75.
-
-DEFINE FRAME fPage2
-     brPoup AT ROW 1 COL 3
-     btElimp AT ROW 10 COL 70.14
-     btIncp AT ROW 10 COL 64
-     contas AT ROW 10 COL 19 COLON-ALIGNED
-     vl-poup AT ROW 11 COL 19 COLON-ALIGNED
-     item-orcamento.vl-mes AT ROW 11 COL 48.72 COLON-ALIGNED
-          LABEL "Extra"
-          VIEW-AS FILL-IN 
-          SIZE 12 BY .79
-     item-orcamento.vl-espontaneo[1] AT ROW 13 COL 21 COLON-ALIGNED
-          LABEL "Janeiro"
-          VIEW-AS FILL-IN 
-          SIZE 12 BY .79
-     item-orcamento.vl-espontaneo[2] AT ROW 14 COL 21 COLON-ALIGNED
-          LABEL "Fevereiro"
-          VIEW-AS FILL-IN 
-          SIZE 12 BY .79
-     item-orcamento.vl-espontaneo[3] AT ROW 15 COL 21 COLON-ALIGNED
-          LABEL "Mar‡o"
-          VIEW-AS FILL-IN 
-          SIZE 12 BY .79
-     item-orcamento.vl-espontaneo[4] AT ROW 16 COL 21 COLON-ALIGNED
-          LABEL "Abril"
-          VIEW-AS FILL-IN 
-          SIZE 12 BY .79
-     item-orcamento.vl-espontaneo[5] AT ROW 13 COL 40 COLON-ALIGNED
-          LABEL "Maio"
-          VIEW-AS FILL-IN 
-          SIZE 12 BY .79
-     item-orcamento.vl-espontaneo[6] AT ROW 14 COL 40 COLON-ALIGNED
-          LABEL "Junho"
-          VIEW-AS FILL-IN 
-          SIZE 12 BY .79
-     item-orcamento.vl-espontaneo[7] AT ROW 15 COL 40 COLON-ALIGNED
-          LABEL "Julho"
-          VIEW-AS FILL-IN 
-          SIZE 12 BY .79
-     item-orcamento.vl-espontaneo[8] AT ROW 16 COL 40 COLON-ALIGNED
-          LABEL "Agosto"
-          VIEW-AS FILL-IN 
-          SIZE 12 BY .79
-     item-orcamento.vl-espontaneo[9] AT ROW 13 COL 62 COLON-ALIGNED
-          LABEL "Setembro"
-          VIEW-AS FILL-IN 
-          SIZE 12 BY .79
-     item-orcamento.vl-espontaneo[10] AT ROW 14 COL 62 COLON-ALIGNED
-          LABEL "Outubro"
-          VIEW-AS FILL-IN 
-          SIZE 12 BY .79
-     item-orcamento.vl-espontaneo[11] AT ROW 15 COL 62 COLON-ALIGNED
-          LABEL "Novembro"
-          VIEW-AS FILL-IN 
-          SIZE 12 BY .79
-     item-orcamento.vl-espontaneo[12] AT ROW 16 COL 62 COLON-ALIGNED
-          LABEL "Dezembro"
-          VIEW-AS FILL-IN 
-          SIZE 12 BY .79
-     RECT-4 AT ROW 12.5 COL 14
-    WITH 1 DOWN NO-BOX KEEP-TAB-ORDER OVERLAY 
-         SIDE-LABELS NO-UNDERLINE THREE-D 
-         AT COL 23 ROW 5.5
-         SIZE 95 BY 17.75
-         FONT 1.
-
-DEFINE FRAME fPage5
-     brAnual AT ROW 1.25 COL 7
-    WITH 1 DOWN NO-BOX KEEP-TAB-ORDER OVERLAY 
-         SIDE-LABELS NO-UNDERLINE THREE-D 
-         AT COL 23 ROW 5.5
-         SIZE 95 BY 18.
-
-DEFINE FRAME fPage4
-     res-mensal AT ROW 1.5 COL 1 COLON-ALIGNED NO-LABEL
-     mensal AT ROW 2.5 COL 1 COLON-ALIGNED NO-LABEL
-     res-anual AT ROW 3.5 COL 1 COLON-ALIGNED NO-LABEL
-     anual AT ROW 4.5 COL 17 RIGHT-ALIGNED NO-LABEL
-     RECT-5 AT ROW 1.13 COL 2
-    WITH 1 DOWN NO-BOX KEEP-TAB-ORDER OVERLAY 
-         SIDE-LABELS NO-UNDERLINE THREE-D 
-         AT COL 3 ROW 8.75
-         SIZE 19 BY 5.
 
 
 /* *********************** Procedure Settings ************************ */
@@ -678,31 +678,31 @@ ASSIGN
        brPoup:COLUMN-MOVABLE IN FRAME fPage2         = TRUE.
 
 /* SETTINGS FOR FILL-IN item-orcamento.vl-espontaneo[10] IN FRAME fPage2
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-orcamento.vl-espontaneo[11] IN FRAME fPage2
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-orcamento.vl-espontaneo[12] IN FRAME fPage2
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-orcamento.vl-espontaneo[1] IN FRAME fPage2
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-orcamento.vl-espontaneo[2] IN FRAME fPage2
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-orcamento.vl-espontaneo[3] IN FRAME fPage2
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-orcamento.vl-espontaneo[4] IN FRAME fPage2
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-orcamento.vl-espontaneo[5] IN FRAME fPage2
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-orcamento.vl-espontaneo[6] IN FRAME fPage2
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-orcamento.vl-espontaneo[7] IN FRAME fPage2
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-orcamento.vl-espontaneo[8] IN FRAME fPage2
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-orcamento.vl-espontaneo[9] IN FRAME fPage2
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-orcamento.vl-mes IN FRAME fPage2
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FRAME fPage3
                                                                         */
 /* BROWSE-TAB brMensal 1 fPage3 */
