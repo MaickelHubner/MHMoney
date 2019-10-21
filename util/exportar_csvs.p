@@ -41,6 +41,9 @@ DEFINE VARIABLE cValor AS CHARACTER   NO-UNDO.
 DEFINE VARIABLE dtAux AS DATE    NO-UNDO.
 DEFINE VARIABLE iMes AS INTEGER     NO-UNDO.
 DEFINE VARIABLE lTodos AS LOGICAL COLUMN-LABEL "Todos os lembretes?" FORMAT "Sim/NÆo" NO-UNDO.
+DEFINE VARIABLE iAno AS INTEGER COLUMN-LABEL "Ano" FORMAT "9999" NO-UNDO INITIAL 0.
+DEFINE VARIABLE iAgIni AS INTEGER COLUMN-LABEL "Agenda Inicial"     NO-UNDO INITIAL 0.
+DEFINE VARIABLE iAgFim AS INTEGER COLUMN-LABEL "Agenda Final"     NO-UNDO INITIAL 99999.
 
 DEFINE BUFFER bf-conta FOR conta.
 DEFINE BUFFER bf-mov-conta FOR mov-conta.
@@ -313,7 +316,8 @@ IF lCotacoes THEN DO:
             WHERE (IF iMoeda = 0 THEN TRUE ELSE moeda.cd-moeda = iMoeda):
             FOR EACH cotacao OF moeda
                 WHERE (cotacao.dt-ini >= (dtIni - 1) AND cotacao.dt-ini <= (dtFim + 1))
-                OR    (cotacao.dt-end >= (dtIni - 1) AND cotacao.dt-end <= (dtFim + 1)):
+                OR    (cotacao.dt-end >= (dtIni - 1) AND cotacao.dt-end <= (dtFim + 1))
+                OR    cotacao.dt-end = DATE(12, 31, 9999):
                 IF YEAR(cotacao.dt-ini) > 1899 THEN
                     ASSIGN dtAux = cotacao.dt-ini.
                 ELSE
@@ -454,7 +458,12 @@ FUNCTION fnDeParaSubCategoria RETURNS CHARACTER
         WHEN "Livros, Revistas & Jornais" THEN ASSIGN cSub = "Livros e Leitura".
         WHEN "Artigos Esportivos" THEN ASSIGN cSub = "Esportes".
         WHEN "Bolsas & Malas" THEN ASSIGN cSub = "Bolsas, Malas e Mochilas".
-        WHEN "J¢ias & Afins" THEN ASSIGN cSub = "J¢ias, Rel¢gios e Acess¢rios".
+        WHEN "J¢ias & Afins" THEN DO:
+            IF cCat = "Consertos" THEN
+                ASSIGN cSub = "Joias e Rel¢gios".
+            ELSE
+                ASSIGN cSub = "J¢ias, Rel¢gios e Acess¢rios".
+        END.
         WHEN "Brinquedos & Afins" THEN ASSIGN cSub = "Brinquedos".
         WHEN "àculos e afins" THEN ASSIGN cSub = "àculos".
         WHEN "Tatuagens & Piercings" THEN ASSIGN cSub = "Tatuagens e Piercings".
@@ -873,11 +882,16 @@ IF lLembretes THEN DO:
     PUT UNFORMATTED "identific;favorecido;conta;tipo;responsavel;categoria;subcategoria;conta_transf;data_inicio;data_fim;data_ultimo_pagto;data_proximo_pagto;agrupado;valor_atualizado;dia_nao_util;adiciona_dias_uteis;meses;ocorre;quando;semanas;dia_semana;valores" SKIP.
 
     IF lMovtoLemb THEN DO:
+        UPDATE iAgIni
+               iAgFim
+            WITH FRAME f-agendas.
         OUTPUT STREAM str-mov TO "\\vmware-host\Shared Folders\hubner\Downloads\mov-lembretes.csv" CONVERT TARGET "UTF-8".
         PUT STREAM str-mov UNFORMATTED "conta;identific;favorecido;data;valor;tipo;categoria;subcategoria;situacao;numero;responsavel;data_compensacao;conta_transf;valor_transf;agrupado;lembrete;observacao" SKIP.
     END.
 
-    FOR EACH agenda,
+    FOR EACH agenda
+        WHERE agenda.cd-agenda >= iAgIni
+        AND   agenda.cd-agenda <= iAgFim,
         FIRST favorecido OF agenda,
         FIRST conta OF agenda:
 
@@ -1112,46 +1126,53 @@ DEFINE VARIABLE c-loc-aux AS CHARACTER   NO-UNDO.
 
 /* CSV de Or‡amentos */
 IF lOrcamentos THEN DO:
-    FOR EACH item-orcamento,
-        FIRST orcamento OF item-orcamento:
-        ASSIGN c-loc-aux = "".
-        FIND FIRST categoria OF item-orcamento NO-ERROR.
-        IF AVAIL categoria THEN DO:
-            FIND FIRST sub-cat OF categoria
-                WHERE sub-cat.cd-sub = item-orcamento.cd-sub NO-ERROR.
-            IF AVAIL sub-cat THEN
-                ASSIGN c-loc-aux = fnDeParaSubCategoria(categoria.ds-categoria, sub-cat.ds-sub) + ";;".
-            ELSE
-                ASSIGN c-loc-aux = fnDeParaCategoria(categoria.ds-categoria) + ";GERAL;;".
-        END.
-        ELSE
-            CASE item-orcamento.cod-categoria:
-                WHEN 997 THEN DO:
-                    FIND FIRST conta
-                        WHERE conta.cd-conta = item-orcamento.cd-sub.
-                    ASSIGN c-loc-aux = ";;" + conta.ds-conta + ";".
-                END.
-                WHEN 998 THEN ASSIGN c-loc-aux = "OUTRAS DESPESAS;;;".
-                WHEN 999 THEN ASSIGN c-loc-aux = "OUTRAS RECEITAS;;;".
-            END CASE.
-        
-        FIND FIRST tt-orc 
-            WHERE tt-orc.descricao = orcamento.ds-orcamento
-            AND   tt-orc.local = c-loc-aux NO-ERROR.
-        IF NOT AVAIL tt-orc THEN DO:
-            CREATE tt-orc.
-            ASSIGN tt-orc.descricao = orcamento.ds-orcamento
-                   tt-orc.ano = orcamento.ano
-                   tt-orc.local = c-loc-aux.
-        END.
-        ASSIGN tt-orc.valor_mensal = tt-orc.valor_mensal + item-orcamento.vl-mes.
-        REPEAT iMes = 1 TO 12:
-            ASSIGN tt-orc.valor_extra[iMes] = tt-orc.valor_extra[iMes] + item-orcamento.vl-espontaneo[iMes].
-        END.
 
+    UPDATE iAno
+        WITH FRAME f-orcamento.
+
+    FOR EACH orcamento
+        WHERE (IF iAno = 0 THEN TRUE ELSE orcamento.ano = iAno):
+        FOR EACH item-orcamento OF orcamento:
+            ASSIGN c-loc-aux = "".
+            FIND FIRST categoria OF item-orcamento NO-ERROR.
+            IF AVAIL categoria THEN DO:
+                FIND FIRST sub-cat OF categoria
+                    WHERE sub-cat.cd-sub = item-orcamento.cd-sub NO-ERROR.
+                IF AVAIL sub-cat THEN
+                    ASSIGN c-loc-aux = fnDeParaSubCategoria(categoria.ds-categoria, sub-cat.ds-sub) + ";;".
+                ELSE
+                    ASSIGN c-loc-aux = fnDeParaCategoria(categoria.ds-categoria) + ";GERAL;;".
+            END.
+            ELSE
+                CASE item-orcamento.cod-categoria:
+                    WHEN 997 THEN DO:
+                        FIND FIRST conta
+                            WHERE conta.cd-conta = item-orcamento.cd-sub.
+                        ASSIGN c-loc-aux = ";;" + conta.ds-conta + ";".
+                    END.
+                    WHEN 998 THEN ASSIGN c-loc-aux = "OUTRAS DESPESAS;;;".
+                    WHEN 999 THEN ASSIGN c-loc-aux = "OUTRAS RECEITAS;;;".
+                END CASE.
+            
+            FIND FIRST tt-orc 
+                WHERE tt-orc.descricao = orcamento.ds-orcamento
+                AND   tt-orc.local = c-loc-aux NO-ERROR.
+            IF NOT AVAIL tt-orc THEN DO:
+                CREATE tt-orc.
+                ASSIGN tt-orc.descricao = orcamento.ds-orcamento
+                       tt-orc.ano = orcamento.ano
+                       tt-orc.local = c-loc-aux.
+            END.
+            ASSIGN tt-orc.valor_mensal = tt-orc.valor_mensal + item-orcamento.vl-mes.
+            REPEAT iMes = 1 TO 12:
+                ASSIGN tt-orc.valor_extra[iMes] = tt-orc.valor_extra[iMes] + item-orcamento.vl-espontaneo[iMes].
+            END.
+
+        END.
+    
     END.
 
-    OUTPUT TO "\\vmware-host\Shared Folders\hubner\Downloads\orcamentos.csv" CONVERT TARGET "UTF-8".
+    OUTPUT TO VALUE("\\vmware-host\Shared Folders\hubner\Downloads\orcamentos" + TRIM(IF iAno = 0 THEN "" ELSE STRING(iAno)) + ".csv") CONVERT TARGET "UTF-8".
     PUT UNFORMATTED "descricao;ano;categoria;subcategoria;conta;valor_mensal;extras" SKIP.
     FOR EACH tt-orc:
         PUT UNFORMATTED tt-orc.descricao ";"

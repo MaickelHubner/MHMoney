@@ -598,12 +598,15 @@ IF CAN-FIND(FIRST conta
 
         ASSIGN deValor = (-1) * fnCotacao(deSaldo,conta.cd-moeda,moeda,(DATE(mes,1,ano) - 1))
                deDesc = 0.
+
         FOR EACH mov-conta OF conta NO-LOCK
             WHERE mov-conta.dt-mov >= DATE(mes,1,ano)
             AND   mov-conta.dt-mov <= fnUltimoDia(mes, ano)
-            AND   mov-conta.id-tipo <> 0:
-            ASSIGN deSaldo = deSaldo + mov-conta.de-valor
-                   deDesc = deDesc + fnCotacao(mov-conta.de-valor,conta.cd-moeda,moeda,mov-conta.dt-mov).
+            AND   mov-conta.id-tipo <> 0,
+            FIRST sub-cat OF mov-conta:
+            ASSIGN deSaldo = deSaldo + mov-conta.de-valor.
+            IF NOT sub-cat.ds-sub MATCHES("*split*") THEN
+                ASSIGN deDesc = deDesc + fnCotacao(mov-conta.de-valor,conta.cd-moeda,moeda,mov-conta.dt-mov).
         END.
         ASSIGN deValor = deValor + fnCotacao(deSaldo,conta.cd-moeda,moeda,fnUltimoDia(mes, ano)) - deDesc.
 

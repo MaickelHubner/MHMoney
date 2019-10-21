@@ -155,51 +155,51 @@ DEFINE FRAME DEFAULT-FRAME
           VIEW-AS FILL-IN 
           SIZE 9 BY .79
      item-poupanca.vl-espontaneo[1] AT ROW 7.75 COL 26 COLON-ALIGNED
-          LABEL "Janeiro"
+          LABEL "Janeiro" FORMAT "->>,>>>,>>9.99"
           VIEW-AS FILL-IN 
           SIZE 12.57 BY .79
      item-poupanca.vl-espontaneo[2] AT ROW 9 COL 26 COLON-ALIGNED
-          LABEL "Fevereiro"
+          LABEL "Fevereiro" FORMAT "->>,>>>,>>9.99"
           VIEW-AS FILL-IN 
           SIZE 12.57 BY .79
      item-poupanca.vl-espontaneo[3] AT ROW 10.25 COL 26 COLON-ALIGNED
-          LABEL "Mar‡o"
+          LABEL "Mar‡o" FORMAT "->>,>>>,>>9.99"
           VIEW-AS FILL-IN 
           SIZE 12.57 BY .79
      item-poupanca.vl-espontaneo[4] AT ROW 11.5 COL 26 COLON-ALIGNED
-          LABEL "Abril"
+          LABEL "Abril" FORMAT "->>,>>>,>>9.99"
           VIEW-AS FILL-IN 
           SIZE 12.57 BY .79
      item-poupanca.vl-espontaneo[5] AT ROW 12.75 COL 26 COLON-ALIGNED
-          LABEL "Maio"
+          LABEL "Maio" FORMAT "->>,>>>,>>9.99"
           VIEW-AS FILL-IN 
           SIZE 12.57 BY .79
      item-poupanca.vl-espontaneo[6] AT ROW 14 COL 26 COLON-ALIGNED
-          LABEL "Junho"
+          LABEL "Junho" FORMAT "->>,>>>,>>9.99"
           VIEW-AS FILL-IN 
           SIZE 12.57 BY .79
      item-poupanca.vl-espontaneo[7] AT ROW 7.75 COL 51 COLON-ALIGNED
-          LABEL "Julho"
+          LABEL "Julho" FORMAT "->>,>>>,>>9.99"
           VIEW-AS FILL-IN 
           SIZE 12.57 BY .79
      item-poupanca.vl-espontaneo[8] AT ROW 9 COL 51 COLON-ALIGNED
-          LABEL "Agosto"
+          LABEL "Agosto" FORMAT "->>,>>>,>>9.99"
           VIEW-AS FILL-IN 
           SIZE 12.57 BY .79
      item-poupanca.vl-espontaneo[9] AT ROW 10.25 COL 51 COLON-ALIGNED
-          LABEL "Setembro"
+          LABEL "Setembro" FORMAT "->>,>>>,>>9.99"
           VIEW-AS FILL-IN 
           SIZE 12.57 BY .79
      item-poupanca.vl-espontaneo[10] AT ROW 11.5 COL 51 COLON-ALIGNED
-          LABEL "Outubro"
+          LABEL "Outubro" FORMAT "->>,>>>,>>9.99"
           VIEW-AS FILL-IN 
           SIZE 12.57 BY .79
      item-poupanca.vl-espontaneo[11] AT ROW 12.75 COL 51 COLON-ALIGNED
-          LABEL "Novembro"
+          LABEL "Novembro" FORMAT "->>,>>>,>>9.99"
           VIEW-AS FILL-IN 
           SIZE 12.57 BY .79
      item-poupanca.vl-espontaneo[12] AT ROW 14 COL 51 COLON-ALIGNED
-          LABEL "Dezembro"
+          LABEL "Dezembro" FORMAT "->>,>>>,>>9.99"
           VIEW-AS FILL-IN 
           SIZE 12.57 BY .79
      "Espontƒneo" VIEW-AS TEXT
@@ -272,29 +272,29 @@ ELSE {&WINDOW-NAME} = CURRENT-WINDOW.
 /* SETTINGS FOR FILL-IN poupanca.ds-poupanca IN FRAME DEFAULT-FRAME
    NO-ENABLE                                                            */
 /* SETTINGS FOR FILL-IN item-poupanca.vl-espontaneo[10] IN FRAME DEFAULT-FRAME
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-poupanca.vl-espontaneo[11] IN FRAME DEFAULT-FRAME
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-poupanca.vl-espontaneo[12] IN FRAME DEFAULT-FRAME
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-poupanca.vl-espontaneo[1] IN FRAME DEFAULT-FRAME
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-poupanca.vl-espontaneo[2] IN FRAME DEFAULT-FRAME
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-poupanca.vl-espontaneo[3] IN FRAME DEFAULT-FRAME
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-poupanca.vl-espontaneo[4] IN FRAME DEFAULT-FRAME
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-poupanca.vl-espontaneo[5] IN FRAME DEFAULT-FRAME
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-poupanca.vl-espontaneo[6] IN FRAME DEFAULT-FRAME
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-poupanca.vl-espontaneo[7] IN FRAME DEFAULT-FRAME
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-poupanca.vl-espontaneo[8] IN FRAME DEFAULT-FRAME
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 /* SETTINGS FOR FILL-IN item-poupanca.vl-espontaneo[9] IN FRAME DEFAULT-FRAME
-   EXP-LABEL                                                            */
+   EXP-LABEL EXP-FORMAT                                                 */
 IF SESSION:DISPLAY-TYPE = "GUI":U AND VALID-HANDLE(C-Win)
 THEN C-Win:HIDDEN = no.
 
